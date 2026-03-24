@@ -107,49 +107,7 @@ export function Portfolio() {
             </div>
           ))}
         </div>
-        
-        {/* Portfolio grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Project image */}
-              <div className="aspect-[4/3] bg-background relative overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="text-center text-primary-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="w-14 h-14 bg-primary-foreground/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ExternalLink className="w-6 h-6" />
-                    </div>
-                    <a href="#portfolio" className="font-semibold" onClick={e => { e.preventDefault(); const el = document.getElementById('portfolio'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>View Project</a>
-                  </div>
-                </div>
-              </div>
-              {/* Content */}
-              <div className="p-6">
-                <span className="inline-block text-primary text-xs font-semibold uppercase tracking-wider mb-2">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+
         {/* View All Projects button */}
         <div className="mt-12 text-center">
           <a
@@ -164,3 +122,7 @@ export function Portfolio() {
             View All Projects
           </a>
         </div>
+      </div>
+    </section>
+  )
+}
