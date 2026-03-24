@@ -15,21 +15,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Ad Masons | Digital Marketing Agency',
-  description: 'Ad Masons is a digital marketing agency helping brands grow with performance marketing, branding, and high-converting strategies.',
+  title: 'Ad Masons | Digital Marketing Agency — Indore',
+  description: 'Ad Masons is a performance-first digital marketing agency in Indore helping brands grow through social media, paid ads, SEO, and lead generation.',
   generator: 'v0.app',
-  keywords: ['digital marketing', 'performance marketing', 'branding', 'web design', 'social media marketing', 'lead generation', 'Ad Masons'],
+  keywords: ['digital marketing agency Indore', 'social media marketing', 'performance ads', 'lead generation', 'Ad Masons'],
   icons: {
     icon: [
       {
-        url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TC5sBptz2xofTBYYkvKa6AK7BdNzMu.png',
+        url: '/admasons-logo.png',
       },
     ],
-    apple: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TC5sBptz2xofTBYYkvKa6AK7BdNzMu.png',
+    apple: '/admasons-logo.png',
   },
   openGraph: {
-    title: 'Ad Masons | Digital Marketing Agency',
-    description: 'Ad Masons is a digital marketing agency helping brands grow with performance marketing, branding, and high-converting strategies.',
+    title: 'Ad Masons | Digital Marketing Agency — Indore',
+    description: 'Ad Masons is a performance-first digital marketing agency in Indore helping brands grow through social media, paid ads, SEO, and lead generation.',
     type: 'website',
     siteName: 'Ad Masons',
   },

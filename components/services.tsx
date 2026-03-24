@@ -80,7 +80,6 @@ export function Services() {
                 <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                   <service.icon className="w-7 h-7 text-primary" />
                 </div>
-                
                 {/* Content */}
                 <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
                   {service.title}
@@ -88,14 +87,21 @@ export function Services() {
                 <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
-                
-                {/* Learn more link */}
-                <div className="mt-6 flex items-center text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span>Learn More</span>
+                {/* Learn More button */}
+                <a
+                  href="#contact"
+                  className="mt-6 inline-flex items-center text-primary font-medium text-sm border border-border px-6 py-3 rounded-md hover:bg-secondary transition-colors"
+                  onClick={e => {
+                    e.preventDefault();
+                    const el = document.getElementById('contact');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Learn More
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </div>
+                </a>
               </div>
             </div>
           ))}

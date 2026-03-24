@@ -41,20 +41,26 @@ export function CTA() {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-10 py-7 text-lg group"
+            <a
+              href="#contact"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-10 py-7 text-lg group rounded-md flex items-center justify-center"
+              onClick={e => {
+                e.preventDefault();
+                const el = document.getElementById('contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Get Started Now
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-border text-foreground hover:bg-secondary hover:text-foreground font-semibold px-10 py-7 text-lg"
+            </a>
+            <a
+              href="https://wa.me/919203793966"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border text-foreground hover:bg-secondary hover:text-foreground font-semibold px-10 py-7 text-lg rounded-md flex items-center justify-center"
             >
-              Schedule a Call
-            </Button>
+              Chat With Us
+            </a>
           </div>
           
           {/* Trust indicators */}
@@ -69,7 +75,7 @@ export function CTA() {
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              Free 30-minute strategy call
+              Free 30-minute strategy consultation
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">

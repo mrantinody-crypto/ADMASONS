@@ -25,7 +25,7 @@ const services = [
 const socials = [
   { name: "Instagram", icon: Instagram, href: "https://instagram.com" },
   { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/919876543210" },
+  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/919203793966" },
 ]
 
 export function Footer() {
@@ -40,15 +40,16 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="#home" className="flex items-center mb-6">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TC5sBptz2xofTBYYkvKa6AK7BdNzMu.png"
+            <a href="#home" className="flex items-center mb-6">
+              <img
+                src="/admasons-logo.png"
                 alt="Ad Masons"
                 width={160}
-                height={48}
+                height={45}
                 className="h-10 w-auto"
+                style={{ width: 160, height: 45 }}
               />
-            </Link>
+            </a>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               A results-driven marketing agency helping brands grow faster through 
               strategy, creativity, and performance marketing.
@@ -59,6 +60,9 @@ export function Footer() {
             >
               theadmasons@gmail.com
             </a>
+            <div className="mt-2">
+              <a href="https://wa.me/919203793966" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 font-medium">Chat on WhatsApp</a>
+            </div>
             {/* Social links */}
             <div className="flex gap-4">
               {socials.map((social) => (
@@ -116,11 +120,20 @@ export function Footer() {
             <p className="text-muted-foreground mb-4">
               Subscribe to our newsletter for marketing tips and updates.
             </p>
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-3" onSubmit={e => {
+              e.preventDefault();
+              const form = e.target;
+              const input = form.querySelector('input[type=email]');
+              if (input && input.value) {
+                alert("Thanks for subscribing! We'll be in touch.");
+                input.value = '';
+              }
+            }}>
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 bg-secondary border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                required
               />
               <button
                 type="submit"
@@ -138,15 +151,31 @@ export function Footer() {
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm text-center md:text-left">
-              © 2026 Ad Masons. All rights reserved.
+              © {new Date().getFullYear()} Ad Masons. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="#contact"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                onClick={e => {
+                  e.preventDefault();
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Privacy Policy
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              </a>
+              <a
+                href="#contact"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                onClick={e => {
+                  e.preventDefault();
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Terms of Service
-              </Link>
+              </a>
             </div>
           </div>
         </div>

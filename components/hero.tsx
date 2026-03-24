@@ -62,21 +62,27 @@ export function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 text-lg group"
+              <a
+                href="https://wa.me/919203793966"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 text-lg group rounded-md flex items-center justify-center"
               >
-                Book a Free Call
+                Book a Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-border text-foreground hover:bg-secondary hover:text-foreground font-semibold px-8 py-6 text-lg group"
+              </a>
+              <a
+                href="#portfolio"
+                className="border border-border text-foreground hover:bg-secondary hover:text-foreground font-semibold px-8 py-6 text-lg group rounded-md flex items-center justify-center"
+                onClick={e => {
+                  e.preventDefault();
+                  const el = document.getElementById('portfolio');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 View Our Work
-              </Button>
+              </a>
             </div>
             
             {/* Stats */}

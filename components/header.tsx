@@ -40,16 +40,16 @@ export function Header() {
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="#home" className="flex items-center">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TC5sBptz2xofTBYYkvKa6AK7BdNzMu.png"
+          <a href="#home" className="flex items-center">
+            <img
+              src="/admasons-logo.png"
               alt="Ad Masons"
               width={160}
-              height={48}
+              height={45}
               className="h-10 w-auto"
-              priority
+              style={{ width: 160, height: 45 }}
             />
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
@@ -62,13 +62,17 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6">
+            <a
+              href="#contact"
+              className="ml-6 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-3 text-base group rounded-md transition-all"
+              onClick={e => {
+                e.preventDefault();
+                const el = document.getElementById('contact');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Get Started
-            </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}

@@ -5,39 +5,39 @@ import { ExternalLink } from "lucide-react"
 
 const projects = [
   {
-    title: "TechFlow Rebrand",
+    title: "Brand Identity & Strategy",
     category: "Branding",
-    description: "Complete brand identity overhaul",
+    description: "Comprehensive brand identity and positioning for a new e-commerce brand.",
     image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&q=80",
   },
   {
-    title: "E-Commerce Growth",
+    title: "Performance Marketing Campaign",
     category: "Performance Ads",
-    description: "5x ROAS campaign strategy",
+    description: "Multi-channel paid ads campaign for a real estate client.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
   },
   {
-    title: "SaaS Platform Launch",
+    title: "High-Converting Landing Page",
     category: "Website",
-    description: "High-converting landing pages",
+    description: "Landing page design and development for a healthcare provider.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
   },
   {
-    title: "Startup Social Campaign",
+    title: "Social Media Growth Campaign",
     category: "Social Media",
-    description: "Viral content strategy",
+    description: "Organic and paid social media growth for an education startup.",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80",
   },
   {
-    title: "Restaurant Chain",
+    title: "Local Business Lead Generation",
     category: "Lead Generation",
-    description: "Local marketing funnel",
+    description: "Lead funnel and automation for a hospitality business.",
     image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",
   },
   {
-    title: "Fashion Brand",
+    title: "Visual Content & Branding",
     category: "Content Creation",
-    description: "Full visual identity system",
+    description: "Visual content and branding for an FMCG product launch.",
     image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
   },
 ]
@@ -87,7 +87,7 @@ export function Portfolio() {
                     <div className="w-14 h-14 bg-primary-foreground/20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <ExternalLink className="w-6 h-6" />
                     </div>
-                    <p className="font-semibold">View Project</p>
+                    <a href="#portfolio" className="font-semibold" onClick={e => { e.preventDefault(); const el = document.getElementById('portfolio'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>View Project</a>
                   </div>
                 </div>
               </div>
@@ -108,16 +108,59 @@ export function Portfolio() {
           ))}
         </div>
         
-        {/* View all button */}
-        <div className="text-center mt-12">
-          <button className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-4 transition-all duration-300">
-            View All Projects
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
+        {/* Portfolio grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={project.title}
+              className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {/* Project image */}
+              <div className="aspect-[4/3] bg-background relative overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="text-center text-primary-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="w-14 h-14 bg-primary-foreground/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ExternalLink className="w-6 h-6" />
+                    </div>
+                    <a href="#portfolio" className="font-semibold" onClick={e => { e.preventDefault(); const el = document.getElementById('portfolio'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>View Project</a>
+                  </div>
+                </div>
+              </div>
+              {/* Content */}
+              <div className="p-6">
+                <span className="inline-block text-primary text-xs font-semibold uppercase tracking-wider mb-2">
+                  {project.category}
+                </span>
+                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </section>
-  )
-}
+        {/* View All Projects button */}
+        <div className="mt-12 text-center">
+          <a
+            href="#portfolio"
+            className="inline-block bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-4 rounded-xl text-lg transition-colors"
+            onClick={e => {
+              e.preventDefault();
+              const el = document.getElementById('portfolio');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            View All Projects
+          </a>
+        </div>

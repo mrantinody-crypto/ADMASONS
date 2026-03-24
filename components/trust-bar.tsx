@@ -2,12 +2,12 @@
 
 export function TrustBar() {
   const brands = [
-    "TechCorp",
-    "Innovate Inc",
-    "Growth Labs",
-    "Digital Pro",
-    "Scale Up",
-    "Brand Master",
+    "E-Commerce",
+    "Real Estate",
+    "Healthcare",
+    "Education",
+    "Hospitality",
+    "FMCG",
   ]
 
   return (
