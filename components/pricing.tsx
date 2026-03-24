@@ -55,13 +55,15 @@ const plans = [
     highlighted: false,
     cta: "Contact Sales",
   },
+]
+
 export function Pricing() {
   return (
     <section id="pricing" className="py-24 bg-card relative overflow-hidden">
       {/* Subtle background accents */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/3 rounded-full blur-[100px]" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/3 rounded-full blur-[100px]" />
-      
+
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
