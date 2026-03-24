@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { TrustBar } from "@/components/trust-bar"
 import { Services } from "@/components/services"
+import { Clients } from "@/components/clients"
 import { WhyChooseUs } from "@/components/why-choose-us"
 import { About } from "@/components/about"
 import { Portfolio } from "@/components/portfolio"
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <Services />
+      <Clients />
       <WhyChooseUs />
       <About />
       <Portfolio />

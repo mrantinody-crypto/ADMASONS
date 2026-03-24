@@ -89,3 +89,46 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Infinite logo scroll animations ── */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 45s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover for accessibility */
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-left,
+  .animate-scroll-right {
+    animation-play-state: paused;
+  }
+}
