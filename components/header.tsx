@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -40,13 +41,13 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <img
-              src="/admasons-logo.png"
+            <Image
+              src="/admasons-logo.jpeg"
               alt="Ad Masons"
               width={160}
               height={45}
               className="h-10 w-auto"
-              style={{ width: 160, height: 45 }}
+              priority
             />
           </a>
 

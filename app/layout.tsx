@@ -22,10 +22,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/admasons-logo.png',
+        url: '/admasons-logo.jpeg',
       },
     ],
-    apple: '/admasons-logo.png',
+    apple: '/admasons-logo.jpeg',
   },
   openGraph: {
     title: 'Ad Masons | Digital Marketing Agency — Indore',

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Linkedin, MessageCircle, ArrowUp } from "lucide-react";
 
 const quickLinks = [
@@ -43,9 +44,11 @@ export function Footer() {
           {/* Brand */}
           <div>
             <a href="#home" className="flex items-center mb-6">
-              <img
-                src="/admasons-logo.png"
+              <Image
+                src="/admasons-logo.jpeg"
                 alt="Ad Masons"
+                width={160}
+                height={45}
                 className="h-10 w-auto"
               />
             </a>
