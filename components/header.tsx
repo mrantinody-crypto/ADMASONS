@@ -1,11 +1,11 @@
-"use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+"use client";
+
+import * as React from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -16,17 +16,17 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ]
 
-export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+export function Header(): JSX.Element {
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -65,10 +65,10 @@ export function Header() {
             <a
               href="#contact"
               className="ml-6 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-3 text-base group rounded-md transition-all"
-              onClick={e => {
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault();
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                const el = document.getElementById("contact");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
             >
               Get Started
@@ -78,8 +78,9 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
+            type="button"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -110,5 +111,5 @@ export function Header() {
         </div>
       </nav>
     </header>
-  )
+  );
 }
