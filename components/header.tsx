@@ -1,5 +1,4 @@
-
-"use client";
+"use client"
 
 import * as React from "react";
 import Link from "next/link";
@@ -16,7 +15,7 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ]
 
-export function Header(): JSX.Element {
+export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
@@ -78,9 +77,8 @@ export function Header(): JSX.Element {
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
-            type="button"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -111,5 +109,5 @@ export function Header(): JSX.Element {
         </div>
       </nav>
     </header>
-  );
+  )
 }
