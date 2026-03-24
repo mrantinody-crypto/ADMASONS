@@ -59,10 +59,10 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-card relative overflow-hidden">
+    <section id="pricing" className="py-24 bg-gradient-to-b from-card via-card to-background relative overflow-hidden">
       {/* Subtle background accents */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-primary/3 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/3 rounded-full blur-[100px]" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/3 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[100px]" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
@@ -81,7 +81,7 @@ export function Pricing() {
         {/* Pricing cards */}
         <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan, idx) => (
-            <div key={plan.name} className={`relative bg-background border border-border rounded-2xl p-8 flex flex-col ${plan.highlighted ? 'shadow-lg shadow-primary/10 border-primary/60' : ''}`}>
+            <div key={plan.name} className={`relative bg-background border rounded-2xl p-8 flex flex-col ${plan.highlighted ? 'shadow-xl shadow-primary/10 border-primary/40 ring-1 ring-primary/20' : 'border-white/[0.06]'}`}>
               <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
               <p className="text-muted-foreground mb-4">{plan.description}</p>
               <div className="flex items-end mb-6">

@@ -44,10 +44,10 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-card relative overflow-hidden">
+    <section id="services" className="py-24 bg-gradient-to-b from-card via-card to-background relative overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/3 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/3 rounded-full blur-[100px]" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/3 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[100px]" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
@@ -69,11 +69,11 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative bg-background border border-border rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+              className="group relative bg-background border border-white/[0.06] rounded-2xl p-8 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Golden glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/5 to-transparent transition-all duration-300" />
+              {/* Soft glow effect on hover */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-primary/3 via-purple-500/3 to-transparent transition-all duration-300" />
               
               <div className="relative z-10">
                 {/* Icon */}

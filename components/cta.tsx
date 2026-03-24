@@ -5,17 +5,17 @@ import { Button } from "@/components/ui/button"
 
 export function CTA() {
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-card via-card to-background relative overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-purple-500/3" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px]" />
       
-      {/* Grid pattern */}
+      {/* Subtle pattern */}
       <div 
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(to right, #FFD700 1px, transparent 1px),
-                           linear-gradient(to bottom, #FFD700 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, #E8C547 1px, transparent 1px),
+                           linear-gradient(to bottom, #E8C547 1px, transparent 1px)`,
           backgroundSize: '40px 40px'
         }}
       />

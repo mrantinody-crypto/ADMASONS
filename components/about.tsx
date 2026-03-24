@@ -39,7 +39,7 @@ export function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image */}
           <div className="relative">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-card border border-primary/20">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-card border border-white/[0.06] shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
                 alt="Marketing team working together"
@@ -51,8 +51,8 @@ export function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
             
-            {/* Golden accent element */}
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-primary/30 rounded-2xl -z-10" />
+            {/* Gradient accent element */}
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-primary/15 rounded-2xl -z-10" />
             
             {/* Floating stat card */}
             <div className="absolute -bottom-8 -left-8 bg-card border border-border rounded-2xl p-6 shadow-xl">
@@ -123,7 +123,7 @@ export function About() {
                   <div className="hidden md:block absolute top-12 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-gradient-to-r from-primary to-primary/20" />
                 )}
                 
-                <div className="bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/50 transition-all duration-300 group-hover:-translate-y-2">
+                  <div className="bg-card border border-white/[0.06] rounded-2xl p-8 text-center hover:border-primary/30 transition-all duration-300 group-hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/5">
                   <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                     <span className="text-2xl font-bold text-primary group-hover:text-primary-foreground transition-colors">
                       {step.number}

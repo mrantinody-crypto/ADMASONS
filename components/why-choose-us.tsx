@@ -27,17 +27,9 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 bg-secondary/30 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #FFD700 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}
-        />
-      </div>
+    <section className="py-24 bg-gradient-to-b from-background via-secondary/20 to-background relative overflow-hidden">
+      {/* Soft ambient light */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/3 rounded-full blur-[180px]" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
@@ -62,7 +54,7 @@ export function WhyChooseUs() {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Icon */}
-              <div className="w-20 h-20 bg-card border border-border rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-300 group-hover:scale-110">
+              <div className="w-20 h-20 bg-gradient-to-br from-card to-secondary border border-white/[0.06] rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 transition-all duration-300 group-hover:scale-110">
                 <reason.icon className="w-10 h-10 text-primary" />
               </div>
               

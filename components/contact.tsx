@@ -42,9 +42,9 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-card relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-b from-card via-card to-background relative overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/3 rounded-full blur-[100px]" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[100px]" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}

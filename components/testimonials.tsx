@@ -43,9 +43,9 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-background via-background to-card relative overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/3 rounded-full blur-[120px]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/3 rounded-full blur-[120px]" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
