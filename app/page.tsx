@@ -1,6 +1,5 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { TrustBar } from "@/components/trust-bar"
 import { Services } from "@/components/services"
 import { Clients } from "@/components/clients"
 import { WhyChooseUs } from "@/components/why-choose-us"
@@ -17,8 +16,6 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <TrustBar />
-      <Services />
       <Clients />
       <WhyChooseUs />
       <About />

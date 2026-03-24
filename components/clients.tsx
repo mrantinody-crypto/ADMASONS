@@ -5,44 +5,41 @@ import { useState, useCallback } from "react"
 interface Brand {
   name: string
   icon?: string
+  color?: string
 }
 
 const row1Brands: Brand[] = [
-  { name: "Amazon", icon: "https://cdn.simpleicons.org/amazon/white" },
-  { name: "Flipkart", icon: "https://cdn.simpleicons.org/flipkart/white" },
-  { name: "Shopify", icon: "https://cdn.simpleicons.org/shopify/white" },
-  { name: "Google Cloud", icon: "https://cdn.simpleicons.org/googlecloud/white" },
-  { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/white" },
-  { name: "Meta", icon: "https://cdn.simpleicons.org/meta/white" },
-  { name: "GitHub", icon: "https://cdn.simpleicons.org/github/white" },
-  { name: "Python", icon: "https://cdn.simpleicons.org/python/white" },
-  { name: "Make" },
-  { name: "Voiceflow" },
-  { name: "Retell AI" },
-  { name: "n8n" },
-  { name: "HighLevel" },
-  { name: "VAPI" },
-  { name: "ThisThat" },
-  { name: "Later" },
+  { name: "Amazon", icon: "https://cdn.simpleicons.org/amazon/FF9900", color: "#FF9900" },
+  { name: "Flipkart", icon: "https://cdn.simpleicons.org/flipkart/2874F0", color: "#2874F0" },
+  { name: "Shopify", icon: "https://cdn.simpleicons.org/shopify/95BF47", color: "#95BF47" },
+  { name: "Google Cloud", icon: "https://cdn.simpleicons.org/googlecloud/4285F4", color: "#4285F4" },
+  { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/FF9900", color: "#FF9900" },
+  { name: "Meta", icon: "https://cdn.simpleicons.org/meta/0081FB", color: "#0081FB" },
+  { name: "GitHub", icon: "https://cdn.simpleicons.org/github/FFFFFF", color: "#FFFFFF" },
+  { name: "Python", icon: "https://cdn.simpleicons.org/python/FFD43B", color: "#FFD43B" },
+  { name: "Microsoft", icon: "https://cdn.simpleicons.org/microsoft/00A4EF", color: "#00A4EF" },
+  { name: "Slack", icon: "https://cdn.simpleicons.org/slack/E01E5A", color: "#E01E5A" },
+  { name: "Notion", icon: "https://cdn.simpleicons.org/notion/FFFFFF", color: "#FFFFFF" },
+  { name: "Stripe", icon: "https://cdn.simpleicons.org/stripe/635BFF", color: "#635BFF" },
+  { name: "Vercel", icon: "https://cdn.simpleicons.org/vercel/FFFFFF", color: "#FFFFFF" },
+  { name: "Netflix", icon: "https://cdn.simpleicons.org/netflix/E50914", color: "#E50914" },
 ]
 
 const row2Brands: Brand[] = [
-  { name: "HCL" },
-  { name: "BMW", icon: "https://cdn.simpleicons.org/bmw/white" },
-  { name: "JSW" },
-  { name: "Schindler" },
-  { name: "Riot Games", icon: "https://cdn.simpleicons.org/riotgames/white" },
-  { name: "Van Heusen" },
-  { name: "Dalmia Cement" },
-  { name: "Tobias" },
-  { name: "Order'n Go" },
-  { name: "ViaPhoton" },
-  { name: "MyCubes" },
-  { name: "AS Watson" },
-  { name: "LogiCmines" },
-  { name: "BioQube" },
-  { name: "Mini", icon: "https://cdn.simpleicons.org/mini/white" },
-  { name: "ET" },
+  { name: "HCL", color: "#0073E6" },
+  { name: "BMW", icon: "https://cdn.simpleicons.org/bmw/0066B1", color: "#0066B1" },
+  { name: "JSW", color: "#2E5090" },
+  { name: "Riot Games", icon: "https://cdn.simpleicons.org/riotgames/D32936", color: "#D32936" },
+  { name: "Van Heusen", color: "#C8A96E" },
+  { name: "Adobe", icon: "https://cdn.simpleicons.org/adobe/FF0000", color: "#FF0000" },
+  { name: "Spotify", icon: "https://cdn.simpleicons.org/spotify/1DB954", color: "#1DB954" },
+  { name: "Tesla", icon: "https://cdn.simpleicons.org/tesla/CC0000", color: "#CC0000" },
+  { name: "Nike", icon: "https://cdn.simpleicons.org/nike/FFFFFF", color: "#FFFFFF" },
+  { name: "Samsung", icon: "https://cdn.simpleicons.org/samsung/1428A0", color: "#1428A0" },
+  { name: "Uber", icon: "https://cdn.simpleicons.org/uber/FFFFFF", color: "#FFFFFF" },
+  { name: "Airbnb", icon: "https://cdn.simpleicons.org/airbnb/FF5A5F", color: "#FF5A5F" },
+  { name: "Mini", icon: "https://cdn.simpleicons.org/mini/FFFFFF", color: "#FFFFFF" },
+  { name: "Discord", icon: "https://cdn.simpleicons.org/discord/5865F2", color: "#5865F2" },
 ]
 
 function BrandLogo({ brand }: { brand: Brand }) {
@@ -51,12 +48,12 @@ function BrandLogo({ brand }: { brand: Brand }) {
 
   if (brand.icon && !imgError) {
     return (
-      <div className="flex items-center justify-center h-[30px] md:h-[50px] px-6 md:px-10 shrink-0 group/logo">
+      <div className="flex items-center justify-center h-[50px] md:h-[80px] px-8 md:px-12 shrink-0 transition-transform duration-300 hover:scale-[1.08]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={brand.icon}
           alt={brand.name}
-          className="h-6 md:h-9 w-auto max-w-[100px] md:max-w-[140px] object-contain opacity-40 grayscale transition-all duration-300 group-hover/logo:opacity-100 group-hover/logo:grayscale-0 group-hover/logo:scale-110 group-hover/logo:drop-shadow-[0_0_12px_rgba(255,215,0,0.4)]"
+          className="h-[45px] md:h-[70px] w-auto max-w-[120px] md:max-w-[180px] object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]"
           loading="lazy"
           onError={handleError}
           draggable={false}
@@ -66,9 +63,10 @@ function BrandLogo({ brand }: { brand: Brand }) {
   }
 
   return (
-    <div className="flex items-center justify-center h-[30px] md:h-[50px] px-6 md:px-10 shrink-0 group/logo">
+    <div className="flex items-center justify-center h-[50px] md:h-[80px] px-8 md:px-12 shrink-0 transition-transform duration-300 hover:scale-[1.08]">
       <span
-        className="text-white/30 font-bold text-xs md:text-base tracking-widest whitespace-nowrap uppercase transition-all duration-300 select-none group-hover/logo:text-primary group-hover/logo:scale-110 group-hover/logo:drop-shadow-[0_0_12px_rgba(255,215,0,0.4)]"
+        className="font-extrabold text-lg md:text-2xl tracking-wider whitespace-nowrap uppercase select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]"
+        style={{ color: brand.color || "#FFD700" }}
         role="img"
         aria-label={brand.name}
       >
@@ -93,17 +91,15 @@ function LogoTrack({
       className="relative overflow-hidden"
       style={{
         maskImage:
-          "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
         WebkitMaskImage:
-          "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
       }}
     >
       <div className={`flex w-max ${animationClass}`}>
-        {/* First set */}
         {brands.map((brand, i) => (
           <BrandLogo key={`a-${brand.name}-${i}`} brand={brand} />
         ))}
-        {/* Duplicate set for seamless loop */}
         {brands.map((brand, i) => (
           <BrandLogo key={`b-${brand.name}-${i}`} brand={brand} />
         ))}
@@ -119,26 +115,26 @@ export function Clients() {
       className="py-24 bg-background relative overflow-hidden"
       aria-label="Our Clients"
     >
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/3 rounded-full blur-[200px] pointer-events-none" />
+      {/* Background accent glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-primary/5 rounded-full blur-[200px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="inline-block text-primary text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Our Clients
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
             Trusted by Leading Brands
           </h2>
-          <p className="text-lg text-muted-foreground text-pretty">
+          <p className="text-lg md:text-xl text-muted-foreground text-pretty">
             Partnering with industry leaders and innovative startups to deliver
             exceptional digital results.
           </p>
         </div>
 
         {/* Scrolling logo rows */}
-        <div className="space-y-10">
+        <div className="space-y-12">
           <LogoTrack brands={row1Brands} direction="left" />
           <LogoTrack brands={row2Brands} direction="right" />
         </div>
