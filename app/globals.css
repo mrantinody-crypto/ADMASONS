@@ -4,40 +4,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Premium dark theme with reduced yellow, more neutral balance */
-  --background: #0B0B0F;
-  --foreground: #F5F5F7;
-  --card: #12121A;
-  --card-foreground: #F5F5F7;
-  --popover: #12121A;
-  --popover-foreground: #F5F5F7;
-  --primary: #E8C547;
-  --primary-foreground: #0B0B0F;
-  --secondary: #1A1A24;
-  --secondary-foreground: #F5F5F7;
-  --muted: #1A1A24;
-  --muted-foreground: #9CA3AF;
-  --accent: #E8C547;
-  --accent-foreground: #0B0B0F;
+  /* Premium dark theme — purple-blue accent system */
+  --background: #08080C;
+  --foreground: #F0F0F5;
+  --card: #101018;
+  --card-foreground: #F0F0F5;
+  --popover: #101018;
+  --popover-foreground: #F0F0F5;
+  --primary: #A78BFA;
+  --primary-foreground: #08080C;
+  --secondary: #161622;
+  --secondary-foreground: #F0F0F5;
+  --muted: #161622;
+  --muted-foreground: #94A3B8;
+  --accent: #7C5CFC;
+  --accent-foreground: #F0F0F5;
   --destructive: #EF4444;
-  --destructive-foreground: #F5F5F7;
-  --border: #232330;
-  --input: #1A1A24;
-  --ring: #E8C547;
-  --chart-1: #E8C547;
-  --chart-2: #A78BFA;
-  --chart-3: #60A5FA;
-  --chart-4: #34D399;
-  --chart-5: #F472B6;
-  --radius: 0.625rem;
-  --sidebar: #0F0F14;
-  --sidebar-foreground: #F5F5F7;
-  --sidebar-primary: #E8C547;
-  --sidebar-primary-foreground: #0B0B0F;
-  --sidebar-accent: #1A1A24;
-  --sidebar-accent-foreground: #F5F5F7;
-  --sidebar-border: #232330;
-  --sidebar-ring: #E8C547;
+  --destructive-foreground: #F0F0F5;
+  --border: #1E1E2E;
+  --input: #161622;
+  --ring: #A78BFA;
+  --chart-1: #A78BFA;
+  --chart-2: #60A5FA;
+  --chart-3: #34D399;
+  --chart-4: #F472B6;
+  --chart-5: #FBBF24;
+  --radius: 0.75rem;
+  --sidebar: #0C0C14;
+  --sidebar-foreground: #F0F0F5;
+  --sidebar-primary: #A78BFA;
+  --sidebar-primary-foreground: #08080C;
+  --sidebar-accent: #161622;
+  --sidebar-accent-foreground: #F0F0F5;
+  --sidebar-border: #1E1E2E;
+  --sidebar-ring: #A78BFA;
 }
 
 @theme inline {
@@ -90,6 +90,38 @@
   }
 }
 
+/* ── Scroll-reveal animation ── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* staggered delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* ── Counter number animation ── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count-up {
+  animation: count-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* ── Infinite logo scroll animations ── */
 @keyframes scroll-left {
   from {
@@ -128,7 +160,11 @@
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .animate-scroll-left,
-  .animate-scroll-right {
-    animation-play-state: paused;
+  .animate-scroll-right,
+  .animate-fade-up,
+  .animate-count-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

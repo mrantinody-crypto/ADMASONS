@@ -1,11 +1,10 @@
-"use client"
+﻿"use client"
 
-import * as React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { Menu, X } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -53,23 +52,21 @@ const socialLinks = [
 ]
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
+          ? "bg-background/90 backdrop-blur-xl border-b border-white/[0.06]"
           : "bg-transparent"
       )}
     >
@@ -89,24 +86,24 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm font-medium"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-violet-500 after:to-blue-500 hover:after:w-full after:transition-all after:duration-300"
               >
                 {item.name}
               </Link>
             ))}
             <div className="flex items-center gap-3 ml-2">
-              {socialLinks.map((social) => (
+              {socialLinks.map(social => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(225,48,108,0.5)]"
+                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
@@ -114,11 +111,11 @@ export function Header() {
             </div>
             <a
               href="#contact"
-              className="ml-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-3 text-base group rounded-md transition-all"
+              className="ml-4 bg-gradient-to-r from-violet-600 to-blue-600 text-white hover:from-violet-500 hover:to-blue-500 font-semibold px-6 py-2.5 text-sm rounded-lg transition-all duration-300 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 hover:-translate-y-0.5"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.preventDefault();
-                const el = document.getElementById("contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
+                e.preventDefault()
+                const el = document.getElementById("contact")
+                if (el) el.scrollIntoView({ behavior: "smooth" })
               }}
             >
               Get Started
@@ -142,34 +139,38 @@ export function Header() {
             isMobileMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
           )}
         >
-          <div className="py-4 space-y-4 border-t border-border">
-            {navItems.map((item) => (
+          <div className="py-4 space-y-4 border-t border-white/[0.06]">
+            {navItems.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block text-muted-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
+                className="block text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
             <div className="flex items-center gap-4 pt-2">
-              {socialLinks.map((social) => (
+              {socialLinks.map(social => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(225,48,108,0.5)]"
+                  className="transition-all duration-200 hover:scale-125"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
-            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold mt-4">
+            <a
+              href="#contact"
+              className="block w-full bg-gradient-to-r from-violet-600 to-blue-600 text-white font-semibold py-3 rounded-lg text-center mt-4 shadow-lg shadow-violet-500/20"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Get Started
-            </Button>
+            </a>
           </div>
         </div>
       </nav>

@@ -1,9 +1,9 @@
-"use client";
+﻿"use client"
 
-import * as React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { MessageCircle, ArrowUp } from "lucide-react";
+import * as React from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { MessageCircle, ArrowUp } from "lucide-react"
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className}>
@@ -33,7 +33,7 @@ const quickLinks = [
   { name: "Portfolio", href: "#portfolio" },
   { name: "Pricing", href: "#pricing" },
   { name: "Contact", href: "#contact" },
-];
+]
 
 const services = [
   "Social Media Marketing",
@@ -42,7 +42,7 @@ const services = [
   "Branding",
   "Content Creation",
   "Lead Generation",
-];
+]
 
 const socials = [
   {
@@ -63,20 +63,19 @@ const socials = [
     href: "https://wa.me/919203793966",
     ariaLabel: "Message AdMasons on WhatsApp",
   },
-];
+]
 
 export function Footer() {
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" })
     }
-  };
+  }
 
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-background border-t border-white/[0.06]">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-
           {/* Brand */}
           <div>
             <a href="#home" className="flex items-center mb-6">
@@ -88,22 +87,20 @@ export function Footer() {
                 className="h-10 w-auto"
               />
             </a>
-
-            <p className="text-muted-foreground mb-4">
-              A results-driven marketing agency helping brands grow faster.
+            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+              A results-driven marketing agency helping brands grow faster through strategy, creativity, and performance.
             </p>
-
-            <div className="flex gap-4 mt-4">
-              {socials.map((social) => (
+            <div className="flex gap-4">
+              {socials.map(social => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(225,48,108,0.5)]"
+                  className="w-10 h-10 bg-white/5 border border-white/[0.08] rounded-lg flex items-center justify-center transition-all duration-300 hover:bg-violet-500/10 hover:border-violet-500/30 hover:-translate-y-0.5"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
@@ -111,11 +108,13 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
+            <h4 className="font-bold mb-6 text-foreground">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map(link => (
                 <li key={link.name}>
-                  <Link href={link.href}>{link.name}</Link>
+                  <Link href={link.href} className="text-muted-foreground text-sm hover:text-violet-400 transition-colors duration-200">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -123,34 +122,50 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-bold mb-4">Services</h4>
-            <ul className="space-y-2">
-              {services.map((s) => (
-                <li key={s}>{s}</li>
+            <h4 className="font-bold mb-6 text-foreground">Services</h4>
+            <ul className="space-y-3">
+              {services.map(s => (
+                <li key={s} className="text-muted-foreground text-sm">{s}</li>
               ))}
             </ul>
           </div>
 
-          {/* CTA */}
+          {/* Contact */}
           <div>
-            <h4 className="font-bold mb-4">Contact</h4>
-            <a href="mailto:theadmasons@gmail.com">
-              theadmasons@gmail.com
-            </a>
+            <h4 className="font-bold mb-6 text-foreground">Contact</h4>
+            <div className="space-y-4">
+              <a href="mailto:theadmasons@gmail.com" className="text-violet-400 text-sm hover:text-violet-300 transition-colors block">
+                theadmasons@gmail.com
+              </a>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                ED-184, 3rd Floor, Scheme No. 94,<br />
+                Sector D, Khajrana Square, Indore
+              </p>
+            </div>
           </div>
-
         </div>
       </div>
 
       {/* Bottom */}
-      <div className="text-center py-4 border-t">
-        © {new Date().getFullYear()} Ad Masons
+      <div className="border-t border-white/[0.06]">
+        <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-muted-foreground text-sm">
+            &copy; {new Date().getFullYear()} Ad Masons. All rights reserved.
+          </p>
+          <p className="text-muted-foreground text-xs">
+            Built with &hearts; in Indore
+          </p>
+        </div>
       </div>
 
       {/* Back to top */}
-      <button onClick={scrollToTop} className="fixed bottom-6 right-6">
-        <ArrowUp />
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-violet-600 to-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-1 z-40"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="w-5 h-5" />
       </button>
     </footer>
-  );
+  )
 }

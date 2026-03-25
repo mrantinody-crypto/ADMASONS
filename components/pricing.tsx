@@ -1,13 +1,12 @@
-"use client"
+﻿"use client"
 
+import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 
 const plans = [
   {
     name: "Starter",
-    price: "\u20b925,000",
+    price: "\u20B925,000",
     period: "/month",
     description: "Perfect for small businesses just getting started with digital marketing.",
     features: [
@@ -18,11 +17,10 @@ const plans = [
       "Basic SEO Optimization",
     ],
     highlighted: false,
-    cta: "Get Started",
   },
   {
     name: "Growth",
-    price: "\u20b950,000",
+    price: "\u20B950,000",
     period: "/month",
     description: "Ideal for growing businesses looking to scale their digital presence.",
     features: [
@@ -35,11 +33,10 @@ const plans = [
       "Conversion Optimization",
     ],
     highlighted: true,
-    cta: "Most Popular",
   },
   {
     name: "Premium",
-    price: "\u20b91,00,000",
+    price: "\u20B91,00,000",
     period: "/month",
     description: "Complete marketing solution for established brands seeking dominance.",
     features: [
@@ -53,66 +50,114 @@ const plans = [
       "Video Content Production",
     ],
     highlighted: false,
-    cta: "Contact Sales",
   },
 ]
 
-export function Pricing() {
-  return (
-    <section id="pricing" className="py-24 bg-gradient-to-b from-card via-card to-background relative overflow-hidden">
-      {/* Subtle background accents */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/3 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[100px]" />
+function useInView(threshold = 0.1) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.unobserve(el)
+        }
+      },
+      { threshold }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [threshold])
+  return { ref, inView }
+}
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+export function Pricing() {
+  const { ref: sectionRef, inView } = useInView(0.05)
+
+  return (
+    <section id="pricing" className="py-28 bg-gradient-to-b from-card/50 via-card/50 to-background relative overflow-hidden">
+      {/* Subtle background accents */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-violet-500/3 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[120px]" />
+
+      <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
+        <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Pricing
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-muted-foreground text-pretty">
-            Choose the plan that fits your business needs. All plans include 
+            Choose the plan that fits your business needs. All plans include
             our commitment to deliver exceptional results.
           </p>
         </div>
+
         {/* Pricing cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {plans.map((plan, idx) => (
-            <div key={plan.name} className={`relative bg-background border rounded-2xl p-8 flex flex-col ${plan.highlighted ? 'shadow-xl shadow-primary/10 border-primary/40 ring-1 ring-primary/20' : 'border-white/[0.06]'}`}>
+            <div
+              key={plan.name}
+              className={`relative bg-background/50 backdrop-blur-sm border rounded-2xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
+                plan.highlighted
+                  ? "border-violet-500/40 shadow-xl shadow-violet-500/10 ring-1 ring-violet-500/20"
+                  : "border-white/[0.06] hover:border-violet-500/30 hover:shadow-violet-500/10"
+              } ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: inView ? `${idx * 120}ms` : "0ms" }}
+            >
+              {plan.highlighted && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-violet-600 to-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/20">
+                    Most Popular
+                  </span>
+                </div>
+              )}
               <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
-              <p className="text-muted-foreground mb-4">{plan.description}</p>
+              <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
               <div className="flex items-end mb-6">
-                <span className="text-3xl font-bold text-primary">{plan.price}</span>
+                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400">{plan.price}</span>
                 <span className="text-muted-foreground ml-2">{plan.period}</span>
               </div>
-              <ul className="mb-8 space-y-3">
+              <ul className="mb-8 space-y-3 flex-1">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-muted-foreground">
-                    <span className="w-2 h-2 bg-primary rounded-full inline-block" />
+                  <li key={i} className="flex items-center gap-3 text-muted-foreground text-sm">
+                    <div className="w-5 h-5 bg-gradient-to-br from-violet-500/20 to-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-violet-400" />
+                    </div>
                     {feature}
                   </li>
                 ))}
               </ul>
-              {plan.name === 'Premium' ? (
+              {plan.name === "Premium" ? (
                 <a
                   href="https://wa.me/919203793966"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-4 rounded-xl text-center transition-colors mt-auto"
+                  className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 ${
+                    plan.highlighted
+                      ? "bg-gradient-to-r from-violet-600 to-blue-600 text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30"
+                      : "bg-white/5 border border-white/10 text-foreground hover:bg-violet-500/10 hover:border-violet-500/30"
+                  }`}
                 >
                   Contact Sales
                 </a>
               ) : (
                 <a
                   href="#contact"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-4 rounded-xl text-center transition-colors mt-auto"
+                  className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 block ${
+                    plan.highlighted
+                      ? "bg-gradient-to-r from-violet-600 to-blue-600 text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30"
+                      : "bg-white/5 border border-white/10 text-foreground hover:bg-violet-500/10 hover:border-violet-500/30"
+                  }`}
                   onClick={e => {
-                    e.preventDefault();
-                    const el = document.getElementById('contact');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    e.preventDefault()
+                    const el = document.getElementById("contact")
+                    if (el) el.scrollIntoView({ behavior: "smooth" })
                   }}
                 >
                   Get Started
@@ -121,11 +166,19 @@ export function Pricing() {
             </div>
           ))}
         </div>
-        
+
         {/* Custom quote */}
         <p className="text-center text-muted-foreground mt-12">
           Need a custom solution?{" "}
-          <a href="#contact" className="text-primary font-semibold hover:underline">
+          <a
+            href="#contact"
+            className="text-violet-400 font-semibold hover:text-violet-300 transition-colors"
+            onClick={e => {
+              e.preventDefault()
+              const el = document.getElementById("contact")
+              if (el) el.scrollIntoView({ behavior: "smooth" })
+            }}
+          >
             Contact us for a custom quote
           </a>
         </p>
