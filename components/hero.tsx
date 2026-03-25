@@ -54,7 +54,7 @@ export function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 text-pretty">
-              Ad Masons helps businesses scale with performance marketing, branding,
+              The AdMasons helps businesses scale with performance marketing, branding,
               and high-converting digital experiences.
             </p>
 
@@ -199,7 +199,7 @@ export function Hero() {
           {/* CTA 1 - Performance / Professional - IMPROVED VISIBILITY */}
           <Link
             href="/performance-marketing"
-            className="group relative overflow-hidden rounded-2xl border border-white/15 bg-[#0e0e1a] p-8 md:p-10 transition-all duration-300 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-500/10 hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-2xl border border-white/[0.12] bg-[#0e0e1a] p-8 md:p-10 transition-all duration-300 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-500/15 hover:-translate-y-1"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-violet-500/5 rounded-full blur-[80px] group-hover:bg-violet-500/15 transition-all duration-500" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px] group-hover:bg-blue-500/10 transition-all duration-500" />
@@ -211,7 +211,7 @@ export function Hero() {
                 Scale Your Brand
               </h3>
               <p className="text-muted-foreground mb-6">
-                For D2C &amp; Performance-Driven Brands
+                For D2C &amp; Performance Brands
               </p>
               <span className="inline-flex items-center gap-2 border border-white/15 bg-white/5 text-foreground font-semibold px-6 py-3 rounded-lg group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-blue-600 group-hover:text-white group-hover:border-transparent group-hover:shadow-lg group-hover:shadow-violet-500/25 transition-all duration-300">
                 Get Performance Strategy
@@ -223,9 +223,10 @@ export function Hero() {
           {/* CTA 2 - Creative / Premium */}
           <Link
             href="/creative-marketing"
-            className="group relative overflow-hidden rounded-2xl border border-white/15 bg-[#0e0e1a] p-8 md:p-10 transition-all duration-300 hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-2xl border border-white/[0.12] bg-[#0e0e1a] p-8 md:p-10 transition-all duration-300 hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/15 hover:-translate-y-1"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/15 via-violet-500/10 to-pink-500/5" />
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/8 via-violet-500/5 to-pink-500/3" />
+            <div className="absolute inset-0 bg-[#0e0e1a]/40" />
             <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/5 rounded-full blur-[80px] group-hover:bg-purple-500/15 transition-all duration-500" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/5 rounded-full blur-[60px] group-hover:bg-pink-500/10 transition-all duration-500" />
             <div className="relative z-10">
@@ -236,7 +237,7 @@ export function Hero() {
                 Build a Viral Brand
               </h3>
               <p className="text-muted-foreground mb-6">
-                For Content-First &amp; Social Brands
+                For Social &amp; Content-First Brands
               </p>
               <span className="inline-flex items-center gap-2 border border-white/15 bg-white/5 text-foreground font-semibold px-6 py-3 rounded-lg group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:text-white group-hover:border-transparent group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
                 Explore Creative Strategy

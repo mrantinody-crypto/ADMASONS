@@ -41,13 +41,13 @@ const socialLinks = [
     name: "Instagram",
     href: "https://www.instagram.com/admasons",
     icon: InstagramIcon,
-    ariaLabel: "Visit AdMasons Instagram",
+    ariaLabel: "Visit The AdMasons Instagram",
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/company/admasons/",
     icon: LinkedInIcon,
-    ariaLabel: "Visit AdMasons LinkedIn",
+    ariaLabel: "Visit The AdMasons LinkedIn",
   },
 ]
 
@@ -76,7 +76,7 @@ export function Header() {
           <a href="#home" className="flex items-center">
             <Image
               src="/admasons-logo.jpeg"
-              alt="Ad Masons"
+              alt="The AdMasons"
               width={160}
               height={45}
               className="h-10 w-auto"

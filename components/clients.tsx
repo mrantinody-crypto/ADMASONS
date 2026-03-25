@@ -48,12 +48,12 @@ function BrandLogo({ brand }: { brand: Brand }) {
 
   if (brand.icon && !imgError) {
     return (
-      <div className="flex items-center justify-center h-[50px] md:h-[80px] px-8 md:px-12 shrink-0 transition-transform duration-300 hover:scale-[1.08]">
+      <div className="flex items-center justify-center h-[70px] md:h-[90px] px-10 md:px-14 shrink-0 transition-transform duration-300 hover:scale-[1.1]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={brand.icon}
           alt={brand.name}
-          className="h-[45px] md:h-[70px] w-auto max-w-[120px] md:max-w-[180px] object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]"
+          className="h-[60px] md:h-[85px] w-auto max-w-[140px] md:max-w-[200px] object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
           loading="lazy"
           onError={handleError}
           draggable={false}
@@ -63,9 +63,9 @@ function BrandLogo({ brand }: { brand: Brand }) {
   }
 
   return (
-    <div className="flex items-center justify-center h-[50px] md:h-[80px] px-8 md:px-12 shrink-0 transition-transform duration-300 hover:scale-[1.08]">
+    <div className="flex items-center justify-center h-[70px] md:h-[90px] px-10 md:px-14 shrink-0 transition-transform duration-300 hover:scale-[1.1]">
       <span
-        className="font-extrabold text-lg md:text-2xl tracking-wider whitespace-nowrap uppercase select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]"
+        className="font-extrabold text-xl md:text-3xl tracking-wider whitespace-nowrap uppercase select-none drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
         style={{ color: brand.color || "#A78BFA" }}
         role="img"
         aria-label={brand.name}

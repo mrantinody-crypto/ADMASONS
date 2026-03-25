@@ -203,7 +203,7 @@ export function Contact() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                title="Ad Masons Indore Map"
+                title="The AdMasons Map"
               ></iframe>
             </div>
           </div>

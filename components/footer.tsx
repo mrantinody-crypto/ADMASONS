@@ -49,19 +49,19 @@ const socials = [
     name: "Instagram",
     icon: InstagramIcon,
     href: "https://www.instagram.com/admasons",
-    ariaLabel: "Visit AdMasons Instagram",
+    ariaLabel: "Visit The AdMasons Instagram",
   },
   {
     name: "LinkedIn",
     icon: LinkedInIcon,
     href: "https://www.linkedin.com/company/admasons/",
-    ariaLabel: "Visit AdMasons LinkedIn",
+    ariaLabel: "Visit The AdMasons LinkedIn",
   },
   {
     name: "WhatsApp",
     icon: MessageCircle,
     href: "https://wa.me/919203793966",
-    ariaLabel: "Message AdMasons on WhatsApp",
+    ariaLabel: "Message The AdMasons on WhatsApp",
   },
 ]
 
@@ -81,7 +81,7 @@ export function Footer() {
             <a href="#home" className="flex items-center mb-6">
               <Image
                 src="/admasons-logo.jpeg"
-                alt="Ad Masons"
+                alt="The AdMasons"
                 width={160}
                 height={45}
                 className="h-10 w-auto"
@@ -150,7 +150,7 @@ export function Footer() {
       <div className="border-t border-white/[0.06]">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} Ad Masons. All rights reserved.
+            &copy; {new Date().getFullYear()} The AdMasons. All rights reserved.
           </p>
           <p className="text-muted-foreground text-xs">
             Built with &hearts; in India

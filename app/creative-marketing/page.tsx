@@ -316,7 +316,7 @@ export default function CreativeMarketingPage() {
       {/* Minimal Footer */}
       <footer className="border-t border-white/5 py-8">
         <div className="container mx-auto px-4 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/40">© {new Date().getFullYear()} Ad Masons. All rights reserved.</p>
+          <p className="text-sm text-white/40">© {new Date().getFullYear()} The AdMasons. All rights reserved.</p>
           <Link href="/" className="text-sm text-white/40 hover:text-white transition-colors">
             ← Back to Home
           </Link>

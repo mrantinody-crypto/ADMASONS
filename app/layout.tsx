@@ -15,10 +15,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Ad Masons | Digital Marketing Agency — Indore',
-  description: 'Ad Masons is a performance-first digital marketing agency in Indore helping brands grow through social media, paid ads, SEO, and lead generation.',
+  title: 'The AdMasons | Premium Digital Marketing Agency',
+  description: 'The AdMasons is a performance-first digital marketing agency helping brands grow through social media, paid ads, SEO, and lead generation.',
   generator: 'v0.app',
-  keywords: ['digital marketing agency Indore', 'social media marketing', 'performance ads', 'lead generation', 'Ad Masons'],
+  keywords: ['digital marketing agency', 'social media marketing', 'performance ads', 'lead generation', 'The AdMasons'],
   icons: {
     icon: [
       {
@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     apple: '/admasons-logo.jpeg',
   },
   openGraph: {
-    title: 'Ad Masons | Digital Marketing Agency — Indore',
-    description: 'Ad Masons is a performance-first digital marketing agency in Indore helping brands grow through social media, paid ads, SEO, and lead generation.',
+    title: 'The AdMasons | Premium Digital Marketing Agency',
+    description: 'The AdMasons is a performance-first digital marketing agency helping brands grow through social media, paid ads, SEO, and lead generation.',
     type: 'website',
-    siteName: 'Ad Masons',
+    siteName: 'The AdMasons',
   },
 }
 
