@@ -112,7 +112,7 @@ export function About() {
                 About Us
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance leading-tight">
-                Most Brands Don''t Need More Traffic.{" "}
+                Most Brands Don&apos;t Need More Traffic.{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400">
                   They Need Better Strategy.
                 </span>
@@ -120,7 +120,7 @@ export function About() {
               <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
                 We started Ad Masons because we saw too many brands throwing money at ads 
                 without a plan. Agencies were selling impressions and followers while businesses 
-                needed leads and revenue. We decided to build the agency we''d hire ourselves - 
+                needed leads and revenue. We decided to build the agency we&apos;d hire ourselves - 
                 one that treats your budget like our own and measures success in rupees, not likes.
               </p>
             </div>
@@ -149,7 +149,7 @@ export function About() {
                 if (el) el.scrollIntoView({ behavior: "smooth" })
               }}
             >
-              Let''s Talk Strategy
+              Let&apos;s Talk Strategy
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

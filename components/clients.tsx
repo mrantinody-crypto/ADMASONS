@@ -66,7 +66,7 @@ function BrandLogo({ brand }: { brand: Brand }) {
     <div className="flex items-center justify-center h-[50px] md:h-[80px] px-8 md:px-12 shrink-0 transition-transform duration-300 hover:scale-[1.08]">
       <span
         className="font-extrabold text-lg md:text-2xl tracking-wider whitespace-nowrap uppercase select-none drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]"
-        style={{ color: brand.color || "#FFD700" }}
+        style={{ color: brand.color || "#A78BFA" }}
         role="img"
         aria-label={brand.name}
       >

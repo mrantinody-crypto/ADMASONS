@@ -78,7 +78,7 @@ export function Testimonials() {
             Testimonials
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
-            Don''t Take Our Word For It
+            Don&apos;t Take Our Word For It
           </h2>
           <p className="text-lg text-muted-foreground text-pretty">
             Hear from the brands and founders who have worked with us

@@ -158,7 +158,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="transition-all duration-200 hover:scale-125"
+                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>

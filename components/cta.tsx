@@ -48,7 +48,7 @@ export function CTA() {
 
           {/* Subtext */}
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-pretty">
-            Let''s build something powerful together. Book a free strategy call
+            Let&apos;s build something powerful together. Book a free strategy call
             and discover how we can help you dominate your market.
           </p>
 

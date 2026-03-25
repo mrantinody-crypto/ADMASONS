@@ -68,7 +68,7 @@ export function Contact() {
             Contact Us
           </h2>
           <p className="text-lg text-muted-foreground text-pretty">
-            Have a project in mind? Let''s discuss how we can help you achieve your business goals.
+            Have a project in mind? Let&apos;s discuss how we can help you achieve your business goals.
           </p>
         </div>
 
@@ -133,7 +133,7 @@ export function Contact() {
               </button>
               {isSuccess && (
                 <div className="text-emerald-400 font-medium text-center mt-2 text-sm">
-                  Thank you! We''ll get back to you on WhatsApp or email within 24 hours.
+                  Thank you! We&apos;ll get back to you on WhatsApp or email within 24 hours.
                 </div>
               )}
               {error && (

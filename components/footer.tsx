@@ -153,7 +153,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Ad Masons. All rights reserved.
           </p>
           <p className="text-muted-foreground text-xs">
-            Built with &hearts; in Indore
+            Built with &hearts; in India
           </p>
         </div>
       </div>

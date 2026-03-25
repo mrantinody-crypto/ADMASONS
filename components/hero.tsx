@@ -1,8 +1,7 @@
 ﻿"use client"
 
-import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Play, BarChart3, Palette } from "lucide-react"
+import { ArrowRight, Play, BarChart3, Palette, TrendingUp } from "lucide-react"
 
 export function Hero() {
   return (
@@ -100,25 +99,96 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right content - Hero Image */}
+          {/* Right content - Animated Floating Dashboard */}
           <div className="relative hidden lg:block">
             <div className="relative w-full aspect-square max-w-lg mx-auto">
-              <div className="absolute inset-4 bg-card rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-violet-500/5">
-                <Image
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-                  alt="Digital marketing team collaboration"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              {/* Subtle grid pattern */}
+              <div
+                className="absolute inset-0 rounded-3xl opacity-30"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(139,92,246,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.08) 1px, transparent 1px)`,
+                  backgroundSize: '32px 32px'
+                }}
+              />
+
+              {/* Central glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-violet-500/10 rounded-full blur-[80px]" />
+              <div className="absolute top-1/3 right-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-[60px]" />
+
+              {/* Floating Card 1 - ROAS */}
+              <div className="absolute top-6 left-2">
+                <div className="animate-float-1 bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] rounded-2xl p-5 shadow-2xl shadow-violet-500/10">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-9 h-9 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                      <TrendingUp className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-xs text-muted-foreground font-medium">Campaign ROAS</span>
+                  </div>
+                  <p className="text-3xl font-bold text-emerald-400">+327%</p>
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    </span>
+                    <span className="text-[11px] text-emerald-400/80 font-medium">Live Campaign</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Floating accent */}
-              <div className="absolute -top-4 -right-4 bg-gradient-to-br from-violet-500 to-blue-500 text-white p-4 rounded-xl shadow-lg shadow-violet-500/30">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+              {/* Floating Card 2 - Revenue */}
+              <div className="absolute top-16 right-0">
+                <div className="animate-float-2 bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] rounded-2xl p-5 shadow-2xl shadow-blue-500/10">
+                  <span className="text-xs text-muted-foreground font-medium">Revenue Generated</span>
+                  <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 mt-1">₹2.4Cr</p>
+                  <div className="mt-3 flex items-center gap-2">
+                    <div className="flex-1 h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                      <div className="h-full w-[85%] bg-gradient-to-r from-violet-500 to-blue-500 rounded-full" />
+                    </div>
+                    <span className="text-[11px] text-muted-foreground">85%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Card 3 - ROI */}
+              <div className="absolute bottom-28 left-6">
+                <div className="animate-float-3 bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] rounded-2xl p-5 shadow-2xl shadow-purple-500/10">
+                  <span className="text-xs text-muted-foreground font-medium">ROI Multiple</span>
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <p className="text-4xl font-bold text-white">5x</p>
+                    <span className="text-sm text-emerald-400 font-semibold">↑ 240%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mini Chart Element */}
+              <div className="absolute bottom-4 right-6">
+                <div className="animate-float-4 bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] rounded-2xl p-4 shadow-2xl">
+                  <span className="text-[11px] text-muted-foreground font-medium block mb-2">Monthly Growth</span>
+                  <div className="flex items-end gap-[3px] h-14 px-1">
+                    {[30, 45, 35, 60, 50, 75, 65, 85, 78, 92].map((h, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 bg-gradient-to-t from-violet-500/80 to-blue-400/80 rounded-sm min-w-[4px]"
+                        style={{ height: `${h}%` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Notification Mini Card */}
+              <div className="absolute top-[45%] left-1/2 -translate-x-1/2">
+                <div className="animate-float-5 bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] rounded-xl px-4 py-3 shadow-2xl flex items-center gap-3">
+                  <div className="w-9 h-9 bg-gradient-to-br from-violet-500 to-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-violet-500/25 flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-white">Campaign Optimized</p>
+                    <p className="text-[10px] text-muted-foreground">ROAS increased by 47%</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -150,28 +220,25 @@ export function Hero() {
             </div>
           </Link>
 
-          {/* CTA 2 - Creative / Funky */}
+          {/* CTA 2 - Creative / Premium */}
           <Link
             href="/creative-marketing"
-            className="group relative overflow-hidden rounded-2xl p-8 md:p-10 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/15 hover:-translate-y-1"
-            style={{
-              background: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 30%, #a855f7 60%, #ec4899 100%)",
-            }}
+            className="group relative overflow-hidden rounded-2xl border border-white/15 bg-[#0e0e1a] p-8 md:p-10 transition-all duration-300 hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1"
           >
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-[60px]" />
-            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-400/20 rounded-full blur-[50px]" />
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/15 via-violet-500/10 to-pink-500/5" />
+            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/5 rounded-full blur-[80px] group-hover:bg-purple-500/15 transition-all duration-500" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/5 rounded-full blur-[60px] group-hover:bg-pink-500/10 transition-all duration-500" />
             <div className="relative z-10">
-              <div className="w-12 h-12 bg-white/15 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6">
-                <Palette className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:border-purple-500/40 transition-all">
+                <Palette className="w-6 h-6 text-purple-400" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Build a Viral Brand
               </h3>
-              <p className="text-white/80 mb-6">
+              <p className="text-muted-foreground mb-6">
                 For Content-First &amp; Social Brands
               </p>
-              <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-lg group-hover:bg-white group-hover:text-purple-700 transition-all duration-300">
+              <span className="inline-flex items-center gap-2 border border-white/15 bg-white/5 text-foreground font-semibold px-6 py-3 rounded-lg group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:text-white group-hover:border-transparent group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
                 Explore Creative Strategy
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
