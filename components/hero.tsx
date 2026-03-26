@@ -237,7 +237,7 @@ export function Hero() {
                 Build a Viral Brand
               </h3>
               <p className="text-muted-foreground mb-6">
-                For Social &amp; Content-First Brands
+                For Content &amp; Social Brands
               </p>
               <span className="inline-flex items-center gap-2 border border-white/15 bg-white/5 text-foreground font-semibold px-6 py-3 rounded-lg group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:text-white group-hover:border-transparent group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
                 Explore Creative Strategy

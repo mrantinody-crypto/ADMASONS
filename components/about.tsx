@@ -1,31 +1,36 @@
 ﻿"use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ArrowRight, Users, Lightbulb, Target, TrendingUp, Palette, Film, PenTool, Layers, Cog, Sparkles } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight, Users, Target, TrendingUp, Palette, Film, PenTool, Layers, Cog, Sparkles } from "lucide-react"
 
 const founders = [
   {
     name: "Saba",
     role: "Co-Founder & CEO",
     description: "Leads performance strategy and scalable growth systems.",
+    image: "/Team/saba.jpeg",
     gradient: "from-violet-500 to-blue-500",
   },
   {
     name: "Anti",
     role: "Brand & Creative Head",
     description: "Drives creative direction, brand identity, and product systems.",
+    image: "/Team/anti.jpeg",
     gradient: "from-purple-500 to-pink-500",
   },
   {
     name: "Amir",
     role: "Co-Founder",
     description: "Focuses on operations, execution, and growth architecture.",
+    image: "/Team/amir.jpeg",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     name: "Saud",
     role: "Head of Performance Marketing",
     description: "Leads paid media, optimization, and campaign scaling.",
+    image: "/Team/saud.jpeg",
     gradient: "from-indigo-500 to-violet-500",
   },
 ]
@@ -87,7 +92,7 @@ export function About() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
-            The AdMasons operates at the intersection of performance, creativity, and technology.
+            The AdMasons operates at the intersection of performance, creativity, and technology to build scalable, high-converting brands.
           </p>
         </div>
 
@@ -97,25 +102,39 @@ export function About() {
             <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
               Leadership
             </span>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-              The Minds Behind the Machine
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+              The Minds Behind The AdMasons
             </h3>
+            <p className="text-lg text-muted-foreground">
+              Strategy. Creative. Execution. One unified system.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {founders.map((founder, index) => (
               <div
                 key={founder.name}
-                className={`group relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-8 text-center transition-all duration-500 hover:border-violet-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/10 ${teamInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                style={{ transitionDelay: teamInView ? `${index * 120}ms` : "0ms" }}
+                className={`group relative bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-8 text-center transition-all duration-500 hover:border-violet-500/30 hover:-translate-y-3 hover:shadow-2xl hover:shadow-violet-500/15 ${teamInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                style={{ transitionDelay: teamInView ? `${index * 150}ms` : "0ms" }}
               >
                 {/* Hover glow */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-violet-500/5 via-blue-500/5 to-transparent transition-all duration-500" />
+                {/* Gradient border glow on hover */}
+                <div className={`absolute -inset-[1px] rounded-2xl bg-gradient-to-br ${founder.gradient} opacity-0 group-hover:opacity-20 blur-sm transition-all duration-500`} />
 
-                {/* Avatar circle */}
-                <div className={`relative w-20 h-20 bg-gradient-to-br ${founder.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
-                  <span className="text-3xl font-bold text-white">{founder.name.charAt(0)}</span>
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${founder.gradient} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500`} />
+                {/* Real team image */}
+                <div className="relative w-24 h-24 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-500">
+                  <Image
+                    src={founder.image}
+                    alt={founder.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="96px"
+                  />
+                  {/* Gradient overlay on bottom */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  {/* Gradient ring */}
+                  <div className={`absolute inset-0 rounded-2xl ring-2 ring-white/10 group-hover:ring-violet-500/40 transition-all duration-500`} />
                 </div>
 
                 <h4 className="relative text-xl font-bold text-foreground mb-1">{founder.name}</h4>
@@ -166,16 +185,6 @@ export function About() {
               </span>&rdquo;
             </blockquote>
           </div>
-        </div>
-
-        {/* 5. TEAM LINE */}
-        <div className={`text-center mb-16 transition-all duration-700 ${philInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "200ms" }}>
-          <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight">
-            Strategy.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">Creative.</span>{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Execution.</span>{" "}
-            One unified system.
-          </p>
         </div>
 
         {/* CTA */}
