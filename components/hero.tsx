@@ -1,7 +1,104 @@
 ﻿"use client"
 
 import Link from "next/link"
-import { ArrowRight, Play, BarChart3, Palette, TrendingUp } from "lucide-react"
+import { ArrowRight, Play, TrendingUp, BarChart3, Bell, LineChart, Palette } from "lucide-react"
+
+// Floating animations styles
+const scrollStyle = `
+  @keyframes float-1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+  @keyframes float-2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+  @keyframes float-3 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-25px); } }
+  @keyframes float-4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
+  @keyframes float-5 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+  .animate-float-1 { animation: float-1 6s ease-in-out infinite; }
+  .animate-float-2 { animation: float-2 5s ease-in-out infinite 0.5s; }
+  .animate-float-3 { animation: float-3 7s ease-in-out infinite 1s; }
+  .animate-float-4 { animation: float-4 8s ease-in-out infinite 0.7s; }
+  .animate-float-5 { animation: float-5 4s ease-in-out infinite 0.3s; }
+  .animate-glow { animation: glow 3s ease-in-out infinite; }
+  @keyframes glow { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+`
+
+function FloatingDashboard() {
+  return (
+    <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-[500px] h-[600px]">
+      {/* Main dashboard card with glassmorphism */}
+      <div className="relative w-full h-full">
+        {/* Outer glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 to-blue-600/20 rounded-3xl blur-3xl" />
+        
+        {/* Main card */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a3e]/80 to-[#0f1430]/80 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden">
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-600/5 via-transparent to-blue-600/5" />
+          
+          {/* Content */}
+          <div className="relative p-8 h-full flex flex-col gap-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-semibold text-white/80">Performance</h3>
+              <Bell className="w-4 h-4 text-violet-400/60" />
+            </div>
+
+            {/* Floating Cards with animated bounce */}
+            <style>{`
+              @keyframes float-1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+              @keyframes float-2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+              @keyframes float-3 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-25px); } }
+              .animate-float-1 { animation: float-1 6s ease-in-out infinite; }
+              .animate-float-2 { animation: float-2 5s ease-in-out infinite 0.5s; }
+              .animate-float-3 { animation: float-3 7s ease-in-out infinite 1s; }
+            `}</style>
+
+            {/* ROAS Card */}
+            <div className="animate-float-1 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 backdrop-blur border border-emerald-500/20 rounded-2xl p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-medium text-emerald-400/70">ROAS</span>
+                <TrendingUp className="w-4 h-4 text-emerald-400" />
+              </div>
+              <p className="text-2xl font-bold text-emerald-400">5.2x</p>
+              <p className="text-xs text-emerald-400/50 mt-1">+23% from last week</p>
+            </div>
+
+            {/* Revenue Card */}
+            <div className="animate-float-2 bg-gradient-to-br from-violet-500/10 to-violet-600/5 backdrop-blur border border-violet-500/20 rounded-2xl p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-medium text-violet-400/70">Revenue</span>
+                <BarChart3 className="w-4 h-4 text-violet-400" />
+              </div>
+              <p className="text-2xl font-bold text-violet-400">₹12.5L</p>
+              <p className="text-xs text-violet-400/50 mt-1">Last 30 days</p>
+            </div>
+
+            {/* Growth Chart */}
+            <div className="animate-float-3 bg-gradient-to-br from-blue-500/10 to-blue-600/5 backdrop-blur border border-blue-500/20 rounded-2xl p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-medium text-blue-400/70">Growth</span>
+                <LineChart className="w-4 h-4 text-blue-400" />
+              </div>
+              <svg viewBox="0 0 100 40" className="w-full h-20">
+                <polyline
+                  points="0,30 20,15 40,25 60,10 80,20 100,5"
+                  fill="none"
+                  stroke="url(#gradient)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#60A5FA" />
+                    <stop offset="100%" stopColor="#A78BFA" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function Hero() {
   return (
@@ -9,13 +106,16 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
+      {/* Styles for floating animations */}
+      <style dangerouslySetInnerHTML={{ __html: scrollStyle }} />
+      
       {/* Background with subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#08080C] via-[#0d0d1a] to-[#08080C]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0B0F19] via-[#111827] to-[#0B0F19]" />
 
-      {/* Soft ambient glows - purple-blue palette */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-purple-600/8 rounded-full blur-[100px]" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-600/6 rounded-full blur-[120px]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-violet-500/4 rounded-full blur-[150px]" />
+      {/* Premium ambient glows */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-violet-600/6 rounded-full blur-[100px]" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-violet-500/3 rounded-full blur-[150px]" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -86,14 +86,24 @@ export function About() {
             About Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-balance leading-tight">
-            We Don&apos;t Run Ads.{" "}
+            We Don&apos;T Run Ads.{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-purple-400 to-blue-400">
               We Engineer Growth Systems.
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto mb-8">
             The AdMasons operates at the intersection of performance, creativity, and technology to build scalable, high-converting brands.
           </p>
+          
+          {/* Core philosophy statement */}
+          <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-8 backdrop-blur-sm mt-8">
+            <p className="text-lg md:text-xl text-white/90 font-medium text-balance leading-relaxed">
+              Most brands don&apos;t fail because of bad products.{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-blue-300">
+                They fail because of weak positioning and broken marketing systems.
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* 2. FOUNDERS & TEAM */}

@@ -88,7 +88,7 @@ export function Footer() {
               />
             </a>
             <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-              A premium digital marketing agency helping ambitious brands build systems for sustainable growth.
+              The AdMasons operates at the intersection of performance, creativity, and technology to deliver exceptional results that move the needle for ambitious brands.
             </p>
             <div className="flex gap-3">
               {socials.map(social => (
@@ -136,6 +136,9 @@ export function Footer() {
             <div className="space-y-4">
               <a href="mailto:theadmasons@gmail.com" className="text-indigo-400 text-sm hover:text-indigo-300 transition-colors block">
                 theadmasons@gmail.com
+              </a>
+              <a href="https://wa.me/917770969267" className="text-indigo-400 text-sm hover:text-indigo-300 transition-colors block mt-2" target="_blank" rel="noopener noreferrer">
+                +91 7770969267
               </a>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 ED-184, 3rd Floor, Scheme No. 94,<br />
