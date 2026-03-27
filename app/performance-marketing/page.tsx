@@ -60,7 +60,7 @@ export default function PerformanceMarketingPage() {
             Back to Home
           </Link>
           <a
-            href="https://wa.me/919203793966"
+            href="https://wa.me/917770969267"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
@@ -98,7 +98,7 @@ export default function PerformanceMarketingPage() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://wa.me/919203793966"
+                href="https://wa.me/917770969267"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-lg text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"
@@ -235,7 +235,7 @@ export default function PerformanceMarketingPage() {
                   Book a free strategy session and get a custom growth plan for your brand.
                 </p>
                 <a
-                  href="https://wa.me/919203793966"
+                  href="https://wa.me/917770969267"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-lg text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"
@@ -263,7 +263,7 @@ export default function PerformanceMarketingPage() {
             Stop guessing. Start scaling. Get a data-backed strategy tailored to your business.
           </p>
           <a
-            href="https://wa.me/919203793966"
+            href="https://wa.me/917770969267"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-10 py-5 rounded-lg text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40"

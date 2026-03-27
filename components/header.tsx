@@ -66,14 +66,14 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-white/[0.06]"
+          ? "bg-background/80 backdrop-blur-2xl border-b border-white/8 shadow-xl shadow-black/20"
           : "bg-transparent"
       )}
     >
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center">
+          <a href="#home" className="flex items-center hover:opacity-80 transition-opacity duration-200">
             <Image
               src="/admasons-logo.jpeg"
               alt="The AdMasons"
@@ -85,17 +85,17 @@ export function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-12">
             {navItems.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-violet-500 after:to-blue-500 hover:after:w-full after:transition-all after:duration-300"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-indigo-500 after:to-purple-500 hover:after:w-full after:transition-all after:duration-300 pb-1"
               >
                 {item.name}
               </Link>
             ))}
-            <div className="flex items-center gap-3 ml-2">
+            <div className="flex items-center gap-4 ml-6 pl-6 border-l border-white/8">
               {socialLinks.map(social => (
                 <a
                   key={social.name}
@@ -103,22 +103,22 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-110"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
             <a
               href="#contact"
-              className="ml-4 bg-gradient-to-r from-violet-600 to-blue-600 text-white hover:from-violet-500 hover:to-blue-500 font-semibold px-6 py-2.5 text-sm rounded-lg transition-all duration-300 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 hover:-translate-y-0.5"
+              className="ml-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-500 hover:to-purple-500 font-semibold px-6 py-2.5 text-sm rounded-2xl transition-all duration-300 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault()
                 const el = document.getElementById("contact")
                 if (el) el.scrollIntoView({ behavior: "smooth" })
               }}
             >
-              Get Started
+              Start Now
             </a>
           </div>
 
@@ -139,7 +139,7 @@ export function Header() {
             isMobileMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
           )}
         >
-          <div className="py-4 space-y-4 border-t border-white/[0.06]">
+          <div className="py-4 space-y-4 border-t border-white/8">
             {navItems.map(item => (
               <Link
                 key={item.name}
@@ -150,7 +150,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="flex items-center gap-4 pt-2">
+            <div className="flex items-center gap-3 pt-2">
               {socialLinks.map(social => (
                 <a
                   key={social.name}
@@ -158,18 +158,18 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="transition-all duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]"
+                  className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-white/20"
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
             <a
               href="#contact"
-              className="block w-full bg-gradient-to-r from-violet-600 to-blue-600 text-white font-semibold py-3 rounded-lg text-center mt-4 shadow-lg shadow-violet-500/20"
+              className="block w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 rounded-xl text-center mt-4 shadow-lg shadow-indigo-500/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Get Started
+              Start Now
             </a>
           </div>
         </div>

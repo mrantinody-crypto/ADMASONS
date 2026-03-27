@@ -60,7 +60,7 @@ const socials = [
   {
     name: "WhatsApp",
     icon: MessageCircle,
-    href: "https://wa.me/919203793966",
+    href: "https://wa.me/917770969267",
     ariaLabel: "Message The AdMasons on WhatsApp",
   },
 ]
@@ -73,7 +73,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-background border-t border-white/[0.06]">
+    <footer className="bg-background border-t border-white/8">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -88,9 +88,9 @@ export function Footer() {
               />
             </a>
             <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-              A results-driven marketing agency helping brands grow faster through strategy, creativity, and performance.
+              A premium digital marketing agency helping ambitious brands build systems for sustainable growth.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socials.map(social => (
                 <a
                   key={social.name}
@@ -98,7 +98,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="w-10 h-10 bg-white/5 border border-white/[0.08] rounded-lg flex items-center justify-center transition-all duration-300 hover:bg-violet-500/10 hover:border-violet-500/30 hover:-translate-y-0.5"
+                  className="w-9 h-9 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-110"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -108,11 +108,11 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-bold mb-6 text-foreground">Quick Links</h4>
+            <h4 className="font-bold mb-6 text-white">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map(link => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-muted-foreground text-sm hover:text-violet-400 transition-colors duration-200">
+                  <Link href={link.href} className="text-muted-foreground text-sm hover:text-indigo-400 transition-colors duration-200">
                     {link.name}
                   </Link>
                 </li>
@@ -122,7 +122,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-bold mb-6 text-foreground">Services</h4>
+            <h4 className="font-bold mb-6 text-white">Services</h4>
             <ul className="space-y-3">
               {services.map(s => (
                 <li key={s} className="text-muted-foreground text-sm">{s}</li>
@@ -132,9 +132,9 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold mb-6 text-foreground">Contact</h4>
+            <h4 className="font-bold mb-6 text-white">Contact</h4>
             <div className="space-y-4">
-              <a href="mailto:theadmasons@gmail.com" className="text-violet-400 text-sm hover:text-violet-300 transition-colors block">
+              <a href="mailto:theadmasons@gmail.com" className="text-indigo-400 text-sm hover:text-indigo-300 transition-colors block">
                 theadmasons@gmail.com
               </a>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -147,13 +147,13 @@ export function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="border-t border-white/[0.06]">
+      <div className="border-t border-white/8">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
             &copy; {new Date().getFullYear()} The AdMasons. All rights reserved.
           </p>
           <p className="text-muted-foreground text-xs">
-            Built with &hearts; in India
+            Crafted with intention in India
           </p>
         </div>
       </div>
@@ -161,7 +161,7 @@ export function Footer() {
       {/* Back to top */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-violet-600 to-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-1 z-40"
+        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300 hover:-translate-y-1 z-40 hover:from-indigo-500 hover:to-purple-500"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />

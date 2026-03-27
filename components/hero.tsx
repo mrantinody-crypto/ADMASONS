@@ -60,7 +60,7 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href="https://wa.me/919203793966"
+                href="https://wa.me/917770969267"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-violet-600 to-blue-600 text-white hover:from-violet-500 hover:to-blue-500 font-semibold px-8 py-4 text-lg group rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/25 transition-all duration-300 hover:shadow-violet-500/40 hover:-translate-y-0.5"

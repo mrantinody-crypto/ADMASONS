@@ -135,7 +135,7 @@ export function Pricing() {
               </ul>
               {plan.name === "Premium" ? (
                 <a
-                  href="https://wa.me/919203793966"
+                  href="https://wa.me/917770969267"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 ${

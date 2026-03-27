@@ -79,7 +79,7 @@ export default function CreativeMarketingPage() {
             Back to Home
           </Link>
           <a
-            href="https://wa.me/919203793966"
+            href="https://wa.me/917770969267"
             target="_blank"
             rel="noopener noreferrer"
             className="font-semibold px-6 py-2.5 rounded-lg transition-all shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
@@ -124,7 +124,7 @@ export default function CreativeMarketingPage() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://wa.me/919203793966"
+                href="https://wa.me/917770969267"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-lg text-lg transition-all shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 text-white"

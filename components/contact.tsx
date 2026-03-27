@@ -175,7 +175,7 @@ export function Contact() {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/919203793966"
+              href="https://wa.me/917770969267"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/20 group"
