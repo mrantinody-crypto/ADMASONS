@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
@@ -69,12 +69,12 @@ export function Testimonials() {
   return (
     <section className="py-28 bg-gradient-to-b from-background via-background to-card/50 relative overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-violet-500/3 rounded-full blur-[150px]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/3 rounded-full blur-[150px]" />
 
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Testimonials
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
@@ -91,16 +91,16 @@ export function Testimonials() {
           {testimonials.slice(0, 3).map((testimonial, index) => (
             <div
               key={testimonial.name}
-              className={`group bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-500/5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`group bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${index * 120}ms` : "0ms" }}
             >
               {/* Quote icon */}
-              <Quote className="w-10 h-10 text-violet-500/20 mb-6" />
+              <Quote className="w-10 h-10 text-blue-500/20 mb-6" />
 
               {/* Rating */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-violet-400 fill-violet-400" />
+                  <Star key={i} className="w-4 h-4 text-blue-400 fill-violet-400" />
                 ))}
               </div>
 
@@ -111,7 +111,7 @@ export function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-6 border-t border-white/[0.06]">
-                <div className="w-12 h-12 rounded-full overflow-hidden relative ring-2 ring-violet-500/20">
+                <div className="w-12 h-12 rounded-full overflow-hidden relative ring-2 ring-blue-500/20">
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
@@ -134,16 +134,16 @@ export function Testimonials() {
           {testimonials.slice(3, 5).map((testimonial, index) => (
             <div
               key={testimonial.name}
-              className={`group bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-500/5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`group bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/5 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${(index + 3) * 120}ms` : "0ms" }}
             >
               {/* Quote icon */}
-              <Quote className="w-10 h-10 text-violet-500/20 mb-6" />
+              <Quote className="w-10 h-10 text-blue-500/20 mb-6" />
 
               {/* Rating */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-violet-400 fill-violet-400" />
+                  <Star key={i} className="w-4 h-4 text-blue-400 fill-violet-400" />
                 ))}
               </div>
 
@@ -154,7 +154,7 @@ export function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-6 border-t border-white/[0.06]">
-                <div className="w-12 h-12 rounded-full overflow-hidden relative ring-2 ring-violet-500/20">
+                <div className="w-12 h-12 rounded-full overflow-hidden relative ring-2 ring-blue-500/20">
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}

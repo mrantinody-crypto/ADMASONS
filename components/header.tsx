@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import Link from "next/link"
@@ -90,7 +90,7 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-indigo-500 after:to-purple-500 hover:after:w-full after:transition-all after:duration-300 pb-1"
+                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-blue-600 hover:after:w-full after:transition-all after:duration-300 pb-1"
               >
                 {item.name}
               </Link>
@@ -111,7 +111,7 @@ export function Header() {
             </div>
             <a
               href="#contact"
-              className="ml-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-500 hover:to-purple-500 font-semibold px-6 py-2.5 text-sm rounded-2xl transition-all duration-300 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0"
+              className="ml-6 bg-gradient-to-r from-blue-700 to-blue-600 text-white hover:from-blue-600 hover:to-blue-500 font-semibold px-6 py-2.5 text-sm rounded-2xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault()
                 const el = document.getElementById("contact")
@@ -166,7 +166,7 @@ export function Header() {
             </div>
             <a
               href="#contact"
-              className="block w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 rounded-xl text-center mt-4 shadow-lg shadow-indigo-500/20"
+              className="block w-full bg-gradient-to-r from-blue-700 to-blue-600 text-white font-semibold py-3 rounded-xl text-center mt-4 shadow-lg shadow-blue-500/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Start Now

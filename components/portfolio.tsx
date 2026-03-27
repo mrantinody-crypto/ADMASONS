@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
@@ -13,7 +13,7 @@ const caseStudies = [
     result: "+327% ROAS",
     resultDetail: "in 60 days",
     image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&q=80",
-    gradient: "from-violet-600 to-blue-600",
+    gradient: "from-blue-600 to-blue-700",
   },
   {
     brand: "Skyline Realty",
@@ -33,7 +33,7 @@ const caseStudies = [
     result: "180+ Leads",
     resultDetail: "per month",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-    gradient: "from-indigo-600 to-violet-600",
+    gradient: "from-blue-600 to-blue-600",
   },
   {
     brand: "BrightMinds Academy",
@@ -43,7 +43,7 @@ const caseStudies = [
     result: "25K Followers",
     resultDetail: "in 90 days",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80",
-    gradient: "from-purple-600 to-pink-600",
+    gradient: "from-blue-600 to-blue-600",
   },
   {
     brand: "Spice Kitchen",
@@ -63,7 +63,7 @@ const caseStudies = [
     result: "50K+ Reach",
     resultDetail: "first week",
     image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
-    gradient: "from-violet-600 to-purple-600",
+    gradient: "from-violet-600 to-blue-600",
   },
 ]
 
@@ -94,18 +94,18 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="py-28 bg-card/50 relative overflow-hidden">
       {/* Subtle background accent */}
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-violet-500/3 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/3 rounded-full blur-[120px]" />
       <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[100px]" />
 
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Case Studies
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
             Results That Speak{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
               For Themselves
             </span>
           </h2>
@@ -120,7 +120,7 @@ export function Portfolio() {
           {caseStudies.map((study, index) => (
             <div
               key={study.brand}
-              className={`group relative overflow-hidden rounded-2xl bg-background border border-white/[0.06] hover:border-violet-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/10 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`group relative overflow-hidden rounded-2xl bg-background border border-white/[0.06] hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${index * 100}ms` : "0ms" }}
             >
               {/* Project image */}
@@ -155,7 +155,7 @@ export function Portfolio() {
               <div className="p-6 space-y-4">
                 {/* Brand + Result */}
                 <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-violet-400 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-blue-400 transition-colors duration-300">
                     {study.brand}
                   </h3>
                   <div className="text-right flex-shrink-0 ml-4">
@@ -186,7 +186,7 @@ export function Portfolio() {
         <div className={`mt-16 text-center transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "700ms" }}>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 group"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 group"
             onClick={e => {
               e.preventDefault()
               const el = document.getElementById("contact")

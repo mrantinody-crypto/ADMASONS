@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef, useState } from "react"
 import { BarChart3, Rocket, Lightbulb, Zap, TrendingUp, Target } from "lucide-react"
@@ -8,7 +8,7 @@ const reasons = [
     icon: BarChart3,
     title: "Data-Driven Strategies",
     description: "Every decision backed by analytics and insights to ensure maximum impact and measurable results.",
-    gradient: "from-violet-500 to-blue-500",
+    gradient: "from-blue-500 to-blue-500",
     glowColor: "violet",
   },
   {
@@ -22,14 +22,14 @@ const reasons = [
     icon: Lightbulb,
     title: "Creative Excellence",
     description: "Award-winning creative team that produces stunning visuals and compelling content that converts.",
-    gradient: "from-purple-500 to-pink-500",
+    gradient: "from-blue-500 to-blue-500",
     glowColor: "purple",
   },
   {
     icon: Zap,
     title: "Fast Execution",
     description: "Agile processes that move at the speed of your business, delivering results without delays.",
-    gradient: "from-indigo-500 to-violet-500",
+    gradient: "from-blue-500 to-blue-500",
     glowColor: "indigo",
   },
 ]
@@ -67,18 +67,18 @@ export function WhyChooseUs() {
   return (
     <section className="py-28 bg-gradient-to-b from-background via-secondary/10 to-background relative overflow-hidden">
       {/* Soft ambient lights */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-violet-500/3 rounded-full blur-[200px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/3 rounded-full blur-[200px]" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/3 rounded-full blur-[150px]" />
 
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Why Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
             Why Brands Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
               The AdMasons
             </span>
           </h2>
@@ -92,11 +92,11 @@ export function WhyChooseUs() {
           {reasons.map((reason, index) => (
             <div
               key={reason.title}
-              className={`group relative bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center transition-all duration-500 hover:border-violet-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-500/10 cursor-default ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`group relative bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center transition-all duration-500 hover:border-blue-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 cursor-default ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${index * 120}ms` : "0ms" }}
             >
               {/* Hover glow background */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-violet-500/5 via-blue-500/5 to-transparent transition-all duration-500" />
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-blue-500/5 via-blue-500/5 to-transparent transition-all duration-500" />
 
               {/* Gradient icon container */}
               <div className={`relative w-20 h-20 bg-gradient-to-br ${reason.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
@@ -121,12 +121,12 @@ export function WhyChooseUs() {
           {metrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="group relative bg-card/30 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center hover:border-violet-500/20 transition-all duration-300"
+              className="group relative bg-card/30 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center hover:border-blue-500/20 transition-all duration-300"
             >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/3 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/3 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
-                <metric.icon className="w-6 h-6 text-violet-400 mx-auto mb-3" />
-                <p className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 mb-2">
+                <metric.icon className="w-6 h-6 text-blue-400 mx-auto mb-3" />
+                <p className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mb-2">
                   {metric.value}
                 </p>
                 <p className="text-muted-foreground font-medium">{metric.label}</p>

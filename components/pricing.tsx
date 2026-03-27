@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
@@ -80,13 +80,13 @@ export function Pricing() {
   return (
     <section id="pricing" className="py-28 bg-gradient-to-b from-card/50 via-card/50 to-background relative overflow-hidden">
       {/* Subtle background accents */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-violet-500/3 rounded-full blur-[120px]" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[120px]" />
 
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Pricing
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
@@ -105,14 +105,14 @@ export function Pricing() {
               key={plan.name}
               className={`relative bg-background/50 backdrop-blur-sm border rounded-2xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 plan.highlighted
-                  ? "border-violet-500/40 shadow-xl shadow-violet-500/10 ring-1 ring-violet-500/20"
-                  : "border-white/[0.06] hover:border-violet-500/30 hover:shadow-violet-500/10"
+                  ? "border-blue-500/40 shadow-xl shadow-blue-500/10 ring-1 ring-blue-500/20"
+                  : "border-white/[0.06] hover:border-blue-500/30 hover:shadow-blue-500/10"
               } ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${idx * 120}ms` : "0ms" }}
             >
               {plan.highlighted && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-violet-600 to-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg shadow-violet-500/20">
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg shadow-blue-500/20">
                     Most Popular
                   </span>
                 </div>
@@ -120,14 +120,14 @@ export function Pricing() {
               <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
               <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
               <div className="flex items-end mb-6">
-                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400">{plan.price}</span>
+                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">{plan.price}</span>
                 <span className="text-muted-foreground ml-2">{plan.period}</span>
               </div>
               <ul className="mb-8 space-y-3 flex-1">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 text-muted-foreground text-sm">
-                    <div className="w-5 h-5 bg-gradient-to-br from-violet-500/20 to-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-3 h-3 text-violet-400" />
+                    <div className="w-5 h-5 bg-gradient-to-br from-blue-500/20 to-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-blue-400" />
                     </div>
                     {feature}
                   </li>
@@ -140,8 +140,8 @@ export function Pricing() {
                   rel="noopener noreferrer"
                   className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 ${
                     plan.highlighted
-                      ? "bg-gradient-to-r from-violet-600 to-blue-600 text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30"
-                      : "bg-white/5 border border-white/10 text-foreground hover:bg-violet-500/10 hover:border-violet-500/30"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
+                      : "bg-white/5 border border-white/10 text-foreground hover:bg-blue-500/10 hover:border-blue-500/30"
                   }`}
                 >
                   Contact Sales
@@ -151,8 +151,8 @@ export function Pricing() {
                   href="#contact"
                   className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 block ${
                     plan.highlighted
-                      ? "bg-gradient-to-r from-violet-600 to-blue-600 text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30"
-                      : "bg-white/5 border border-white/10 text-foreground hover:bg-violet-500/10 hover:border-violet-500/30"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
+                      : "bg-white/5 border border-white/10 text-foreground hover:bg-blue-500/10 hover:border-blue-500/30"
                   }`}
                   onClick={e => {
                     e.preventDefault()
@@ -172,7 +172,7 @@ export function Pricing() {
           Need a custom solution?{" "}
           <a
             href="#contact"
-            className="text-violet-400 font-semibold hover:text-violet-300 transition-colors"
+            className="text-blue-400 font-semibold hover:text-blue-300 transition-colors"
             onClick={e => {
               e.preventDefault()
               const el = document.getElementById("contact")

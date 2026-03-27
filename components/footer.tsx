@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import Link from "next/link"
@@ -98,7 +98,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="w-9 h-9 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-110"
+                  className="w-9 h-9 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-110"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -112,7 +112,7 @@ export function Footer() {
             <ul className="space-y-3">
               {quickLinks.map(link => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-muted-foreground text-sm hover:text-indigo-400 transition-colors duration-200">
+                  <Link href={link.href} className="text-muted-foreground text-sm hover:text-blue-400 transition-colors duration-200">
                     {link.name}
                   </Link>
                 </li>
@@ -134,10 +134,10 @@ export function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-white">Contact</h4>
             <div className="space-y-4">
-              <a href="mailto:theadmasons@gmail.com" className="text-indigo-400 text-sm hover:text-indigo-300 transition-colors block">
+              <a href="mailto:theadmasons@gmail.com" className="text-blue-400 text-sm hover:text-blue-300 transition-colors block">
                 theadmasons@gmail.com
               </a>
-              <a href="https://wa.me/917770969267" className="text-indigo-400 text-sm hover:text-indigo-300 transition-colors block mt-2" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/917770969267" className="text-blue-400 text-sm hover:text-blue-300 transition-colors block mt-2" target="_blank" rel="noopener noreferrer">
                 +91 7770969267
               </a>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -164,7 +164,7 @@ export function Footer() {
       {/* Back to top */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300 hover:-translate-y-1 z-40 hover:from-indigo-500 hover:to-purple-500"
+        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1 z-40 hover:from-blue-500 hover:to-blue-500"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />

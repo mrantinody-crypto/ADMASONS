@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef, useState } from "react"
 import { Mail, MapPin, Send, MessageCircle } from "lucide-react"
@@ -56,12 +56,12 @@ export function Contact() {
   return (
     <section id="contact" className="py-28 bg-gradient-to-b from-card/50 via-card/50 to-background relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/3 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-violet-500/3 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/3 rounded-full blur-[120px]" />
 
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-400 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Get In Touch
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
@@ -89,7 +89,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background/50 border border-white/[0.08] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                  className="w-full px-4 py-3 bg-background/50 border border-white/[0.08] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
                   placeholder="John Doe"
                 />
               </div>
@@ -104,7 +104,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background/50 border border-white/[0.08] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                  className="w-full px-4 py-3 bg-background/50 border border-white/[0.08] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
                   placeholder="john@example.com"
                 />
               </div>
@@ -119,14 +119,14 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-background/50 border border-white/[0.08] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all resize-none"
+                  className="w-full px-4 py-3 bg-background/50 border border-white/[0.08] rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
               <button
                 type={isLoading ? "button" : "submit"}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-violet-600 to-blue-600 text-white hover:from-violet-500 hover:to-blue-500 font-semibold py-4 text-lg rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/20 hover:shadow-violet-500/30 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 group"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-500 hover:to-blue-500 font-semibold py-4 text-lg rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 group"
               >
                 {isLoading ? "Sending..." : "Send Message"}
                 <Send className={`ml-2 w-5 h-5 ${isLoading ? "animate-spin" : "group-hover:translate-x-1 transition-transform"}`} />
@@ -149,19 +149,19 @@ export function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-violet-500/20 to-blue-500/20 border border-violet-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-violet-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-500/20 border border-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">Email</p>
-                    <a href="mailto:theadmasons@gmail.com" className="text-violet-400 hover:text-violet-300 transition-colors font-medium">
+                    <a href="mailto:theadmasons@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors font-medium">
                       theadmasons@gmail.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-violet-500/20 to-blue-500/20 border border-violet-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-violet-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-500/20 border border-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
                     <p className="font-semibold text-foreground">Office</p>
