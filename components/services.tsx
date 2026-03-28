@@ -1,147 +1,101 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { ScrollFade } from "@/components/scroll-fade"
 import {
-  Megaphone,
+  ShoppingCart,
   Target,
   Globe,
   Palette,
-  Camera,
-  TrendingUp,
+  Funnel,
+  BarChart3,
 } from "lucide-react"
 
 const services = [
   {
-    icon: Megaphone,
-    title: "Social Media Marketing",
-    description: "Build a powerful social presence that engages your audience and drives conversions across all platforms.",
-    gradient: "from-secondary0 to-secondary0",
+    icon: ShoppingCart,
+    title: "Amazon & Marketplace Growth",
+    description:
+      "PPC management, listing optimization, and growth strategy across Amazon India, UK, UAE + Flipkart & Quick Commerce.",
+    badge: "Core Expertise",
   },
   {
     icon: Target,
-    title: "Performance Ads",
-    description: "Data-driven Meta & Google advertising campaigns that maximize ROI and scale your business profitably.",
-    gradient: "from-secondary0 to-cyan-500",
+    title: "Performance Advertising",
+    description:
+      "ROI-focused campaigns on Google & Meta with full-funnel tracking, creative testing, and bid optimization.",
   },
   {
     icon: Globe,
     title: "Website Design & Development",
-    description: "High-converting, beautifully designed websites that establish credibility and capture leads 24/7.",
-    gradient: "from-secondary0 to-secondary0",
+    description:
+      "High-converting websites and landing pages built for lead generation and e-commerce.",
   },
   {
     icon: Palette,
-    title: "Branding & Identity Design",
-    description: "Create a memorable brand identity that stands out from competitors and resonates with your audience.",
-    gradient: "from-secondary0 to-secondary0",
+    title: "Branding & Identity",
+    description:
+      "Brand positioning, visual identity, and creative systems that make your brand impossible to ignore.",
   },
   {
-    icon: Camera,
-    title: "Content Creation",
-    description: "Compelling visual and written content that tells your brand story and keeps audiences engaged.",
-    gradient: "from-pink-500 to-rose-500",
+    icon: Funnel,
+    title: "Lead Generation & Funnels",
+    description:
+      "Automated funnels with lead scoring, WhatsApp automation, and CRM integration.",
   },
   {
-    icon: TrendingUp,
-    title: "Lead Generation Funnels",
-    description: "Automated marketing funnels that capture, nurture, and convert leads into paying customers.",
-    gradient: "from-secondary0 to-secondary0",
+    icon: BarChart3,
+    title: "Analytics & CRO",
+    description:
+      "Conversion optimization, A/B testing, and data-driven insights that turn traffic into revenue.",
   },
 ]
 
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true)
-          observer.unobserve(el)
-        }
-      },
-      { threshold }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [threshold])
-  return { ref, inView }
-}
-
 export function Services() {
-  const { ref: sectionRef, inView } = useInView(0.05)
-
   return (
-    <section id="services" className="py-28 bg-gradient-to-b from-card/50 via-card/50 to-background relative overflow-hidden">
-      {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary0/3 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary0/3 rounded-full blur-[120px]" />
+    <section className="bg-white py-20 lg:py-28" id="services">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <ScrollFade>
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#F5C518] mb-3">
+              Our Services
+            </p>
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-[#1B2A4A] sm:text-4xl">
+              What We Do
+            </h2>
+          </div>
+        </ScrollFade>
 
-      <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
-        {/* Section header */}
-        <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
-            What We Do
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
-            Our Services
-          </h2>
-          <p className="text-lg text-muted-foreground text-pretty">
-            Comprehensive digital marketing solutions tailored to help your business
-            grow faster and dominate your market.
-          </p>
-        </div>
-
-        {/* Services grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className={`group relative bg-background/50 backdrop-blur-sm border border-border/[0.06] rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: inView ? `${index * 100}ms` : "0ms" }}
-            >
-              {/* Soft glow effect on hover */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-secondary0/5 via-blue-500/3 to-transparent transition-all duration-500" />
-
-              <div className="relative z-10">
-                {/* Gradient Icon */}
-                <div className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
-                  <service.icon className="w-7 h-7 text-white" />
-                </div>
-                {/* Content */}
-                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, i) => (
+            <ScrollFade key={service.title} delay={i * 0.06}>
+              <div
+                className={`group relative rounded-lg border p-8 transition-all hover:shadow-md ${
+                  service.badge
+                    ? "border-[#F5C518]/40 bg-[#F5C518]/[0.03]"
+                    : "border-[#E2E5EB] bg-white"
+                }`}
+              >
+                {service.badge && (
+                  <span className="absolute top-4 right-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#F5C518] bg-[#F5C518]/10 px-2.5 py-1 rounded-full">
+                    {service.badge}
+                  </span>
+                )}
+                <service.icon
+                  size={28}
+                  className="text-[#F5C518]"
+                  strokeWidth={1.5}
+                />
+                <h3 className="mt-5 text-lg font-bold text-[#1B2A4A]">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm mb-6">
+                <p className="mt-2 text-sm leading-relaxed text-[#1B2A4A]/70">
                   {service.description}
                 </p>
-                {/* Learn More link */}
-                <a
-                  href="#contact"
-                  className="inline-flex items-center text-primary font-medium text-sm border border-border/[0.08] px-5 py-2.5 rounded-lg hover:bg-secondary0/10 hover:border-blue-500/20 transition-all duration-300 group/link"
-                  onClick={e => {
-                    e.preventDefault()
-                    const el = document.getElementById("contact")
-                    if (el) el.scrollIntoView({ behavior: "smooth" })
-                  }}
-                >
-                  Learn More
-                  <svg className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
               </div>
-            </div>
+            </ScrollFade>
           ))}
         </div>
       </div>
     </section>
   )
 }
-
-
-
-
-

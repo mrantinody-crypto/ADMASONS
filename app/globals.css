@@ -4,45 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Premium Light Theme — The AdMasons */
+  /* The AdMasons — Brand Color System */
+  --navy: #1B2A4A;
+  --gold: #F5C518;
+  --white: #FFFFFF;
+  --light-gray: #F7F8FA;
+  --body-text: rgba(27, 42, 74, 0.8);
+  --border-subtle: #E2E5EB;
+
   --background: #FFFFFF;
-  --foreground: #111827;
+  --foreground: #1B2A4A;
   --card: #FFFFFF;
-  --card-foreground: #111827;
-  --popover: #F5F7FA;
-  --popover-foreground: #111827;
-  --primary: #0B1F3A;
+  --card-foreground: #1B2A4A;
+  --popover: #F7F8FA;
+  --popover-foreground: #1B2A4A;
+  --primary: #1B2A4A;
   --primary-foreground: #FFFFFF;
-  --secondary: #F5F7FA;
-  --secondary-foreground: #111827;
-  --muted: #F5F7FA;
-  --muted-foreground: #6B7280;
-  --accent: #FFC107;
-  --accent-foreground: #0B1F3A;
+  --secondary: #F7F8FA;
+  --secondary-foreground: #1B2A4A;
+  --muted: #F7F8FA;
+  --muted-foreground: rgba(27, 42, 74, 0.6);
+  --accent: #F5C518;
+  --accent-foreground: #1B2A4A;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(11, 31, 58, 0.08);
-  --input: #F5F7FA;
-  --ring: #0B1F3A;
-  --chart-1: #0B1F3A;
-  --chart-2: #34D399;
-  --chart-3: #60A5FA;
-  --chart-4: #F472B6;
-  --chart-5: #FFC107;
-  --radius: 0.875rem;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #111827;
-  --sidebar-primary: #0B1F3A;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F5F7FA;
-  --sidebar-accent-foreground: #111827;
-  --sidebar-border: rgba(11, 31, 58, 0.08);
-  --sidebar-ring: #0B1F3A;
+  --border: #E2E5EB;
+  --input: #F7F8FA;
+  --ring: #1B2A4A;
+  --radius: 0.5rem;
 }
 
 @theme inline {
-  --font-sans: var(--font-poppins), 'Poppins', sans-serif;
-  --font-mono: var(--font-inter), 'Inter', sans-serif;
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -62,217 +55,36 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-navy: var(--navy);
+  --color-gold: var(--gold);
+  --color-light-gray: var(--light-gray);
+  --color-body-text: var(--body-text);
+  --color-border-subtle: var(--border-subtle);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border-subtle;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* ── Scroll-reveal animation ── */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* staggered delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-
-/* ── Counter number animation ── */
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-count-up {
-  animation: count-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* ── Infinite logo scroll animations ── */
-@keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scroll-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.animate-scroll-left {
-  animation: scroll-left 35s linear infinite;
-  will-change: transform;
-}
-
-.animate-scroll-right {
-  animation: scroll-right 35s linear infinite;
-  will-change: transform;
-}
-
-/* Pause on hover for accessibility */
-.animate-scroll-left:hover,
-.animate-scroll-right:hover {
-  animation-play-state: paused;
-}
-
-/* ── Floating dashboard animations ── */
-@keyframes float-1 {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(1deg); }
-}
-
-@keyframes float-2 {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(-1.5deg); }
-}
-
-@keyframes float-3 {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(1.2deg); }
-}
-
-@keyframes float-4 {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(-0.8deg); }
-}
-
-@keyframes float-5 {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(0.5deg); }
-}
-
-.animate-float-1 { animation: float-1 5s ease-in-out infinite; }
-.animate-float-2 { animation: float-2 7s ease-in-out infinite; }
-.animate-float-3 { animation: float-3 6s ease-in-out infinite; }
-.animate-float-4 { animation: float-4 8s ease-in-out infinite; }
-.animate-float-5 { animation: float-5 4.5s ease-in-out infinite; }
-
-/* ── Micro interactions ── */
-@keyframes subtle-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(11, 31, 58, 0); }
-  50% { box-shadow: 0 0 20px 2px rgba(11, 31, 58, 0.1); }
-}
-
-.animate-subtle-glow {
-  animation: subtle-glow 3s ease-in-out infinite;
-}
-
-/* ── Premium Button Styles ── */
-@keyframes button-press {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.98); }
-  100% { transform: scale(1); }
-}
-
-.btn-primary {
-  @apply bg-gradient-to-r from-blue-900 to-blue-800 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:from-blue-800 hover:to-blue-700 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 active:scale-95;
-}
-
-.btn-secondary {
-  @apply border-2 border-blue-900 text-blue-900 font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-blue-50 hover:shadow-md hover:-translate-y-0.5 active:scale-95;
-}
-
-.btn-outline {
-  @apply border border-blue-900/20 text-blue-900 font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:border-blue-900/40 hover:bg-blue-50;
-}
-
-/* ── Smooth transitions for all interactive elements ── */
-a, button {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ── Text glow on hover ── */
-.text-glow-hover:hover {
-  text-shadow: 0 0 20px rgba(30, 58, 138, 0.5);
-}
-
-/* ── Smooth link underline ── */
-.link-underline {
-  position: relative;
-  text-decoration: none;
-}
-
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: currentColor;
-  transition: width 0.3s ease;
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* ── Smooth scroll behavior ── */
+/* ── Smooth scroll ── */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Card hover effects ── */
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:border-white/20 hover:-translate-y-1;
-}
-
-/* Respect reduced motion preference */
+/* ── Respect reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .animate-scroll-left,
-  .animate-scroll-right,
-  .animate-fade-up,
-  .animate-count-up,
-  .animate-float-1,
-  .animate-float-2,
-  .animate-float-3,
-  .animate-float-4,
-  .animate-float-5,
-  .animate-subtle-glow {
-    animation: none;
-    opacity: 1;
-    transform: none;
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,193 +1,158 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { ScrollFade } from "@/components/scroll-fade"
 import { Check } from "lucide-react"
 
-const plans = [
+interface PricingTier {
+  name: string
+  price: string
+  period: string
+  description: string
+  features: string[]
+  highlighted?: boolean
+}
+
+const tiers: PricingTier[] = [
   {
     name: "Starter",
-    price: "\u20B925,000",
+    price: "₹25,000",
     period: "/month",
-    description: "Perfect for small businesses just getting started with digital marketing.",
+    description: "For brands getting started with performance marketing.",
     features: [
-      "Social Media Management (2 platforms)",
-      "Basic Content Creation",
-      "Monthly Performance Report",
-      "Email Support",
-      "Basic SEO Optimization",
+      "1 platform (Google OR Meta OR Amazon)",
+      "Campaign setup & management",
+      "Monthly performance reports",
+      "Keyword/audience research",
+      "Bi-weekly strategy calls",
+      "Up to ₹2L ad spend management",
     ],
-    highlighted: false,
   },
   {
     name: "Growth",
-    price: "\u20B950,000",
+    price: "₹50,000",
     period: "/month",
-    description: "Ideal for growing businesses looking to scale their digital presence.",
+    description: "For scaling brands that need multi-platform growth.",
     features: [
-      "Social Media Management (4 platforms)",
-      "Performance Ads (Meta + Google)",
-      "Advanced Content Creation",
-      "Weekly Strategy Sessions",
-      "Lead Generation Funnel",
-      "Priority Support",
-      "Conversion Optimization",
+      "Up to 3 platforms",
+      "Advanced campaign optimization",
+      "Weekly performance reports",
+      "A/B testing & creative strategy",
+      "Landing page recommendations",
+      "Weekly strategy calls",
+      "Up to ₹5L ad spend management",
+      "Dedicated account manager",
     ],
     highlighted: true,
   },
   {
     name: "Premium",
-    price: "\u20B91,00,000",
+    price: "₹1,00,000",
     period: "/month",
-    description: "Complete marketing solution for established brands seeking dominance.",
+    description: "For established brands requiring full-stack growth systems.",
     features: [
-      "Everything in Growth",
-      "Full Branding & Identity",
-      "Custom Website Development",
-      "Dedicated Account Manager",
-      "24/7 Priority Support",
-      "Advanced Analytics Dashboard",
-      "Influencer Marketing",
-      "Video Content Production",
+      "All platforms included",
+      "Full-funnel campaign architecture",
+      "Real-time dashboards & reporting",
+      "Creative production support",
+      "CRO & landing page optimization",
+      "WhatsApp/CRM automation",
+      "Unlimited strategy calls",
+      "Up to ₹15L ad spend management",
+      "Dedicated team of 3+ specialists",
     ],
-    highlighted: false,
   },
 ]
 
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true)
-          observer.unobserve(el)
-        }
-      },
-      { threshold }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [threshold])
-  return { ref, inView }
-}
-
 export function Pricing() {
-  const { ref: sectionRef, inView } = useInView(0.05)
-
   return (
-    <section id="pricing" className="py-28 bg-gradient-to-b from-card/50 via-card/50 to-background relative overflow-hidden">
-      {/* Subtle background accents */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-secondary0/3 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary0/3 rounded-full blur-[120px]" />
+    <section className="bg-white py-20 lg:py-28" id="pricing">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <ScrollFade>
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#F5C518] mb-3">
+              Pricing
+            </p>
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-[#1B2A4A] sm:text-4xl">
+              Transparent Plans That Scale With You
+            </h2>
+          </div>
+        </ScrollFade>
 
-      <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
-        {/* Section header */}
-        <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
-            Pricing
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-lg text-muted-foreground text-pretty">
-            Choose the plan that fits your business needs. All plans include
-            our commitment to deliver exceptional results.
-          </p>
-        </div>
-
-        {/* Pricing cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {plans.map((plan, idx) => (
-            <div
-              key={plan.name}
-              className={`relative bg-background/50 backdrop-blur-sm border rounded-2xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
-                plan.highlighted
-                  ? "border-blue-500/40 shadow-xl shadow-primary/10 ring-1 ring-blue-500/20"
-                  : "border-border/[0.06] hover:border-blue-500/30 hover:shadow-primary/10"
-              } ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: inView ? `${idx * 120}ms` : "0ms" }}
-            >
-              {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-primary to-primary/90 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg shadow-primary/10/40">
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {tiers.map((tier, i) => (
+            <ScrollFade key={tier.name} delay={i * 0.08}>
+              <div
+                className={`relative rounded-lg border p-8 h-full flex flex-col ${
+                  tier.highlighted
+                    ? "border-[#F5C518] bg-[#F5C518]/[0.02] shadow-sm"
+                    : "border-[#E2E5EB]"
+                }`}
+              >
+                {tier.highlighted && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#1B2A4A] bg-[#F5C518] px-4 py-1 rounded-full">
                     Most Popular
                   </span>
+                )}
+
+                <div>
+                  <h3 className="text-lg font-bold text-[#1B2A4A]">
+                    {tier.name}
+                  </h3>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="text-3xl font-extrabold text-[#1B2A4A]">
+                      {tier.price}
+                    </span>
+                    <span className="text-sm text-[#1B2A4A]/50">
+                      {tier.period}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-[#1B2A4A]/60">
+                    {tier.description}
+                  </p>
                 </div>
-              )}
-              <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
-              <div className="flex items-end mb-6">
-                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90">{plan.price}</span>
-                <span className="text-muted-foreground ml-2">{plan.period}</span>
-              </div>
-              <ul className="mb-8 space-y-3 flex-1">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-muted-foreground text-sm">
-                    <div className="w-5 h-5 bg-gradient-to-br from-secondary0/20 to-secondary0/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-3 h-3 text-primary" />
-                    </div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              {plan.name === "Premium" ? (
-                <a
-                  href="https://wa.me/917770969267"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 ${
-                    plan.highlighted
-                      ? "bg-gradient-to-r from-primary to-primary/90 text-white shadow-lg shadow-primary/10/40 hover:shadow-blue-300/50"
-                      : "bg-background/5 border border-primary/20 text-foreground hover:bg-secondary0/10 hover:border-blue-500/30"
-                  }`}
-                >
-                  Contact Sales
-                </a>
-              ) : (
+
+                <ul className="mt-6 space-y-3 flex-1">
+                  {tier.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2.5 text-sm text-[#1B2A4A]/70"
+                    >
+                      <Check
+                        size={16}
+                        className="flex-shrink-0 mt-0.5 text-[#F5C518]"
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
                 <a
                   href="#contact"
-                  className={`w-full font-semibold py-4 rounded-xl text-center transition-all duration-300 hover:-translate-y-0.5 block ${
-                    plan.highlighted
-                      ? "bg-gradient-to-r from-primary to-primary/90 text-white shadow-lg shadow-primary/10/40 hover:shadow-blue-300/50"
-                      : "bg-background/5 border border-primary/20 text-foreground hover:bg-secondary0/10 hover:border-blue-500/30"
+                  className={`mt-8 block w-full text-center rounded-md py-3 text-sm font-semibold transition-colors ${
+                    tier.highlighted
+                      ? "bg-[#F5C518] text-[#1B2A4A] hover:bg-[#F5C518]/90"
+                      : "bg-[#1B2A4A] text-white hover:bg-[#1B2A4A]/90"
                   }`}
-                  onClick={e => {
-                    e.preventDefault()
-                    const el = document.getElementById("contact")
-                    if (el) el.scrollIntoView({ behavior: "smooth" })
-                  }}
                 >
                   Get Started
                 </a>
-              )}
-            </div>
+              </div>
+            </ScrollFade>
           ))}
         </div>
 
-        {/* Custom quote */}
-        <p className="text-center text-muted-foreground mt-12">
-          Need a custom solution?{" "}
-          <a
-            href="#contact"
-            className="text-primary font-semibold hover:text-primary/30 transition-colors"
-            onClick={e => {
-              e.preventDefault()
-              const el = document.getElementById("contact")
-              if (el) el.scrollIntoView({ behavior: "smooth" })
-            }}
-          >
-            Contact us for a custom quote
-          </a>
-        </p>
+        <ScrollFade delay={0.3}>
+          <p className="mt-10 text-center text-sm text-[#1B2A4A]/50">
+            Need a custom plan?{" "}
+            <a
+              href="#contact"
+              className="text-[#F5C518] font-medium hover:underline"
+            >
+              Let&apos;s talk.
+            </a>
+          </p>
+        </ScrollFade>
       </div>
     </section>
   )
 }
-
-
-
-
-

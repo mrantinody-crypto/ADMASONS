@@ -1,31 +1,25 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
+import { Platforms } from "@/components/platforms"
 import { Services } from "@/components/services"
-import { Clients } from "@/components/clients"
-import { OperatorsCore } from "@/components/operators-core"
+import { CaseStudies } from "@/components/case-studies"
 import { WhyChooseUs } from "@/components/why-choose-us"
 import { About } from "@/components/about"
-import { Portfolio } from "@/components/portfolio"
-import { Testimonials } from "@/components/testimonials"
 import { Pricing } from "@/components/pricing"
-import { CTA } from "@/components/cta"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen">
       <Header />
       <Hero />
-      <Clients />
+      <Platforms />
       <Services />
-      <OperatorsCore />
+      <CaseStudies />
       <WhyChooseUs />
       <About />
-      <Portfolio />
-      <Testimonials />
       <Pricing />
-      <CTA />
       <Contact />
       <Footer />
     </main>

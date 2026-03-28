@@ -1,145 +1,95 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { BarChart3, Rocket, Lightbulb, Zap, TrendingUp, Target } from "lucide-react"
+import { ScrollFade } from "@/components/scroll-fade"
+import {
+  Clock,
+  ShoppingCart,
+  Globe,
+  Users,
+  BarChart3,
+  Layers,
+} from "lucide-react"
 
-const reasons = [
+const differentiators = [
+  {
+    icon: Clock,
+    title: "9+ Years of Performance Marketing Experience",
+    description:
+      "Deep expertise across paid media, marketplace growth, and full-funnel strategy.",
+  },
+  {
+    icon: ShoppingCart,
+    title: "Marketplace Specialists",
+    description:
+      "Amazon, Flipkart, and Quick Commerce — we know the platforms inside out.",
+  },
+  {
+    icon: Globe,
+    title: "4 Global Markets",
+    description:
+      "India, UAE, UK, and USA — localized strategies for each market.",
+  },
+  {
+    icon: Users,
+    title: "Full In-House Team — 15+ Specialists",
+    description:
+      "Paid media, creative, analytics, and automation — all under one roof.",
+  },
   {
     icon: BarChart3,
-    title: "Data-Driven Strategies",
-    description: "Every decision backed by analytics and insights to ensure maximum impact and measurable results.",
-    gradient: "from-secondary0 to-secondary0",
-    glowColor: "violet",
+    title: "Data-First, Always",
+    description:
+      "Every decision backed by numbers. No guesswork, no vanity metrics.",
   },
   {
-    icon: Rocket,
-    title: "ROI-Focused Campaigns",
-    description: "We optimize every rupee spent to deliver the highest possible return on your marketing investment.",
-    gradient: "from-secondary0 to-cyan-500",
-    glowColor: "blue",
-  },
-  {
-    icon: Lightbulb,
-    title: "Creative Excellence",
-    description: "Award-winning creative team that produces stunning visuals and compelling content that converts.",
-    gradient: "from-secondary0 to-secondary0",
-    glowColor: "purple",
-  },
-  {
-    icon: Zap,
-    title: "Fast Execution",
-    description: "Agile processes that move at the speed of your business, delivering results without delays.",
-    gradient: "from-secondary0 to-secondary0",
-    glowColor: "indigo",
+    icon: Layers,
+    title: "From Audit to Scale",
+    description:
+      "End-to-end growth systems — we don't just run ads, we build revenue engines.",
   },
 ]
-
-const metrics = [
-  { value: "150+", label: "Campaigns Delivered", icon: Target },
-  { value: "5x", label: "Average ROI", icon: TrendingUp },
-  { value: "\u20B92Cr+", label: "Ad Spend Managed", icon: BarChart3 },
-]
-
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true)
-          observer.unobserve(el)
-        }
-      },
-      { threshold }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [threshold])
-  return { ref, inView }
-}
 
 export function WhyChooseUs() {
-  const { ref: sectionRef, inView } = useInView(0.1)
-
   return (
-    <section className="py-28 bg-gradient-to-b from-background via-secondary/10 to-background relative overflow-hidden">
-      {/* Soft ambient lights */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-secondary0/3 rounded-full blur-[200px]" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary0/3 rounded-full blur-[150px]" />
+    <section className="bg-white py-20 lg:py-28" id="why-us">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <ScrollFade>
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#F5C518] mb-3">
+              The Difference
+            </p>
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-[#1B2A4A] sm:text-4xl">
+              Why Brands Choose The AdMasons
+            </h2>
+          </div>
+        </ScrollFade>
 
-      <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
-        {/* Section header */}
-        <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
-            Why Us
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
-            Why Brands Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90">
-              The AdMasons
-            </span>
-          </h2>
-          <p className="text-lg text-muted-foreground text-pretty max-w-2xl mx-auto">
-            We combine creativity, technology, and strategy to deliver exceptional results that actually move the needle for your business.
-          </p>
-        </div>
-
-        {/* Reasons grid - interactive cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((reason, index) => (
-            <div
-              key={reason.title}
-              className={`group relative bg-secondary/50 backdrop-blur-sm border border-border/[0.06] rounded-2xl p-8 text-center transition-all duration-500 hover:border-blue-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 cursor-default ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: inView ? `${index * 120}ms` : "0ms" }}
-            >
-              {/* Hover glow background */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-secondary0/5 via-blue-500/5 to-transparent transition-all duration-500" />
-
-              {/* Gradient icon container */}
-              <div className={`relative w-20 h-20 bg-gradient-to-br ${reason.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
-                <reason.icon className="w-10 h-10 text-white" />
-                {/* Pulse ring on hover */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500`} />
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {differentiators.map((item, i) => (
+            <ScrollFade key={item.title} delay={i * 0.06}>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 mt-1">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-md bg-[#F5C518]/10">
+                    <item.icon
+                      size={20}
+                      className="text-[#F5C518]"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#1B2A4A]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[#1B2A4A]/60">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-
-              {/* Content */}
-              <h3 className="relative text-xl font-bold mb-3 text-foreground group-hover:text-white transition-colors duration-300">
-                {reason.title}
-              </h3>
-              <p className="relative text-muted-foreground leading-relaxed text-sm">
-                {reason.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Metrics bar */}
-        <div className={`mt-20 grid md:grid-cols-3 gap-6 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "500ms" }}>
-          {metrics.map((metric, index) => (
-            <div
-              key={metric.label}
-              className="group relative bg-card/30 backdrop-blur-sm border border-border/[0.06] rounded-2xl p-8 text-center hover:border-blue-500/20 transition-all duration-300"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-secondary0/3 to-secondary0/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative">
-                <metric.icon className="w-6 h-6 text-primary mx-auto mb-3" />
-                <p className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90 mb-2">
-                  {metric.value}
-                </p>
-                <p className="text-muted-foreground font-medium">{metric.label}</p>
-              </div>
-            </div>
+            </ScrollFade>
           ))}
         </div>
       </div>
     </section>
   )
 }
-
-
-
-
-
