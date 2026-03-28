@@ -73,7 +73,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-background border-t border-blue-200">
+    <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -87,7 +87,7 @@ export function Footer() {
                 className="h-10 w-auto"
               />
             </a>
-            <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
               The AdMasons operates at the intersection of performance, creativity, and technology to deliver exceptional results that move the needle for ambitious brands.
             </p>
             <div className="flex gap-3">
@@ -98,7 +98,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="w-9 h-9 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-yellow-100 hover:border-yellow-300 hover:shadow-lg hover:shadow-yellow-200 hover:scale-110"
+                  className="w-9 h-9 bg-secondary border border-border rounded-xl flex items-center justify-center transition-all duration-300 hover:bg-accent/10 hover:border-accent hover:shadow-lg hover:shadow-accent/20 hover:scale-110"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -108,11 +108,11 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-bold mb-6 text-blue-950">Quick Links</h4>
+            <h4 className="font-bold mb-6 text-primary">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map(link => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-700 text-sm hover:text-blue-900 transition-colors duration-200">
+                  <Link href={link.href} className="text-muted-foreground text-sm hover:text-primary transition-colors duration-200">
                     {link.name}
                   </Link>
                 </li>
@@ -122,25 +122,25 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-bold mb-6 text-blue-950">Services</h4>
+            <h4 className="font-bold mb-6 text-primary">Services</h4>
             <ul className="space-y-3">
               {services.map(s => (
-                <li key={s} className="text-gray-700 text-sm">{s}</li>
+                <li key={s} className="text-muted-foreground text-sm">{s}</li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold mb-6 text-blue-950">Contact</h4>
+            <h4 className="font-bold mb-6 text-primary">Contact</h4>
             <div className="space-y-4">
-              <a href="mailto:theadmasons@gmail.com" className="text-blue-900 text-sm hover:text-blue-700 transition-colors block">
+              <a href="mailto:theadmasons@gmail.com" className="text-primary text-sm hover:text-primary/80 transition-colors block">
                 theadmasons@gmail.com
               </a>
-              <a href="https://wa.me/917770969267" className="text-blue-900 text-sm hover:text-blue-700 transition-colors block mt-2" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/917770969267" className="text-primary text-sm hover:text-primary/80 transition-colors block mt-2" target="_blank" rel="noopener noreferrer">
                 +91 7770969267
               </a>
-              <p className="text-gray-700 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 ED-184, 3rd Floor, Scheme No. 94,<br />
                 Sector D, Khajrana Square, Indore
               </p>
@@ -150,12 +150,12 @@ export function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="border-t border-blue-200">
+      <div className="border-t border-border">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-700 text-sm">
+          <p className="text-muted-foreground text-sm">
             &copy; {new Date().getFullYear()} The AdMasons. All rights reserved.
           </p>
-          <p className="text-gray-700 text-xs">
+          <p className="text-muted-foreground text-xs">
             Crafted with intention in India
           </p>
         </div>
@@ -164,7 +164,7 @@ export function Footer() {
       {/* Back to top */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/30 hover:shadow-blue-900/50 transition-all duration-300 hover:-translate-y-1 z-40 hover:from-blue-800 hover:to-blue-700"
+        className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground rounded-xl flex items-center justify-center shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 hover:-translate-y-1 z-40 hover:from-primary/90 hover:to-primary/80"
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-5 h-5" />

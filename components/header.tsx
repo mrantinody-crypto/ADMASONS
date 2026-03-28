@@ -66,7 +66,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/95 backdrop-blur-xl border-b border-blue-200 shadow-lg shadow-blue-900/10"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-lg shadow-primary/10"
           : "bg-transparent"
       )}
     >
@@ -90,12 +90,12 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-900 transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-yellow-400 hover:after:w-full after:transition-all after:duration-300 pb-1"
+                className="text-foreground hover:text-primary transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent hover:after:w-full after:transition-all after:duration-300 pb-1"
               >
                 {item.name}
               </Link>
             ))}
-            <div className="flex items-center gap-4 ml-6 pl-6 border-l border-blue-200">
+            <div className="flex items-center gap-4 ml-6 pl-6 border-l border-border">
               {socialLinks.map(social => (
                 <a
                   key={social.name}
@@ -103,7 +103,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="w-9 h-9 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center transition-all duration-300 hover:bg-yellow-100 hover:border-yellow-300 hover:scale-110"
+                  className="w-9 h-9 rounded-lg bg-secondary border border-border flex items-center justify-center transition-all duration-300 hover:bg-accent/10 hover:border-accent hover:scale-110"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -111,7 +111,7 @@ export function Header() {
             </div>
             <a
               href="#contact"
-              className="ml-6 bg-gradient-to-r from-blue-900 to-blue-800 text-white hover:from-blue-800 hover:to-blue-700 font-semibold px-6 py-2.5 text-sm rounded-2xl transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-900/30 hover:-translate-y-0.5 active:translate-y-0"
+              className="ml-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground hover:from-primary/90 hover:to-primary/80 font-semibold px-6 py-2.5 text-sm rounded-2xl transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 active:translate-y-0"
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault()
                 const el = document.getElementById("contact")
@@ -124,7 +124,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-blue-900 p-2"
+            className="lg:hidden text-primary p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -139,12 +139,12 @@ export function Header() {
             isMobileMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
           )}
         >
-          <div className="py-4 space-y-4 border-t border-blue-200 bg-white">
+          <div className="py-4 space-y-4 border-t border-border bg-background">
             {navItems.map(item => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block text-gray-700 hover:text-blue-900 transition-colors duration-200 font-medium py-2"
+                className="block text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -158,7 +158,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.ariaLabel}
-                  className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center transition-all duration-300 hover:bg-yellow-100 hover:border-yellow-300"
+                  className="w-8 h-8 rounded-lg bg-secondary border border-border flex items-center justify-center transition-all duration-300 hover:bg-accent/10 hover:border-accent"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -166,7 +166,7 @@ export function Header() {
             </div>
             <a
               href="#contact"
-              className="block w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white font-semibold py-3 rounded-xl text-center mt-4 shadow-lg shadow-blue-900/20"
+              className="block w-full bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-semibold py-3 rounded-xl text-center mt-4 shadow-lg shadow-primary/20"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Start Now

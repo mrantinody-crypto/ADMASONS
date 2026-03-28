@@ -116,18 +116,18 @@ export function Clients() {
       aria-label="Our Clients"
     >
       {/* Background accent glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-blue-500/4 rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-secondary0/4 rounded-full blur-[200px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-800 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/90 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Our Clients
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
             Trusted by Leading Brands
           </h2>
-          <p className="text-lg md:text-xl text-gray-700 text-pretty">
+          <p className="text-lg md:text-xl text-muted-foreground text-pretty">
             Partnering with industry leaders and innovative startups to deliver
             exceptional digital results.
           </p>

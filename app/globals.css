@@ -6,15 +6,15 @@
 :root {
   /* Premium Light Theme — The AdMasons */
   --background: #FFFFFF;
-  --foreground: #0A0A0A;
+  --foreground: #111827;
   --card: #FFFFFF;
-  --card-foreground: #0A0A0A;
+  --card-foreground: #111827;
   --popover: #F5F7FA;
-  --popover-foreground: #0A0A0A;
+  --popover-foreground: #111827;
   --primary: #0B1F3A;
   --primary-foreground: #FFFFFF;
   --secondary: #F5F7FA;
-  --secondary-foreground: #0A0A0A;
+  --secondary-foreground: #111827;
   --muted: #F5F7FA;
   --muted-foreground: #6B7280;
   --accent: #FFC107;
@@ -31,11 +31,11 @@
   --chart-5: #FFC107;
   --radius: 0.875rem;
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #0A0A0A;
+  --sidebar-foreground: #111827;
   --sidebar-primary: #0B1F3A;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #F5F7FA;
-  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-accent-foreground: #111827;
   --sidebar-border: rgba(11, 31, 58, 0.08);
   --sidebar-ring: #0B1F3A;
 }
