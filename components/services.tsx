@@ -82,13 +82,13 @@ export function Services() {
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-800 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             What We Do
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
             Our Services
           </h2>
-          <p className="text-lg text-muted-foreground text-pretty">
+          <p className="text-lg text-gray-700 text-pretty">
             Comprehensive digital marketing solutions tailored to help your business
             grow faster and dominate your market.
           </p>
@@ -99,7 +99,7 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative bg-background/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`group relative bg-white/50 backdrop-blur-sm border border-blue-200/[0.06] rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${index * 100}ms` : "0ms" }}
             >
               {/* Soft glow effect on hover */}
@@ -111,16 +111,16 @@ export function Services() {
                   <service.icon className="w-7 h-7 text-white" />
                 </div>
                 {/* Content */}
-                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-blue-900 transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm mb-6">
+                <p className="text-gray-700 leading-relaxed text-sm mb-6">
                   {service.description}
                 </p>
                 {/* Learn More link */}
                 <a
                   href="#contact"
-                  className="inline-flex items-center text-blue-400 font-medium text-sm border border-white/[0.08] px-5 py-2.5 rounded-lg hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 group/link"
+                  className="inline-flex items-center text-blue-900 font-medium text-sm border border-blue-200/[0.08] px-5 py-2.5 rounded-lg hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 group/link"
                   onClick={e => {
                     e.preventDefault()
                     const el = document.getElementById("contact")
@@ -140,3 +140,8 @@ export function Services() {
     </section>
   )
 }
+
+
+
+
+

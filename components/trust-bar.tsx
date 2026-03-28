@@ -14,7 +14,7 @@ export function TrustBar() {
     <section className="py-12 border-y border-border bg-secondary/30">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-8">
-          <p className="text-sm text-muted-foreground uppercase tracking-wider">
+          <p className="text-sm text-gray-700 uppercase tracking-wider">
             Trusted by growing brands
           </p>
         </div>
@@ -23,7 +23,7 @@ export function TrustBar() {
           {brands.map((brand, index) => (
             <div
               key={brand}
-              className="flex items-center gap-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors duration-300 group"
+              className="flex items-center gap-2 text-gray-700/50 hover:text-gray-700 transition-colors duration-300 group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -39,3 +39,8 @@ export function TrustBar() {
     </section>
   )
 }
+
+
+
+
+

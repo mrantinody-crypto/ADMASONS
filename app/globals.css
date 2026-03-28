@@ -4,40 +4,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Enterprise Premium Dark Theme — The AdMasons */
-  --background: #0F172A;
-  --foreground: #FFFFFF;
-  --card: #1F2937;
-  --card-foreground: #FFFFFF;
-  --popover: #111827;
-  --popover-foreground: #FFFFFF;
-  --primary: #1E3A8A;
+  /* Premium Light Theme — The AdMasons */
+  --background: #FFFFFF;
+  --foreground: #0A0A0A;
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --popover: #F5F7FA;
+  --popover-foreground: #0A0A0A;
+  --primary: #0B1F3A;
   --primary-foreground: #FFFFFF;
-  --secondary: #111827;
-  --secondary-foreground: #FFFFFF;
-  --muted: #1F2937;
-  --muted-foreground: #9CA3AF;
-  --accent: #FACC15;
-  --accent-foreground: #0F172A;
+  --secondary: #F5F7FA;
+  --secondary-foreground: #0A0A0A;
+  --muted: #F5F7FA;
+  --muted-foreground: #6B7280;
+  --accent: #FFC107;
+  --accent-foreground: #0B1F3A;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: #1F2937;
-  --ring: #1D4ED8;
-  --chart-1: #1E3A8A;
-  --chart-2: #1D4ED8;
-  --chart-3: #34D399;
+  --border: rgba(11, 31, 58, 0.08);
+  --input: #F5F7FA;
+  --ring: #0B1F3A;
+  --chart-1: #0B1F3A;
+  --chart-2: #34D399;
+  --chart-3: #60A5FA;
   --chart-4: #F472B6;
-  --chart-5: #FACC15;
+  --chart-5: #FFC107;
   --radius: 0.875rem;
-  --sidebar: #0F172A;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #1E3A8A;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0A0A0A;
+  --sidebar-primary: #0B1F3A;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #1F2937;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-ring: #1D4ED8;
+  --sidebar-accent: #F5F7FA;
+  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-border: rgba(11, 31, 58, 0.08);
+  --sidebar-ring: #0B1F3A;
 }
 
 @theme inline {
@@ -191,8 +191,8 @@
 
 /* ── Micro interactions ── */
 @keyframes subtle-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(30, 58, 138, 0); }
-  50% { box-shadow: 0 0 20px 2px rgba(30, 58, 138, 0.15); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(11, 31, 58, 0); }
+  50% { box-shadow: 0 0 20px 2px rgba(11, 31, 58, 0.1); }
 }
 
 .animate-subtle-glow {
@@ -207,15 +207,15 @@
 }
 
 .btn-primary {
-  @apply bg-gradient-to-r from-blue-700 to-blue-600 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:from-blue-600 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 active:scale-95;
+  @apply bg-gradient-to-r from-blue-900 to-blue-800 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:from-blue-800 hover:to-blue-700 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 active:scale-95;
 }
 
 .btn-secondary {
-  @apply border border-white/15 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-white/5 hover:border-white/30 hover:-translate-y-0.5 active:scale-95;
+  @apply border-2 border-blue-900 text-blue-900 font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-blue-50 hover:shadow-md hover:-translate-y-0.5 active:scale-95;
 }
 
 .btn-outline {
-  @apply border border-white/10 text-foreground font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:border-white/20 hover:bg-white/5;
+  @apply border border-blue-900/20 text-blue-900 font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:border-blue-900/40 hover:bg-blue-50;
 }
 
 /* ── Smooth transitions for all interactive elements ── */

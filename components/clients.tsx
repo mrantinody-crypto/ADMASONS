@@ -121,13 +121,13 @@ export function Clients() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-800 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Our Clients
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
             Trusted by Leading Brands
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground text-pretty">
+          <p className="text-lg md:text-xl text-gray-700 text-pretty">
             Partnering with industry leaders and innovative startups to deliver
             exceptional digital results.
           </p>
@@ -142,3 +142,8 @@ export function Clients() {
     </section>
   )
 }
+
+
+
+
+

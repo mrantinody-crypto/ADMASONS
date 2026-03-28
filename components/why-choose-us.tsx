@@ -73,16 +73,16 @@ export function WhyChooseUs() {
       <div ref={sectionRef} className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-800 text-sm font-semibold uppercase tracking-[0.2em] mb-4">
             Why Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance">
             Why Brands Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-800">
               The AdMasons
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground text-pretty max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 text-pretty max-w-2xl mx-auto">
             We combine creativity, technology, and strategy to deliver exceptional results that actually move the needle for your business.
           </p>
         </div>
@@ -92,7 +92,7 @@ export function WhyChooseUs() {
           {reasons.map((reason, index) => (
             <div
               key={reason.title}
-              className={`group relative bg-card/50 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center transition-all duration-500 hover:border-blue-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 cursor-default ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`group relative bg-blue-50/50 backdrop-blur-sm border border-blue-200/[0.06] rounded-2xl p-8 text-center transition-all duration-500 hover:border-blue-500/30 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 cursor-default ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: inView ? `${index * 120}ms` : "0ms" }}
             >
               {/* Hover glow background */}
@@ -109,7 +109,7 @@ export function WhyChooseUs() {
               <h3 className="relative text-xl font-bold mb-3 text-foreground group-hover:text-white transition-colors duration-300">
                 {reason.title}
               </h3>
-              <p className="relative text-muted-foreground leading-relaxed text-sm">
+              <p className="relative text-gray-700 leading-relaxed text-sm">
                 {reason.description}
               </p>
             </div>
@@ -121,15 +121,15 @@ export function WhyChooseUs() {
           {metrics.map((metric, index) => (
             <div
               key={metric.label}
-              className="group relative bg-card/30 backdrop-blur-sm border border-white/[0.06] rounded-2xl p-8 text-center hover:border-blue-500/20 transition-all duration-300"
+              className="group relative bg-card/30 backdrop-blur-sm border border-blue-200/[0.06] rounded-2xl p-8 text-center hover:border-blue-500/20 transition-all duration-300"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/3 to-blue-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
-                <metric.icon className="w-6 h-6 text-blue-400 mx-auto mb-3" />
-                <p className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mb-2">
+                <metric.icon className="w-6 h-6 text-blue-900 mx-auto mb-3" />
+                <p className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-800 mb-2">
                   {metric.value}
                 </p>
-                <p className="text-muted-foreground font-medium">{metric.label}</p>
+                <p className="text-gray-700 font-medium">{metric.label}</p>
               </div>
             </div>
           ))}
@@ -138,3 +138,8 @@ export function WhyChooseUs() {
     </section>
   )
 }
+
+
+
+
+
