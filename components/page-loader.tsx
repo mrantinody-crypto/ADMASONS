@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 
 export function PageLoader({ onComplete }: { onComplete: () => void }) {
   const loaderRef = useRef<HTMLDivElement>(null)

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)

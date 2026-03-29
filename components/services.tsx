@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Target, ShoppingCart, Share2, Monitor, Palette, Filter, ArrowRight } from 'lucide-react'
 

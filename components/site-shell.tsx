@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { PageLoader } from '@/components/page-loader'
 import { CustomCursor } from '@/components/custom-cursor'
@@ -9,10 +9,6 @@ import { Navbar } from '@/components/navbar'
 import { SmoothScroll } from '@/components/smooth-scroll'
 
 gsap.registerPlugin(ScrollTrigger)
-
-if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  gsap.globalTimeline.timeScale(20)
-}
 
 function ScrollProgressBar() {
   const barRef = useRef<HTMLDivElement>(null)
@@ -67,6 +63,12 @@ function WhatsAppFAB() {
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.globalTimeline.timeScale(20)
+    }
+  }, [])
 
   function handleLoaded() {
     setLoaded(true)
