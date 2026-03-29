@@ -1,11 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { BarChart3, TrendingUp, Sparkles, Zap, Users, Globe } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const items = [
   { num: '01', icon: BarChart3, title: 'Data-Driven Strategies', desc: 'Every decision backed by analytics and insights to ensure maximum impact and measurable results.' },

@@ -1,14 +1,11 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { PageLoader } from '@/components/page-loader'
 import { CustomCursor } from '@/components/custom-cursor'
 import { Navbar } from '@/components/navbar'
 import { SmoothScroll } from '@/components/smooth-scroll'
-
-gsap.registerPlugin(ScrollTrigger)
 
 function ScrollProgressBar() {
   const barRef = useRef<HTMLDivElement>(null)

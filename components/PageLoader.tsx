@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
+import { gsap } from '@/lib/gsap';
 import Image from 'next/image';
 
 export default function PageLoader() {

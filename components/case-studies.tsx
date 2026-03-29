@@ -1,10 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 interface CaseStudy {
   industry: string
@@ -119,25 +116,27 @@ export function CaseStudies() {
       const scrollDistance = Math.max(0, totalWidth - viewportWidth + 96)
       if (scrollDistance === 0) return
 
-      const pin = ScrollTrigger.create({
-        trigger: track,
-        start: 'top top',
-        end: `+=${scrollDistance}`,
-        pin: true,
-        scrub: 1,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          gsap.set(inner, { x: -self.progress * scrollDistance })
+      // Create horizontal scroll tween
+      const scrollTween = gsap.to(inner, {
+        x: -scrollDistance,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: track,
+          start: 'top top',
+          end: `+=${scrollDistance}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
         },
       })
 
-      // Card scale on entry
+      // Card scale on entry - use the tween as containerAnimation
       cards.forEach((card) => {
         gsap.fromTo(card, { scale: 0.92, opacity: 0.4 }, {
           scale: 1, opacity: 1,
           scrollTrigger: {
             trigger: card,
-            containerAnimation: pin as unknown as gsap.core.Animation,
+            containerAnimation: scrollTween,
             start: 'left 80%',
             end: 'left 40%',
             scrub: true,

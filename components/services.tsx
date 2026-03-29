@@ -1,11 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { Target, ShoppingCart, Share2, Monitor, Palette, Filter, ArrowRight } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {

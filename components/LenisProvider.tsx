@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
-import gsap from 'gsap';
+import { gsap } from '@/lib/gsap';
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);

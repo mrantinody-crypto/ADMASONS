@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Menu, X, ArrowRight } from 'lucide-react'
-import gsap from 'gsap'
+import { gsap } from '@/lib/gsap'
 
 const navLinks = [
   { label: 'Home', href: '#hero' },

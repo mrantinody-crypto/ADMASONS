@@ -1,11 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { Mail, Phone, MapPin, MessageCircle, ArrowRight, Check } from 'lucide-react'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function Contact() {
   const sectionRef  = useRef<HTMLElement>(null)
