@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { SiteShell } from '@/components/site-shell'
+import LenisProvider from '@/components/LenisProvider'
+import CustomCursor from '@/components/CustomCursor'
+import PageLoader from '@/components/PageLoader'
 import './globals.css'
 
 const inter = Inter({
@@ -104,7 +106,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
-        <SiteShell>{children}</SiteShell>
+        <LenisProvider>
+          <CustomCursor />
+          <PageLoader />
+          {children}
+        </LenisProvider>
         <Analytics />
       </body>
     </html>
