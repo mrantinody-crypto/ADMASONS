@@ -1,33 +1,59 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SiteShell } from '@/components/site-shell'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter"
-});
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'The AdMasons | Performance Marketing & Growth Consulting',
-  description: 'We engineer growth systems for brands that sell online. Performance marketing, marketplace growth, and full-funnel brand architecture across Amazon, Google, Meta & Quick Commerce. Serving India, UAE, UK & USA.',
-  keywords: ['performance marketing agency', 'amazon ads management', 'marketplace growth', 'google ads agency', 'meta ads agency', 'ecommerce growth', 'The AdMasons', 'digital marketing India', 'digital marketing UAE'],
+  metadataBase: new URL('https://www.admasons.com'),
+  title: 'The AdMasons | Performance Marketing & Growth Agency — India, UAE, UK, USA',
+  description: 'We engineer growth systems for ambitious brands. Performance marketing, Amazon PPC, full-funnel strategy across India, UAE, UK & USA. 150+ campaigns, 5× avg ROI.',
+  keywords: [
+    'performance marketing agency',
+    'amazon ads management',
+    'marketplace growth',
+    'google ads agency india',
+    'meta ads agency',
+    'ecommerce growth agency',
+    'The AdMasons',
+    'digital marketing Indore',
+    'digital marketing UAE',
+    'D2C growth agency',
+  ],
   icons: {
     icon: [{ url: '/admasons-logo.jpeg' }],
     apple: '/admasons-logo.jpeg',
   },
   openGraph: {
-    title: 'The AdMasons | Performance Marketing & Growth Consulting',
-    description: 'We engineer growth systems for brands that sell online. Performance marketing, marketplace growth, and full-funnel brand architecture across Amazon, Google, Meta & Quick Commerce.',
+    title: 'The AdMasons | Performance Marketing & Growth Agency',
+    description: 'We engineer growth systems for ambitious brands. Performance marketing, Amazon PPC, full-funnel strategy across India, UAE, UK & USA.',
     type: 'website',
     siteName: 'The AdMasons',
     url: 'https://www.admasons.com',
+    images: [{ url: '/admasons-logo.jpeg', width: 1200, height: 630, alt: 'The AdMasons — Performance Marketing & Growth Agency' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The AdMasons | Performance Marketing & Growth Consulting',
-    description: 'We engineer growth systems for brands that sell online.',
+    title: 'The AdMasons | Performance Marketing & Growth Agency',
+    description: 'We engineer growth systems for ambitious brands. 150+ campaigns, 5× avg ROI.',
+    images: ['/admasons-logo.jpeg'],
+  },
+  alternates: {
+    canonical: 'https://www.admasons.com',
   },
 }
 
@@ -43,32 +69,42 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "The AdMasons",
-              "description": "Performance marketing and growth consulting agency serving brands across India, UAE, UK & USA.",
-              "url": "https://www.admasons.com",
-              "telephone": "+91-7000-799-396",
-              "email": "hello@admasons.com",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Indore",
-                "addressCountry": "IN"
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'The AdMasons',
+              description: 'Performance marketing and growth consulting agency serving brands across India, UAE, UK & USA.',
+              url: 'https://www.admasons.com',
+              telephone: '+91-7770969267',
+              email: 'theadmasons@gmail.com',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: 'ED-184, 3rd Floor, Scheme No. 94, Sector D, Khajrana Square',
+                addressLocality: 'Indore',
+                addressRegion: 'Madhya Pradesh',
+                postalCode: '452016',
+                addressCountry: 'IN',
               },
-              "areaServed": ["India", "UAE", "UK", "USA"],
-              "serviceType": ["Performance Marketing", "Amazon Ads Management", "Google Ads", "Meta Ads", "Marketplace Growth"]
-            })
+              areaServed: ['India', 'UAE', 'UK', 'USA'],
+              serviceType: [
+                'Performance Marketing',
+                'Amazon Ads Management',
+                'Google Ads',
+                'Meta Ads',
+                'Marketplace Growth',
+                'Brand Strategy',
+              ],
+            }),
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
-        {children}
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+        <SiteShell>{children}</SiteShell>
         <Analytics />
       </body>
     </html>

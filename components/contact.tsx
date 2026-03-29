@@ -1,144 +1,237 @@
-"use client"
+'use client'
 
-import { ScrollFade } from "@/components/scroll-fade"
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react"
-import { useState, type FormEvent } from "react"
+import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Mail, Phone, MapPin, MessageCircle, ArrowRight, Check } from 'lucide-react'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export function Contact() {
+  const sectionRef  = useRef<HTMLElement>(null)
+  const ctaRef      = useRef<HTMLDivElement>(null)
+  const formRef     = useRef<HTMLDivElement>(null)
   const [submitted, setSubmitted] = useState(false)
+  const [sending,   setSending]   = useState(false)
+  const [error,     setError]     = useState<string | null>(null)
+  const [focused,   setFocused]   = useState<string | null>(null)
+  const [values,    setValues]    = useState<Record<string, string>>({ name: '', email: '', message: '' })
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(ctaRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: ctaRef.current, start: 'top 85%', once: true } }
+      )
+      gsap.fromTo(formRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: formRef.current, start: 'top 85%', once: true }, delay: 0.15 }
+      )
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    setSending(true)
+    setError(null)
+
+    const form = e.currentTarget
+    const data = {
+      name:    (form.elements.namedItem('name')    as HTMLInputElement).value,
+      email:   (form.elements.namedItem('email')   as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) throw new Error('Server error')
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please email us directly at theadmasons@gmail.com')
+    } finally {
+      setSending(false)
+    }
   }
 
+  const inputBase = `w-full bg-transparent border-b-2 py-3 text-[15px] text-white placeholder:text-white/30
+    focus:outline-none transition-colors duration-300`
+
   return (
-    <section className="bg-[#1B2A4A] py-20 lg:py-28" id="contact">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — CTA Copy */}
-          <ScrollFade>
+    <section ref={sectionRef} id="contact" className="bg-[#1B2A4A] py-[120px]">
+      <div className="mx-auto max-w-[1280px] px-6">
+
+        {/* Top CTA block */}
+        <div ref={ctaRef} className="text-center mb-20" style={{ opacity: 0 }}>
+          <p className="label mb-4">Get In Touch</p>
+          <h2 className="text-[clamp(32px,5vw,60px)] font-display font-bold text-white mb-5">
+            Ready to Scale Your Business?
+          </h2>
+          <p className="text-[16px] text-white/55 max-w-[520px] mx-auto mb-10 leading-relaxed">
+            Book a free 30-minute strategy call. We&apos;ll audit your current marketing
+            and show you exactly where the growth is hiding.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <a
+              href="https://wa.me/917770969267"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 bg-[#F5C518] text-[#1B2A4A] font-semibold text-[15px] px-8 py-4 rounded-lg hover:bg-[#FFD84D] hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-[rgba(245,197,24,0.25)]"
+            >
+              Get Started Now
+              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <a
+              href="https://wa.me/917770969267"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-white/25 text-white font-semibold text-[15px] px-8 py-4 rounded-lg hover:bg-white/8 transition-all duration-200"
+            >
+              <MessageCircle size={16} className="text-[#F5C518]" />
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 text-[13px] text-white/40">
+            {['No commitment', 'Free 30-min call', 'Results guaranteed'].map((b) => (
+              <span key={b} className="flex items-center gap-1.5">
+                <Check size={12} className="text-[#F5C518]" />
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Contact grid */}
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Left: info */}
+          <div className="space-y-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#F5C518] mb-3">
-                Get In Touch
-              </p>
-              <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">
-                Ready to Scale?
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-white/60 max-w-md">
-                Book a free 30-minute strategy call. No commitment. Just
-                clarity on how to grow your brand online.
-              </p>
-
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://calendly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-md bg-[#F5C518] px-7 py-3.5 text-sm font-semibold text-[#1B2A4A] transition-colors hover:bg-[#F5C518]/90"
-                >
-                  Book a Call
-                </a>
-                <a
-                  href="https://wa.me/917000799396"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/5"
-                >
-                  <MessageCircle size={16} />
-                  Chat on WhatsApp
-                </a>
-              </div>
-
-              <div className="mt-10 space-y-4">
-                <div className="flex items-center gap-3 text-sm text-white/50">
-                  <Mail size={16} className="text-[#F5C518]" />
-                  hello@admasons.com
-                </div>
-                <div className="flex items-center gap-3 text-sm text-white/50">
-                  <Phone size={16} className="text-[#F5C518]" />
-                  +91 7000-799-396
-                </div>
-                <div className="flex items-center gap-3 text-sm text-white/50">
-                  <MapPin size={16} className="text-[#F5C518]" />
-                  Indore, India
-                </div>
+              <h3 className="font-display font-semibold text-[22px] text-white mb-6">Contact Information</h3>
+              <div className="space-y-5">
+                {[
+                  { icon: Mail,    text: 'theadmasons@gmail.com',                    href: 'mailto:theadmasons@gmail.com' },
+                  { icon: Phone,   text: '+91 7770969267',                            href: 'https://wa.me/917770969267' },
+                  { icon: MapPin,  text: 'ED-184, 3rd Floor, Scheme No. 94, Sector D, Khajrana Square, Indore', href: 'https://maps.google.com/?q=ED-184+Scheme+No+94+Sector+D+Khajrana+Square+Indore' },
+                ].map(({ icon: Icon, text, href }) => (
+                  <div key={text} className="flex items-start gap-4">
+                    <div className="w-9 h-9 rounded-lg bg-[rgba(245,197,24,0.1)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon size={16} strokeWidth={1.5} className="text-[#F5C518]" />
+                    </div>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[14.5px] text-white/60 hover:text-white transition-colors leading-relaxed"
+                    >
+                      {text}
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
-          </ScrollFade>
 
-          {/* Right — Contact Form */}
-          <ScrollFade delay={0.15}>
-            <div className="rounded-lg border border-white/10 bg-white/[0.04] p-8">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <p className="text-lg font-semibold text-white">
-                    Thanks for reaching out!
-                  </p>
-                  <p className="mt-2 text-sm text-white/50">
-                    We&apos;ll get back to you within 24 hours.
-                  </p>
+            <div className="pt-6 border-t border-white/10">
+              <p className="text-[13px] text-white/30 uppercase tracking-[0.12em] font-semibold mb-4">Operating in</p>
+              <div className="flex flex-wrap gap-2">
+                {['India', 'UAE', 'UK', 'USA'].map((m) => (
+                  <span key={m} className="text-[13px] font-medium text-[#F5C518] border border-[rgba(245,197,24,0.3)] px-3 py-1 rounded-full">
+                    {m}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: form */}
+          <div ref={formRef} style={{ opacity: 0 }}>
+            {submitted ? (
+              <div className="h-full flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-full bg-[rgba(245,197,24,0.1)] border border-[rgba(245,197,24,0.3)] flex items-center justify-center mx-auto mb-5">
+                    <Check size={28} className="text-[#F5C518]" />
+                  </div>
+                  <h3 className="font-display font-bold text-[24px] text-white mb-2">Message sent!</h3>
+                  <p className="text-[15px] text-white/50">We&apos;ll get back to you within 24 hours.</p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {[
+                  { id: 'name',    label: 'Name',    type: 'text',  placeholder: 'Your full name' },
+                  { id: 'email',   label: 'Email',   type: 'email', placeholder: 'your@email.com' },
+                ].map((field) => (
+                  <div key={field.id} className="relative">
                     <label
-                      htmlFor="name"
-                      className="block text-xs font-medium text-white/50 mb-1.5"
+                      htmlFor={field.id}
+                      className={`absolute left-0 transition-all duration-200 pointer-events-none ${
+                        focused === field.id || values[field.id]
+                          ? '-top-5 text-[11px] text-[#F5C518] font-semibold tracking-[0.08em] uppercase'
+                          : 'top-3 text-[15px] text-white/30'
+                      }`}
                     >
-                      Name
+                      {field.label}
                     </label>
                     <input
-                      id="name"
-                      name="name"
-                      type="text"
+                      id={field.id}
+                      name={field.id}
+                      type={field.type}
                       required
-                      className="w-full rounded-md border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#F5C518]/50 focus:outline-none focus:ring-1 focus:ring-[#F5C518]/50"
-                      placeholder="Your name"
+                      placeholder=""
+                      onFocus={() => setFocused(field.id)}
+                      onBlur={(e) => { setFocused(null); setValues(v => ({ ...v, [field.id]: e.target.value })) }}
+                      onChange={(e) => setValues(v => ({ ...v, [field.id]: e.target.value }))}
+                      className={`${inputBase} ${focused === field.id ? 'border-[#F5C518]' : 'border-white/15'}`}
                     />
                   </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-xs font-medium text-white/50 mb-1.5"
-                    >
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="w-full rounded-md border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#F5C518]/50 focus:outline-none focus:ring-1 focus:ring-[#F5C518]/50"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-xs font-medium text-white/50 mb-1.5"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      required
-                      className="w-full rounded-md border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#F5C518]/50 focus:outline-none focus:ring-1 focus:ring-[#F5C518]/50 resize-none"
-                      placeholder="Tell us about your brand and goals..."
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full rounded-md bg-[#F5C518] py-3 text-sm font-semibold text-[#1B2A4A] transition-colors hover:bg-[#F5C518]/90"
+                ))}
+
+                <div className="relative">
+                  <label
+                    htmlFor="message"
+                    className={`absolute left-0 transition-all duration-200 pointer-events-none ${
+                      focused === 'message' || values.message
+                        ? '-top-5 text-[11px] text-[#F5C518] font-semibold tracking-[0.08em] uppercase'
+                        : 'top-3 text-[15px] text-white/30'
+                    }`}
                   >
-                    Send Message
-                  </button>
-                </form>
-              )}
-            </div>
-          </ScrollFade>
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    required
+                    placeholder=""
+                    onFocus={() => setFocused('message')}
+                    onBlur={(e) => { setFocused(null); setValues(v => ({ ...v, message: e.target.value })) }}
+                    onChange={(e) => setValues(v => ({ ...v, message: e.target.value }))}
+                    className={`${inputBase} resize-none ${focused === 'message' ? 'border-[#F5C518]' : 'border-white/15'}`}
+                  />
+                </div>
+
+                {error && (
+                  <p className="text-[13px] text-red-400 leading-relaxed">{error}</p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="group inline-flex items-center gap-2 bg-[#F5C518] text-[#1B2A4A] font-semibold text-[15px] px-8 py-3.5 rounded-lg hover:bg-[#FFD84D] hover:scale-[1.02] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+                >
+                  {sending ? 'Sending…' : 'Send Message'}
+                  {!sending && <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>

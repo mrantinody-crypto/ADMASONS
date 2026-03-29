@@ -1,98 +1,126 @@
-"use client"
+'use client'
 
-import { ScrollFade } from "@/components/scroll-fade"
-import {
-  ShoppingCart,
-  Target,
-  Globe,
-  Palette,
-  Funnel,
-  BarChart3,
-} from "lucide-react"
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Target, ShoppingCart, Share2, Monitor, Palette, Filter, ArrowRight } from 'lucide-react'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
-    icon: ShoppingCart,
-    title: "Amazon & Marketplace Growth",
-    description:
-      "PPC management, listing optimization, and growth strategy across Amazon India, UK, UAE + Flipkart & Quick Commerce.",
-    badge: "Core Expertise",
-  },
-  {
     icon: Target,
-    title: "Performance Advertising",
-    description:
-      "ROI-focused campaigns on Google & Meta with full-funnel tracking, creative testing, and bid optimization.",
+    title: 'Performance Ads',
+    description: 'Data-driven Meta & Google advertising campaigns that maximise ROI and scale your business profitably.',
+    badge: null,
   },
   {
-    icon: Globe,
-    title: "Website Design & Development",
-    description:
-      "High-converting websites and landing pages built for lead generation and e-commerce.",
+    icon: ShoppingCart,
+    title: 'Amazon & Marketplace Growth',
+    description: 'End-to-end Amazon PPC management, listing optimisation, and growth strategy across Amazon India, UK, UAE + Flipkart & Quick Commerce.',
+    badge: 'CORE EXPERTISE',
+  },
+  {
+    icon: Share2,
+    title: 'Social Media Marketing',
+    description: 'Build a powerful social presence that engages your audience and drives conversions across all platforms.',
+    badge: null,
+  },
+  {
+    icon: Monitor,
+    title: 'Website Design & Development',
+    description: 'High-converting, beautifully designed websites that establish credibility and capture leads 24/7.',
+    badge: null,
   },
   {
     icon: Palette,
-    title: "Branding & Identity",
-    description:
-      "Brand positioning, visual identity, and creative systems that make your brand impossible to ignore.",
+    title: 'Branding & Identity',
+    description: 'Create a memorable brand identity that stands out and resonates deeply with your target audience.',
+    badge: null,
   },
   {
-    icon: Funnel,
-    title: "Lead Generation & Funnels",
-    description:
-      "Automated funnels with lead scoring, WhatsApp automation, and CRM integration.",
-  },
-  {
-    icon: BarChart3,
-    title: "Analytics & CRO",
-    description:
-      "Conversion optimization, A/B testing, and data-driven insights that turn traffic into revenue.",
+    icon: Filter,
+    title: 'Lead Generation Funnels',
+    description: 'Automated marketing funnels that capture, nurture, and convert leads into paying customers at scale.',
+    badge: null,
   },
 ]
 
 export function Services() {
-  return (
-    <section className="bg-white py-20 lg:py-28" id="services">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ScrollFade>
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#F5C518] mb-3">
-              Our Services
-            </p>
-            <h2 className="text-3xl font-bold tracking-[-0.02em] text-[#1B2A4A] sm:text-4xl">
-              What We Do
-            </h2>
-          </div>
-        </ScrollFade>
+  const sectionRef = useRef<HTMLElement>(null)
+  const headRef    = useRef<HTMLDivElement>(null)
+  const cardsRef   = useRef<HTMLDivElement>(null)
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <ScrollFade key={service.title} delay={i * 0.06}>
-              <div
-                className={`group relative rounded-lg border p-8 transition-all hover:shadow-md ${
-                  service.badge
-                    ? "border-[#F5C518]/40 bg-[#F5C518]/[0.03]"
-                    : "border-[#E2E5EB] bg-white"
-                }`}
-              >
-                {service.badge && (
-                  <span className="absolute top-4 right-4 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#F5C518] bg-[#F5C518]/10 px-2.5 py-1 rounded-full">
-                    {service.badge}
-                  </span>
-                )}
-                <service.icon
-                  size={28}
-                  className="text-[#F5C518]"
-                  strokeWidth={1.5}
-                />
-                <h3 className="mt-5 text-lg font-bold text-[#1B2A4A]">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#1B2A4A]/70">
-                  {service.description}
-                </p>
-              </div>
-            </ScrollFade>
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(headRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true } }
+      )
+
+      const cards = cardsRef.current?.querySelectorAll('.service-card')
+      if (cards) {
+        gsap.fromTo(cards,
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+            scrollTrigger: { trigger: cardsRef.current, start: 'top 80%', once: true } }
+        )
+      }
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={sectionRef} id="services" className="bg-white py-[120px]">
+      <div className="mx-auto max-w-[1280px] px-6">
+        {/* Header */}
+        <div ref={headRef} className="text-center mb-14" style={{ opacity: 0 }}>
+          <p className="label mb-4">What We Do</p>
+          <h2 className="text-[clamp(32px,4vw,48px)] font-display font-bold text-[#1B2A4A] mb-4">
+            Our Services
+          </h2>
+          <p className="text-[17px] text-[#6B7280] max-w-[560px] mx-auto leading-relaxed">
+            Comprehensive digital marketing solutions tailored to help your business
+            grow faster and dominate your market.
+          </p>
+        </div>
+
+        {/* Cards grid */}
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((svc) => (
+            <div
+              key={svc.title}
+              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="service-card relative rounded-xl border border-[#E2E5EB] bg-white p-8 group cursor-pointer"
+              style={{ opacity: 0 }}
+            >
+              {/* Core Expertise badge */}
+              {svc.badge && (
+                <span className="pulse-glow absolute top-4 right-4 text-[10px] font-bold tracking-[0.12em] uppercase text-[#F5C518] bg-[rgba(245,197,24,0.1)] border border-[rgba(245,197,24,0.3)] px-2.5 py-1 rounded-full">
+                  {svc.badge}
+                </span>
+              )}
+
+              <svc.icon
+                size={32}
+                strokeWidth={1.5}
+                className="text-[#F5C518] mb-5"
+              />
+
+              <h3 className="font-display font-semibold text-[20px] text-[#1B2A4A] mb-3 tracking-[-0.01em]">
+                {svc.title}
+              </h3>
+
+              <p className="text-[14.5px] text-[#6B7280] leading-[1.7] mb-5">
+                {svc.description}
+              </p>
+
+              <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#F5C518] group-hover:gap-2.5 transition-all duration-200">
+                Learn More
+                <ArrowRight size={13} />
+              </span>
+            </div>
           ))}
         </div>
       </div>
