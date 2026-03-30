@@ -63,39 +63,18 @@ export function Pricing() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true } }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(headRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
+      })
 
       const cards = cardsRef.current?.querySelectorAll('.price-card')
       if (cards) {
-        gsap.fromTo(cards,
-          { opacity: 0, y: 60 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-            scrollTrigger: { trigger: cardsRef.current, start: 'top 80%', once: true } }
-        )
-
-        // Growth card scale bounce
-        const growthCard = cardsRef.current?.querySelector('.price-card-growth')
-        if (growthCard) {
-          gsap.fromTo(growthCard,
-            { scale: 0.95 },
-            { scale: 1, duration: 0.5, ease: 'back.out(1.5)',
-              scrollTrigger: { trigger: cardsRef.current, start: 'top 78%', once: true }, delay: 0.35 }
-          )
-        }
-
-        // Checkmarks stagger
-        const checks = cardsRef.current?.querySelectorAll('.check-item')
-        if (checks) {
-          gsap.fromTo(checks,
-            { opacity: 0, x: -10 },
-            { opacity: 1, x: 0, duration: 0.3, stagger: 0.04, ease: 'power2.out',
-              scrollTrigger: { trigger: cardsRef.current, start: 'top 75%', once: true }, delay: 0.4 }
-          )
-        }
+        gsap.from(cards, {
+          opacity: 0, y: 40, duration: 0.5, stagger: 0.1, ease: 'power2.out',
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 85%', once: true }
+        })
       }
     }, sectionRef)
     return () => ctx.revert()

@@ -20,38 +20,18 @@ export function WhyChooseUs() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true } }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(headRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
+      })
 
       const cards = gridRef.current?.querySelectorAll('.why-card')
       if (cards) {
-        // Watermark numbers first
-        const nums = gridRef.current?.querySelectorAll('.watermark-num')
-        if (nums) {
-          gsap.fromTo(nums,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out',
-              scrollTrigger: { trigger: gridRef.current, start: 'top 82%', once: true } }
-          )
-        }
-        gsap.fromTo(cards,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out',
-            scrollTrigger: { trigger: gridRef.current, start: 'top 80%', once: true }, delay: 0.15 }
-        )
-
-        // Gold line draw per card
-        const lines = gridRef.current?.querySelectorAll('.gold-line-item')
-        if (lines) {
-          gsap.fromTo(lines,
-            { width: 0 },
-            { width: '3rem', duration: 0.8, stagger: 0.1, ease: 'power2.inOut',
-              scrollTrigger: { trigger: gridRef.current, start: 'top 78%', once: true }, delay: 0.3 }
-          )
-        }
+        gsap.from(cards, {
+          opacity: 0, y: 40, duration: 0.5, stagger: 0.06, ease: 'power2.out',
+          scrollTrigger: { trigger: gridRef.current, start: 'top 85%', once: true }
+        })
       }
     }, sectionRef)
     return () => ctx.revert()
@@ -78,8 +58,7 @@ export function WhyChooseUs() {
               <div className="relative z-10">
                 {/* Gold line accent */}
                 <div
-                  className="gold-line-item h-[2px] bg-[#F5C518] mb-5 rounded-full"
-                  style={{ width: 0 }}
+                  className="gold-line-item h-[2px] bg-[#F5C518] mb-5 rounded-full w-12"
                 />
 
                 <div className="flex items-center gap-3 mb-4">

@@ -236,7 +236,7 @@ export function Hero() {
                   ref={el => { counterRefs.current[i] = el }}
                   className="block text-[clamp(32px,4vw,48px)] font-display font-bold text-white leading-none mb-1.5"
                 >
-                  {stat.prefix || ''}0{stat.suffix}
+                  {stat.prefix || ''}{stat.value}{stat.suffix}
                 </span>
                 <span className="text-[13px] text-white/50 font-medium tracking-wide">
                   {stat.label}

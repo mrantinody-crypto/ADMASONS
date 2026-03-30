@@ -10,16 +10,15 @@ export function About() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(leftRef.current,
-        { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: leftRef.current, start: 'top 82%', once: true } }
-      )
-      gsap.fromTo(rightRef.current,
-        { opacity: 0, x: 40 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: rightRef.current, start: 'top 82%', once: true }, delay: 0.15 }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(leftRef.current, {
+        opacity: 0, x: -30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: leftRef.current, start: 'top 85%', once: true }
+      })
+      gsap.from(rightRef.current, {
+        opacity: 0, x: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: rightRef.current, start: 'top 85%', once: true }
+      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])

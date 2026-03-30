@@ -41,27 +41,25 @@ export function Team() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true } }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(headRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
+      })
 
       const cards = cardsRef.current?.querySelectorAll('.team-card')
       if (cards) {
-        gsap.fromTo(cards,
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
-            scrollTrigger: { trigger: cardsRef.current, start: 'top 80%', once: true } }
-        )
+        gsap.from(cards, {
+          opacity: 0, y: 40, duration: 0.5, stagger: 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 85%', once: true }
+        })
 
         const avatars = cardsRef.current?.querySelectorAll('.avatar-circle')
         if (avatars) {
-          gsap.fromTo(avatars,
-            { scale: 0.7, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.7)',
-              scrollTrigger: { trigger: cardsRef.current, start: 'top 78%', once: true }, delay: 0.2 }
-          )
+          gsap.from(avatars, {
+            scale: 0.8, duration: 0.4, stagger: 0.08, ease: 'back.out(1.5)',
+            scrollTrigger: { trigger: cardsRef.current, start: 'top 85%', once: true }
+          })
         }
       }
     }, sectionRef)

@@ -79,28 +79,25 @@ export function CaseStudies() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animations
-      gsap.fromTo(headRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true } }
-      )
-      gsap.fromTo(statsBarRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: statsBarRef.current, start: 'top 88%', once: true } }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(headRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
+      })
+      gsap.from(statsBarRef.current, {
+        opacity: 0, y: 20, duration: 0.5, ease: 'power2.out',
+        scrollTrigger: { trigger: statsBarRef.current, start: 'top 88%', once: true }
+      })
 
       // Mobile: simple stagger, no pin
       const isMobile = window.matchMedia('(max-width: 768px)').matches
       if (isMobile) {
         const cards = innerRef.current?.querySelectorAll('.case-card')
         if (cards) {
-          gsap.fromTo(cards,
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out',
-              scrollTrigger: { trigger: innerRef.current, start: 'top 80%', once: true } }
-          )
+          gsap.from(cards, {
+            opacity: 0, y: 40, stagger: 0.08, duration: 0.5, ease: 'power2.out',
+            scrollTrigger: { trigger: innerRef.current, start: 'top 85%', once: true }
+          })
         }
         return
       }
@@ -130,15 +127,15 @@ export function CaseStudies() {
         },
       })
 
-      // Card scale on entry - use the tween as containerAnimation
+      // Card scale on entry - use gsap.from()
       cards.forEach((card) => {
-        gsap.fromTo(card, { scale: 0.92, opacity: 0.4 }, {
-          scale: 1, opacity: 1,
+        gsap.from(card, {
+          scale: 0.95, opacity: 0.6,
           scrollTrigger: {
             trigger: card,
             containerAnimation: scrollTween,
-            start: 'left 80%',
-            end: 'left 40%',
+            start: 'left 85%',
+            end: 'left 50%',
             scrub: true,
           },
         })

@@ -16,16 +16,15 @@ export function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(ctaRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: ctaRef.current, start: 'top 85%', once: true } }
-      )
-      gsap.fromTo(formRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: formRef.current, start: 'top 85%', once: true }, delay: 0.15 }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(ctaRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: ctaRef.current, start: 'top 85%', once: true }
+      })
+      gsap.from(formRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: formRef.current, start: 'top 85%', once: true }
+      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])

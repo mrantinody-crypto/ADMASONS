@@ -12,17 +12,15 @@ export function Resources() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate on scroll entry - content visible by default
-      gsap.fromTo(leftRef.current,
-        { opacity: 0.9, x: -20 },
-        { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: leftRef.current, start: 'top 85%', once: true } }
-      )
-      gsap.fromTo(mockupRef.current,
-        { opacity: 0.9, x: 20 },
-        { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: mockupRef.current, start: 'top 85%', once: true } }
-      )
+      // Use gsap.from() - elements visible by default
+      gsap.from(leftRef.current, {
+        opacity: 0, x: -30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: leftRef.current, start: 'top 85%', once: true }
+      })
+      gsap.from(mockupRef.current, {
+        opacity: 0, x: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: mockupRef.current, start: 'top 85%', once: true }
+      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])

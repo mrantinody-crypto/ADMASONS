@@ -50,19 +50,18 @@ export function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true } }
-      )
+      // Use gsap.from() - elements are visible by default, animate FROM hidden state
+      gsap.from(headRef.current, {
+        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
+      })
 
       const cards = cardsRef.current?.querySelectorAll('.service-card')
       if (cards) {
-        gsap.fromTo(cards,
-          { opacity: 0, y: 60 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
-            scrollTrigger: { trigger: cardsRef.current, start: 'top 80%', once: true } }
-        )
+        gsap.from(cards, {
+          opacity: 0, y: 40, duration: 0.5, stagger: 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 85%', once: true }
+        })
       }
     }, sectionRef)
     return () => ctx.revert()
