@@ -65,7 +65,7 @@ export function Contact() {
       <div className="mx-auto max-w-[1280px] px-6">
 
         {/* Top CTA block */}
-        <div ref={ctaRef} className="text-center mb-20" style={{ opacity: 0 }}>
+        <div ref={ctaRef} className="text-center mb-20">
           <p className="label mb-4">Get In Touch</p>
           <h2 className="text-[clamp(32px,5vw,60px)] font-display font-bold text-white mb-5">
             Ready to Scale Your Business?

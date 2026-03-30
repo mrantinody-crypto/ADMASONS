@@ -104,7 +104,7 @@ export function Pricing() {
   return (
     <section ref={sectionRef} id="pricing" className="bg-[#F7F8FA] py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div ref={headRef} className="text-center mb-16" style={{ opacity: 0 }}>
+        <div ref={headRef} className="text-center mb-14">
           <p className="label mb-4">Pricing</p>
           <h2 className="text-[clamp(28px,4vw,48px)] font-display font-bold text-[#1B2A4A]">
             Simple, Transparent Pricing.
@@ -122,7 +122,6 @@ export function Pricing() {
                   ? 'border-transparent bg-[#1B2A4A] text-white'
                   : 'border-[#E2E5EB] bg-white'
               }`}
-              style={{ opacity: 0 }}
             >
               {tier.highlighted && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F5C518] text-[#1B2A4A] text-[10px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full shadow-sm">
@@ -147,7 +146,7 @@ export function Pricing() {
 
               <ul className="space-y-3 flex-1 mb-8">
                 {tier.features.map((f) => (
-                  <li key={f} className="check-item flex items-start gap-2.5" style={{ opacity: 0 }}>
+                  <li key={f} className="check-item flex items-start gap-2.5">
                     <Check size={15} strokeWidth={2.5} className="flex-shrink-0 mt-0.5 text-[#F5C518]" />
                     <span className={`text-[13.5px] leading-relaxed ${tier.dark ? 'text-white/70' : 'text-[#6B7280]'}`}>{f}</span>
                   </li>

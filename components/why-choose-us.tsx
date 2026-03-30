@@ -60,7 +60,7 @@ export function WhyChooseUs() {
   return (
     <section ref={sectionRef} id="why-us" className="bg-white py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div ref={headRef} className="text-center mb-16" style={{ opacity: 0 }}>
+        <div ref={headRef} className="text-center mb-16">
           <p className="label mb-4">Why Choose Us</p>
           <h2 className="text-[clamp(32px,4vw,48px)] font-display font-bold text-[#1B2A4A]">
             Why Brands Choose The AdMasons
@@ -69,9 +69,9 @@ export function WhyChooseUs() {
 
         <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item) => (
-            <div key={item.num} className="why-card relative group" style={{ opacity: 0 }}>
+            <div key={item.num} className="why-card relative group">
               {/* Watermark number */}
-              <span className="watermark-num absolute -top-3 -left-1 font-display font-bold text-[80px] leading-none text-[#1B2A4A]/[0.04] select-none pointer-events-none z-0" style={{ opacity: 0 }}>
+              <span className="watermark-num absolute -top-3 -left-1 font-display font-bold text-[80px] leading-none text-[#1B2A4A]/[0.04] select-none pointer-events-none z-0">
                 {item.num}
               </span>
 

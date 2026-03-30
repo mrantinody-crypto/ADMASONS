@@ -152,7 +152,7 @@ export function CaseStudies() {
     <section ref={sectionRef} id="results" className="bg-[#1B2A4A]">
       {/* Header */}
       <div className="mx-auto max-w-[1280px] px-6 pt-[120px]">
-        <div ref={headRef} className="text-center mb-10" style={{ opacity: 0 }}>
+        <div ref={headRef} className="text-center mb-10">
           <p className="label mb-4">Case Studies</p>
           <h2 className="text-[clamp(32px,4.5vw,52px)] font-display font-bold text-white mb-5">
             Results That Speak For Themselves.
@@ -164,7 +164,7 @@ export function CaseStudies() {
         </div>
 
         {/* Stats row */}
-        <div ref={statsBarRef} className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-16 pb-10 border-b border-white/10" style={{ opacity: 0 }}>
+        <div ref={statsBarRef} className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-16 pb-10 border-b border-white/10">
           {[
             { v: '150+', l: 'Campaigns' },
             { v: '5×',   l: 'Avg ROI' },

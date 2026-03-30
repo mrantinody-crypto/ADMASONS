@@ -97,39 +97,8 @@ export function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 2.5 })
-
-      tl.fromTo(eyebrowRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
-      )
-      .fromTo(headlineRef.current,
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-        '-=0.2'
-      )
-      .fromTo(subheadRef.current,
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-        '-=0.3'
-      )
-      .fromTo(ctasRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
-        '-=0.2'
-      )
-      .fromTo(geoRef.current,
-        { opacity: 0, scale: 0.92, x: 30 },
-        { opacity: 1, scale: 1, x: 0, duration: 0.9, ease: 'power3.out' },
-        '-=0.8'
-      )
-      .fromTo(statsRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-        '-=0.3'
-      )
-
-      // Geo animations — desktop only (SVG is CSS-hidden on mobile but still in DOM)
+      // No intro animations - content is visible immediately
+      // Only run decorative geo animations on desktop
       if (!window.matchMedia('(max-width: 1023px)').matches) {
         gsap.to('.geo-circle', { rotation: 360, duration: 18, repeat: -1, ease: 'none', transformOrigin: '360px 180px' })
         gsap.to('.geo-float-dot-1', { y: -8, duration: 2.2, yoyo: true, repeat: -1, ease: 'sine.inOut' })
@@ -198,7 +167,6 @@ export function Hero() {
             <p
               ref={eyebrowRef}
               className="label mb-6"
-              style={{ opacity: 0 }}
             >
               PERFORMANCE · CREATIVITY · TECHNOLOGY
             </p>
@@ -206,7 +174,6 @@ export function Hero() {
             <h1
               ref={headlineRef}
               className="text-[clamp(38px,6vw,76px)] font-display font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6"
-              style={{ opacity: 0 }}
             >
               We Build Brands<br />
               That{' '}
@@ -221,14 +188,14 @@ export function Hero() {
             <p
               ref={subheadRef}
               className="text-[17px] leading-[1.75] max-w-[520px] mb-10"
-              style={{ color: 'rgba(255,255,255,0.75)', opacity: 0 }}
+              style={{ color: 'rgba(255,255,255,0.75)' }}
             >
               The AdMasons operates at the intersection of performance marketing,
               branding, and technology to help ambitious businesses scale faster
               and own their market.
             </p>
 
-            <div ref={ctasRef} className="flex flex-col sm:flex-row gap-4" style={{ opacity: 0 }}>
+            <div ref={ctasRef} className="flex flex-col sm:flex-row gap-4">
               <a
                 href="https://wa.me/917770969267"
                 target="_blank"
@@ -252,7 +219,7 @@ export function Hero() {
           </div>
 
           {/* RIGHT: Animated geometric */}
-          <div ref={geoRef} className="hidden lg:block" style={{ opacity: 0 }}>
+          <div ref={geoRef} className="hidden lg:block">
             <AnimatedGeo />
           </div>
         </div>
@@ -261,7 +228,6 @@ export function Hero() {
         <div
           ref={statsRef}
           className="border-t border-white/10 mt-12 py-10"
-          style={{ opacity: 0 }}
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, i) => (

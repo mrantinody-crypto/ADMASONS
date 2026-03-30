@@ -70,7 +70,7 @@ export function Testimonials() {
   return (
     <section ref={sectionRef} id="testimonials" className="bg-white py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div ref={headRef} className="text-center mb-16" style={{ opacity: 0 }}>
+        <div ref={headRef} className="text-center mb-16">
           <p className="label mb-4">What Our Clients Say</p>
           <h2 className="text-[clamp(28px,4vw,48px)] font-display font-bold text-[#1B2A4A]">
             Don&apos;t Take Our Word For It
@@ -82,7 +82,6 @@ export function Testimonials() {
             <div
               key={t.name}
               className="testi-card bg-[#F7F8FA] border border-[#E2E5EB] rounded-2xl p-8 hover:border-[#F5C518] transition-colors duration-300"
-              style={{ opacity: 0 }}
             >
               <Stars />
 

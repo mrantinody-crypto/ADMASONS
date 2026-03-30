@@ -11,8 +11,13 @@ export function PageLoader({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     const loader = loaderRef.current
     const logo = logoRef.current
-    if (!loader || !logo) return
+    if (!loader || !logo) {
+      // If refs not ready, complete immediately
+      onComplete()
+      return
+    }
 
+    // Total animation: 1.2s max (0.4 + 0.3 + 0.5)
     const tl = gsap.timeline({
       onComplete: () => {
         if (loader) loader.style.display = 'none'
@@ -22,14 +27,14 @@ export function PageLoader({ onComplete }: { onComplete: () => void }) {
 
     tl.fromTo(
       logo,
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' }
+      { scale: 0.9, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.4, ease: 'power2.out' }
     )
-      .to(logo, { scale: 1, opacity: 1, duration: 0.4 })
+      .to(logo, { duration: 0.3 }) // Brief hold
       .to(loader, {
         yPercent: -100,
-        duration: 0.9,
-        ease: 'power4.inOut',
+        duration: 0.5,
+        ease: 'power3.inOut',
       })
 
     return () => { tl.kill() }

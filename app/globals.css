@@ -220,6 +220,13 @@
 }
 .float-animation { animation: float 3.5s ease-in-out infinite; }
 
+/* Brochure float - CSS only, no GSAP dependency */
+@keyframes brochure-float {
+  0%, 100% { transform: translateY(0px); }
+  50%      { transform: translateY(-8px); }
+}
+.brochure-float { animation: brochure-float 3s ease-in-out infinite; }
+
 /* ─── PULSE GLOW ─── */
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.4); }

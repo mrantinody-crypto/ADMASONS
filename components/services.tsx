@@ -72,7 +72,7 @@ export function Services() {
     <section ref={sectionRef} id="services" className="bg-white py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6">
         {/* Header */}
-        <div ref={headRef} className="text-center mb-14" style={{ opacity: 0 }}>
+        <div ref={headRef} className="text-center mb-14">
           <p className="label mb-4">What We Do</p>
           <h2 className="text-[clamp(32px,4vw,48px)] font-display font-bold text-[#1B2A4A] mb-4">
             Our Services
@@ -90,7 +90,6 @@ export function Services() {
               key={svc.title}
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="service-card relative rounded-xl border border-[#E2E5EB] bg-white p-8 group cursor-pointer"
-              style={{ opacity: 0 }}
             >
               {/* Core Expertise badge */}
               {svc.badge && (

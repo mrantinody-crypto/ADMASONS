@@ -72,7 +72,7 @@ export function Team() {
     <section ref={sectionRef} id="team" className="bg-[#1B2A4A] py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6">
         {/* Header */}
-        <div ref={headRef} className="text-center mb-16" style={{ opacity: 0 }}>
+        <div ref={headRef} className="text-center mb-16">
           <p className="label mb-4">Leadership</p>
           <h2 className="text-[clamp(28px,4vw,48px)] font-display font-bold text-white">
             The Minds Behind The AdMasons
@@ -85,10 +85,9 @@ export function Team() {
             <div
               key={m.role}
               className="team-card bg-[#243656] border border-white/8 rounded-2xl p-6 flex flex-col hover:border-[rgba(245,197,24,0.35)] transition-all duration-300 hover:-translate-y-1"
-              style={{ opacity: 0 }}
             >
               {/* Avatar */}
-              <div className="avatar-circle w-16 h-16 rounded-full border-2 border-[#F5C518] bg-[#1B2A4A] flex items-center justify-center mb-4 flex-shrink-0" style={{ opacity: 0 }}>
+              <div className="avatar-circle w-16 h-16 rounded-full border-2 border-[#F5C518] bg-[#1B2A4A] flex items-center justify-center mb-4 flex-shrink-0">
                 <User size={28} strokeWidth={1.5} className="text-[#F5C518]" />
               </div>
 

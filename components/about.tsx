@@ -29,7 +29,7 @@ export function About() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
-          <div ref={leftRef} style={{ opacity: 0 }}>
+          <div ref={leftRef}>
             <p className="label mb-4">About Us</p>
             <h2 className="text-[clamp(28px,3.5vw,44px)] font-display font-bold text-[#1B2A4A] mb-8 leading-tight">
               We Don&apos;t Run Ads.<br />We Engineer Growth Systems.
@@ -56,7 +56,7 @@ export function About() {
           </div>
 
           {/* Right: Stats/pillars */}
-          <div ref={rightRef} className="grid grid-cols-2 gap-5" style={{ opacity: 0 }}>
+          <div ref={rightRef} className="grid grid-cols-2 gap-5">
             {[
               { val: '150+', label: 'Campaigns Delivered', sub: 'Across 4 global markets' },
               { val: '5×',   label: 'Average ROI',         sub: 'Across all campaigns' },

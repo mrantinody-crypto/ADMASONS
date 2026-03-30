@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
-import { ArrowRight } from 'lucide-react'
+import { Download } from 'lucide-react'
 import Image from 'next/image'
 
 export function Resources() {
@@ -12,15 +12,16 @@ export function Resources() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Animate on scroll entry - content visible by default
       gsap.fromTo(leftRef.current,
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: leftRef.current, start: 'top 82%', once: true } }
+        { opacity: 0.9, x: -20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out',
+          scrollTrigger: { trigger: leftRef.current, start: 'top 85%', once: true } }
       )
       gsap.fromTo(mockupRef.current,
-        { opacity: 0, x: 60, rotateY: 20 },
-        { opacity: 1, x: 0, rotateY: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: mockupRef.current, start: 'top 82%', once: true }, delay: 0.2 }
+        { opacity: 0.9, x: 20 },
+        { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out',
+          scrollTrigger: { trigger: mockupRef.current, start: 'top 85%', once: true } }
       )
     }, sectionRef)
     return () => ctx.revert()
@@ -31,10 +32,10 @@ export function Resources() {
       <div className="mx-auto max-w-[1280px] px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
-          <div ref={leftRef} style={{ opacity: 0 }}>
+          <div ref={leftRef}>
             <p className="label mb-4">Resources</p>
             <h2 className="text-[clamp(28px,3.5vw,44px)] font-display font-bold text-white mb-5 leading-tight">
-              Get Our<br />Brochure
+              Download Our<br />Brochure
             </h2>
             <p className="text-[16px] text-white/60 leading-[1.8] mb-8 max-w-[460px]">
               Get a comprehensive overview of our services, pricing, and case studies.
@@ -42,13 +43,14 @@ export function Resources() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group inline-flex items-center gap-2.5 bg-[#F5C518] text-[#1B2A4A] font-semibold text-[15px] px-7 py-3.5 rounded-lg hover:bg-[#FFD84D] hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-[rgba(245,197,24,0.2)]"
+              <a 
+                href="/admasons-brochure.pdf" 
+                download="AdMasons-Company-Brochure-2026.pdf"
+                className="group inline-flex items-center gap-2.5 bg-[#F5C518] text-[#1B2A4A] font-semibold text-[15px] px-8 py-4 rounded-lg hover:bg-[#FFD84D] hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-[rgba(245,197,24,0.2)]"
               >
-                Request Brochure
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-              </button>
+                <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
+                Download Brochure (PDF)
+              </a>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -60,12 +62,12 @@ export function Resources() {
             </div>
           </div>
 
-          {/* Right: 3D brochure mockup */}
+          {/* Right: Brochure mockup with CSS floating animation */}
           <div className="flex justify-center lg:justify-end [perspective:800px]">
             <div
               ref={mockupRef}
-              className="float-animation relative w-[260px] h-[340px] rounded-2xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.5)]"
-              style={{ opacity: 0, transformStyle: 'preserve-3d' }}
+              className="brochure-float relative w-[260px] h-[340px] rounded-2xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.5)] border-2 border-[#F5C518]/30"
+              style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Cover design */}
               <div className="absolute inset-0 bg-[#243656] flex flex-col">
@@ -90,10 +92,8 @@ export function Resources() {
 
                   <div>
                     <div className="h-px bg-[rgba(245,197,24,0.3)] mb-4" />
-                    <p className="text-[11px] text-white/40 leading-relaxed">
-                      Performance Marketing<br />
-                      Marketplace Growth<br />
-                      Brand Strategy
+                    <p className="text-[11px] text-white/40 leading-relaxed uppercase tracking-wider">
+                      Performance · Creativity · Technology
                     </p>
                   </div>
                 </div>

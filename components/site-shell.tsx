@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
-import { PageLoader } from '@/components/page-loader'
 import { CustomCursor } from '@/components/custom-cursor'
 import { Navbar } from '@/components/navbar'
 import { SmoothScroll } from '@/components/smooth-scroll'
@@ -59,19 +58,13 @@ function WhatsAppFAB() {
 }
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
-  const [loaded, setLoaded] = useState(false)
-
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       gsap.globalTimeline.timeScale(20)
     }
-  }, [])
-
-  function handleLoaded() {
-    setLoaded(true)
-    // Ensure ScrollTrigger recalculates all positions after content becomes visible
+    // Refresh ScrollTrigger after mount
     requestAnimationFrame(() => ScrollTrigger.refresh())
-  }
+  }, [])
 
   return (
     <>
@@ -83,19 +76,13 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       </a>
       <SmoothScroll />
       <CustomCursor />
-      <PageLoader onComplete={handleLoaded} />
-      <div
-        style={{
-          opacity: loaded ? 1 : 0,
-          transition: 'opacity 0.3s ease',
-          visibility: loaded ? 'visible' : 'hidden',
-        }}
-      >
+      {/* NO PageLoader - content renders immediately */}
+      <div>
         <Navbar />
         {children}
       </div>
-      {loaded && <ScrollProgressBar />}
-      {loaded && <WhatsAppFAB />}
+      <ScrollProgressBar />
+      <WhatsAppFAB />
     </>
   )
 }

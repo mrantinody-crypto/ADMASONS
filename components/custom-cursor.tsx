@@ -7,10 +7,11 @@ export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
   const [cursorText, setCursorText] = useState('')
+  const [mounted, setMounted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    setMounted(true)
     if (window.matchMedia('(max-width: 768px)').matches) return
     if (window.matchMedia('(hover: none)').matches) return
 
@@ -75,6 +76,9 @@ export function CustomCursor() {
       })
     }
   }, [])
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) return null
 
   return (
     <>
