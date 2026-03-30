@@ -49,10 +49,9 @@ export function Navbar() {
 
   useEffect(() => {
     if (!navRef.current) return
-    gsap.fromTo(
+    gsap.from(
       navRef.current,
-      { yPercent: -100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power2.out', delay: 2.2 }
+      { yPercent: -100, duration: 0.4, ease: 'power2.out', delay: 0.1 }
     )
   }, [])
 
@@ -87,7 +86,6 @@ export function Navbar() {
     <>
       <nav
         ref={navRef}
-        style={{ opacity: 0 }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
           scrolled
             ? 'bg-[#1B2A4A]/96 backdrop-blur-md shadow-lg shadow-black/20 py-3'

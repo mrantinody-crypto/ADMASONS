@@ -147,7 +147,7 @@ export function Contact() {
           </div>
 
           {/* Right: form */}
-          <div ref={formRef} style={{ opacity: 0 }}>
+          <div ref={formRef}>
             {submitted ? (
               <div className="h-full flex items-center justify-center">
                 <div className="text-center">

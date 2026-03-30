@@ -30,13 +30,13 @@ export default function PageLoader() {
     });
 
     tl.fromTo(logo, 
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.6, ease: 'power2.out' }
+      { scale: 0.9, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.15, ease: 'power2.out' }
     )
-    .to({}, { duration: 0.4 })
+    .to({}, { duration: 0.1 })
     .to(loader, {
       clipPath: 'polygon(0 0, 100% 0, 100% 0%, 0 0%)',
-      duration: 0.8,
+      duration: 0.45,
       ease: 'power4.inOut'
     });
 

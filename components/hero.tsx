@@ -122,8 +122,12 @@ export function Hero() {
             const proxy = { val: 0 }
             gsap.to(proxy, {
               val: stat.value,
-              duration: 1.4,
+              duration: 1.8,
               ease: 'power2.out',
+              delay: 0.2,
+              onStart: () => {
+                el.textContent = `${stat.prefix || ''}0${stat.suffix}`
+              },
               onUpdate: () => {
                 el.textContent = `${stat.prefix || ''}${Math.round(proxy.val)}${stat.suffix}`
               },
