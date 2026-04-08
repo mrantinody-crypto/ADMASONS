@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import LenisProvider from '@/components/LenisProvider'
-import CustomCursor from '@/components/CustomCursor'
 import PageLoader from '@/components/PageLoader'
 import './globals.css'
 
@@ -107,7 +106,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
         <LenisProvider>
-          <CustomCursor />
           <PageLoader />
           {children}
         </LenisProvider>

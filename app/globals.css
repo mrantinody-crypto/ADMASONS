@@ -106,12 +106,12 @@
     background-color: var(--background);
     color: var(--foreground);
     overflow-x: hidden;
-    cursor: none;
+    cursor: auto;
   }
 
-  @media (max-width: 768px) {
-    body { cursor: auto; }
-  }
+  /* Ensure native cursor everywhere — no custom cursor */
+  *, *::before, *::after { cursor: inherit; }
+  a, button, [role="button"], label, select, input, textarea { cursor: pointer; }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
@@ -252,46 +252,7 @@
   100% { transform: translateY(36px); opacity: 0; }
 }
 
-/* ─── CURSOR ─── */
-.custom-cursor-dot,
-.custom-cursor-ring {
-  pointer-events: none;
-  position: fixed;
-  border-radius: 50%;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
-}
-.custom-cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--gold);
-}
-.custom-cursor-ring {
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid rgba(245, 197, 24, 0.6);
-  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.custom-cursor-ring.expanded {
-  width: 80px;
-  height: 80px;
-  background: rgba(245, 197, 24, 0.12);
-  border-color: var(--gold);
-}
-.custom-cursor-ring .cursor-text {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--gold);
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.custom-cursor-ring.expanded .cursor-text { opacity: 1; }
+/* Custom cursor removed — using native OS cursor */
 
 /* ─── PAGE LOADER ─── */
 .page-loader {
