@@ -2,28 +2,26 @@
 
 import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
-import { Linkedin, User } from 'lucide-react'
+import { Linkedin } from 'lucide-react'
 
 const members = [
   {
-    role: 'CO-FOUNDER & CEO',
-    initials: 'AS',
-    desc: 'Leads performance strategy, client growth architecture, and scalable systems that drive measurable ROI across global markets.',
+    name: 'Saba',
+    role: 'Founder',
+    initials: 'S',
+    desc: 'Visionary behind AdMasons — leads overall growth strategy, client partnerships, and the systems that turn marketing spend into compounding, measurable ROI.',
   },
   {
-    role: 'CO-FOUNDER & CMO',
-    initials: 'CM',
-    desc: 'Drives marketplace growth, Amazon PPC strategy, and full-funnel performance marketing with 9+ years of hands-on experience scaling brands across 4 countries.',
+    name: 'Aamir',
+    role: 'Marketing Director',
+    initials: 'A',
+    desc: 'Drives full-funnel performance marketing across Meta, Google, and emerging platforms — from media buying to conversion optimisation and scalable growth funnels.',
   },
   {
-    role: 'BRAND & CREATIVE HEAD · FULL-STACK DEVELOPER',
-    initials: 'BH',
-    desc: 'Bridges the gap between creative vision and technical execution — from brand identity systems and UI/UX design to custom web development and product builds.',
-  },
-  {
-    role: 'HEAD OF MARKETING',
-    initials: 'HM',
-    desc: 'Spearheads go-to-market strategy, content marketing, and lead generation systems — turning brand presence into pipeline and pipeline into revenue.',
+    name: 'Abdullah',
+    role: 'Creative Head',
+    initials: 'Ab',
+    desc: 'Shapes brand identity, visual storytelling, and creative strategy — bridging design thinking with performance to craft campaigns that convert and resonate.',
   },
 ]
 
@@ -77,30 +75,40 @@ export function Team() {
           </h2>
         </div>
 
-        {/* Cards */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Cards — 3-col desktop, stacked mobile */}
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
           {members.map((m) => (
             <div
-              key={m.role}
-              className="team-card bg-[#243656] border border-white/8 rounded-2xl p-6 flex flex-col hover:border-[rgba(245,197,24,0.35)] transition-all duration-300 hover:-translate-y-1"
+              key={m.name}
+              className="team-card bg-[#243656] border border-white/8 rounded-2xl p-8 flex flex-col items-center text-center hover:border-[rgba(245,197,24,0.35)] transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Avatar */}
-              <div className="avatar-circle w-16 h-16 rounded-full border-2 border-[#F5C518] bg-[#1B2A4A] flex items-center justify-center mb-4 flex-shrink-0">
-                <User size={28} strokeWidth={1.5} className="text-[#F5C518]" />
+              {/* Initials avatar */}
+              <div className="avatar-circle w-20 h-20 rounded-full border-2 border-[#F5C518] bg-[#1B2A4A] flex items-center justify-center mb-5 flex-shrink-0">
+                <span className="font-display font-bold text-[22px] text-[#F5C518] select-none">
+                  {m.initials}
+                </span>
               </div>
 
+              {/* Name */}
+              <h3 className="font-display font-bold text-[22px] text-white mb-1 tracking-tight">
+                {m.name}
+              </h3>
+
               {/* Role */}
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase text-[#F5C518] mb-3 leading-relaxed">
+              <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#F5C518] mb-4">
                 {m.role}
               </span>
 
+              {/* Gold rule */}
+              <div className="w-8 h-px bg-[rgba(245,197,24,0.4)] mb-4" />
+
               {/* Description */}
-              <p className="text-[13.5px] text-white/60 leading-[1.7] flex-1">
+              <p className="text-[13.5px] text-white/60 leading-[1.75] flex-1">
                 {m.desc}
               </p>
 
               {/* LinkedIn */}
-              <div className="mt-5 pt-4 border-t border-white/10">
+              <div className="mt-6 pt-5 border-t border-white/10 w-full flex justify-center">
                 <a
                   href="https://www.linkedin.com/company/admasons/"
                   target="_blank"

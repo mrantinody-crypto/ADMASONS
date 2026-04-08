@@ -8,8 +8,11 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
   const [isTouch, setIsTouch] = useState(false);
+  // mounted gate: prevents server/client DOM mismatch
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if ('ontouchstart' in window) {
       setIsTouch(true);
       return;
@@ -83,7 +86,8 @@ export default function CustomCursor() {
     };
   }, []);
 
-  if (isTouch) return null;
+  // Never render on server — eliminates hydration mismatch
+  if (!mounted || isTouch) return null;
 
   return (
     <>

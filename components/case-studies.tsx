@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { gsap } from '@/lib/gsap'
 
 interface CaseStudy {
   industry: string
@@ -71,84 +71,65 @@ const caseStudies: CaseStudy[] = [
 ]
 
 export function CaseStudies() {
-  const sectionRef    = useRef<HTMLElement>(null)
-  const trackRef      = useRef<HTMLDivElement>(null)
-  const innerRef      = useRef<HTMLDivElement>(null)
-  const headRef       = useRef<HTMLDivElement>(null)
-  const statsBarRef   = useRef<HTMLDivElement>(null)
+  const sectionRef  = useRef<HTMLElement>(null)
+  const headRef     = useRef<HTMLDivElement>(null)
+  const statsBarRef = useRef<HTMLDivElement>(null)
+  const gridRef     = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Header + stats bar — lightweight GSAP one-shot animations
     const ctx = gsap.context(() => {
-      // Use gsap.from() - elements visible by default
       gsap.from(headRef.current, {
         opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
-        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
+        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true },
       })
       gsap.from(statsBarRef.current, {
         opacity: 0, y: 20, duration: 0.5, ease: 'power2.out',
-        scrollTrigger: { trigger: statsBarRef.current, start: 'top 88%', once: true }
-      })
-
-      // Mobile: simple stagger, no pin
-      const isMobile = window.matchMedia('(max-width: 768px)').matches
-      if (isMobile) {
-        const cards = innerRef.current?.querySelectorAll('.case-card')
-        if (cards) {
-          gsap.from(cards, {
-            opacity: 0, y: 40, stagger: 0.08, duration: 0.5, ease: 'power2.out',
-            scrollTrigger: { trigger: innerRef.current, start: 'top 85%', once: true }
-          })
-        }
-        return
-      }
-
-      // Desktop: horizontal scroll
-      const track = trackRef.current
-      const inner = innerRef.current
-      if (!track || !inner) return
-
-      const cards = inner.querySelectorAll('.case-card')
-      const totalWidth = inner.scrollWidth
-      const viewportWidth = window.innerWidth
-      const scrollDistance = Math.max(0, totalWidth - viewportWidth + 96)
-      if (scrollDistance === 0) return
-
-      // Create horizontal scroll tween
-      const scrollTween = gsap.to(inner, {
-        x: -scrollDistance,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: track,
-          start: 'top top',
-          end: `+=${scrollDistance}`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      })
-
-      // Card scale on entry - use gsap.from()
-      cards.forEach((card) => {
-        gsap.from(card, {
-          scale: 0.95, opacity: 0.6,
-          scrollTrigger: {
-            trigger: card,
-            containerAnimation: scrollTween,
-            start: 'left 85%',
-            end: 'left 50%',
-            scrub: true,
-          },
-        })
+        scrollTrigger: { trigger: statsBarRef.current, start: 'top 88%', once: true },
       })
     }, sectionRef)
 
-    return () => ctx.revert()
+    // Per-card IntersectionObserver — never blocks scroll
+    const cards = gridRef.current?.querySelectorAll<HTMLElement>('.case-card')
+    if (!cards) return () => ctx.revert()
+
+    // Set initial invisible state via inline style
+    cards.forEach((card) => {
+      card.style.opacity = '0'
+      card.style.transform = 'translateY(32px)'
+      card.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'
+    })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target as HTMLElement
+            // Stagger via dataset index
+            const idx = Number(card.dataset.cardIndex ?? 0)
+            setTimeout(() => {
+              card.style.opacity = '1'
+              card.style.transform = 'translateY(0)'
+            }, idx * 120)
+            observer.unobserve(card) // once: true
+          }
+        })
+      },
+      { rootMargin: '0px 0px -60px 0px', threshold: 0.1 },
+    )
+
+    cards.forEach((card) => observer.observe(card))
+
+    return () => {
+      ctx.revert()
+      observer.disconnect()
+    }
   }, [])
 
   return (
-    <section ref={sectionRef} id="results" className="bg-[#1B2A4A]">
-      {/* Header */}
-      <div className="mx-auto max-w-[1280px] px-6 pt-[120px]">
+    <section ref={sectionRef} id="results" className="bg-[#1B2A4A] py-[120px]">
+      <div className="mx-auto max-w-[1280px] px-6">
+        {/* Header */}
         <div ref={headRef} className="text-center mb-10">
           <p className="label mb-4">Case Studies</p>
           <h2 className="text-[clamp(32px,4.5vw,52px)] font-display font-bold text-white mb-5">
@@ -177,19 +158,17 @@ export function CaseStudies() {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Horizontal scroll track */}
-      <div ref={trackRef} className="overflow-hidden" data-cursor="SCROLL">
+        {/* Cards grid — no pin, no horizontal scroll, fully natural scroll */}
         <div
-          ref={innerRef}
-          className="flex gap-6 px-6 pb-[120px] md:pb-[80px]"
-          style={{ width: 'max-content' }}
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {caseStudies.map((cs) => (
+          {caseStudies.map((cs, idx) => (
             <div
               key={cs.brand}
-              className="case-card flex-shrink-0 w-[min(440px,85vw)] bg-[#243656] border border-white/8 rounded-2xl p-8 flex flex-col hover:border-[rgba(245,197,24,0.4)] transition-colors duration-300"
+              data-card-index={idx}
+              className="case-card bg-[#243656] border border-white/8 rounded-2xl p-8 flex flex-col hover:border-[rgba(245,197,24,0.4)] transition-colors duration-300"
             >
               {/* Top row */}
               <div className="flex items-start justify-between mb-4">
@@ -197,7 +176,7 @@ export function CaseStudies() {
                 <div className="text-right">
                   <span
                     className="block font-display font-bold leading-none text-[#F5C518]"
-                    style={{ fontSize: 'clamp(40px,5vw,60px)', textShadow: '0 0 30px rgba(245,197,24,0.3)' }}
+                    style={{ fontSize: 'clamp(36px,4vw,52px)', textShadow: '0 0 30px rgba(245,197,24,0.3)' }}
                   >
                     {cs.metric}
                   </span>
@@ -209,7 +188,7 @@ export function CaseStudies() {
               <div className="h-px bg-[rgba(245,197,24,0.3)] mb-6" />
 
               {/* Brand */}
-              <h3 className="font-display font-semibold text-[24px] text-white mb-4 tracking-tight">
+              <h3 className="font-display font-semibold text-[22px] text-white mb-4 tracking-tight">
                 {cs.brand}
               </h3>
 

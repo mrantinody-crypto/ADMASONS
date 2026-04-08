@@ -7,17 +7,18 @@ import Image from 'next/image';
 export default function PageLoader() {
   const loaderRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
-  const [shouldShow, setShouldShow] = useState(true);
+  // Start false — server renders nothing, avoiding hydration mismatch
+  const [shouldShow, setShouldShow] = useState(false);
 
+  // Effect 1: client-only check — never runs on server
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
     const hasLoaded = sessionStorage.getItem('admasons-loaded');
-    if (hasLoaded) {
-      setShouldShow(false);
-      return;
-    }
+    if (!hasLoaded) setShouldShow(true);
+  }, []);
 
+  // Effect 2: run animation only after loader DOM is actually mounted
+  useEffect(() => {
+    if (!shouldShow) return;
     const loader = loaderRef.current;
     const logo = logoRef.current;
     if (!loader || !logo) return;
@@ -26,10 +27,10 @@ export default function PageLoader() {
       onComplete: () => {
         sessionStorage.setItem('admasons-loaded', 'true');
         setShouldShow(false);
-      }
+      },
     });
 
-    tl.fromTo(logo, 
+    tl.fromTo(logo,
       { scale: 0.9, opacity: 0 },
       { scale: 1, opacity: 1, duration: 0.15, ease: 'power2.out' }
     )
@@ -37,13 +38,11 @@ export default function PageLoader() {
     .to(loader, {
       clipPath: 'polygon(0 0, 100% 0, 100% 0%, 0 0%)',
       duration: 0.45,
-      ease: 'power4.inOut'
+      ease: 'power4.inOut',
     });
 
-    return () => {
-      tl.kill();
-    };
-  }, []);
+    return () => { tl.kill(); };
+  }, [shouldShow]);
 
   if (!shouldShow) return null;
 

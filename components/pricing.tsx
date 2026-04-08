@@ -81,7 +81,7 @@ export function Pricing() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="pricing" className="bg-[#F7F8FA] py-[120px]">
+    <section ref={sectionRef} id="pricing" className="bg-[#F7F8FA] py-[80px]">
       <div className="mx-auto max-w-[1280px] px-6">
         <div ref={headRef} className="text-center mb-14">
           <p className="label mb-4">Pricing</p>
@@ -149,15 +149,27 @@ export function Pricing() {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-[14px] text-[#9CA3AF]">
-          Need a custom solution?{' '}
+        {/* Custom pricing CTA banner */}
+        <div className="mt-10 rounded-2xl bg-[#1B2A4A] border border-[rgba(245,197,24,0.2)] px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_4px_40px_rgba(0,0,0,0.08)]">
+          <div className="text-center sm:text-left">
+            <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#F5C518] mb-2">
+              Custom Plan
+            </p>
+            <h3 className="font-display font-bold text-[22px] text-white leading-snug mb-1">
+              Need something tailored?
+            </h3>
+            <p className="text-[14px] text-white/55 max-w-[420px] leading-relaxed">
+              Let&apos;s build a custom growth plan for your brand — strategy, spend, and scale, designed around your goals.
+            </p>
+          </div>
           <button
             onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-[#F5C518] font-semibold hover:underline"
+            className="group flex-shrink-0 inline-flex items-center gap-2 bg-[#F5C518] text-[#1B2A4A] font-semibold text-[14px] px-7 py-3.5 rounded-lg transition-all duration-200 hover:bg-[#FFD84D] hover:shadow-[0_4px_20px_rgba(245,197,24,0.35)] active:scale-[0.98]"
           >
-            Contact us for a custom quote →
+            Get Custom Pricing
+            <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform duration-200" />
           </button>
-        </p>
+        </div>
       </div>
     </section>
   )
