@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { Check, ArrowRight } from 'lucide-react'
 
 const tiers = [
@@ -58,43 +57,55 @@ const tiers = [
 
 export function Pricing() {
   const sectionRef = useRef<HTMLElement>(null)
-  const headRef    = useRef<HTMLDivElement>(null)
-  const cardsRef   = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Use gsap.from() - elements visible by default
-      gsap.from(headRef.current, {
-        opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
-        scrollTrigger: { trigger: headRef.current, start: 'top 85%', once: true }
-      })
+    // IntersectionObserver fade-in — never hides elements on mount, no layout gaps
+    const targets = sectionRef.current?.querySelectorAll<HTMLElement>('.fade-target')
+    if (!targets) return
 
-      const cards = cardsRef.current?.querySelectorAll('.price-card')
-      if (cards) {
-        gsap.from(cards, {
-          opacity: 0, y: 40, duration: 0.5, stagger: 0.1, ease: 'power2.out',
-          scrollTrigger: { trigger: cardsRef.current, start: 'top 85%', once: true }
+    targets.forEach((el) => {
+      el.style.opacity = '0'
+      el.style.transform = 'translateY(20px)'
+      el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'
+    })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement
+            const delay = Number(el.dataset.delay ?? 0)
+            setTimeout(() => {
+              el.style.opacity = '1'
+              el.style.transform = 'translateY(0)'
+            }, delay)
+            observer.unobserve(el)
+          }
         })
-      }
-    }, sectionRef)
-    return () => ctx.revert()
+      },
+      { rootMargin: '0px 0px -40px 0px', threshold: 0.05 },
+    )
+
+    targets.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
   return (
     <section ref={sectionRef} id="pricing" className="bg-[#F7F8FA] py-[80px]">
       <div className="mx-auto max-w-[1280px] px-6">
-        <div ref={headRef} className="text-center mb-14">
+        <div className="fade-target text-center mb-10" data-delay="0">
           <p className="label mb-4">Pricing</p>
           <h2 className="text-[clamp(28px,4vw,48px)] font-display font-bold text-[#1B2A4A]">
             Simple, Transparent Pricing.
           </h2>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {tiers.map((tier) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+          {tiers.map((tier, idx) => (
             <div
               key={tier.name}
-              className={`price-card price-card-${tier.name.toLowerCase()} relative rounded-2xl p-8 flex flex-col h-full border transition-all duration-300 ${
+              data-delay={idx * 100}
+              className={`fade-target price-card price-card-${tier.name.toLowerCase()} relative rounded-2xl p-8 flex flex-col h-full border transition-all duration-300 ${
                 tier.highlighted
                   ? 'border-[#F5C518] shadow-[0_8px_40px_rgba(245,197,24,0.15)] scale-[1.02] bg-white'
                   : tier.dark
@@ -150,7 +161,7 @@ export function Pricing() {
         </div>
 
         {/* Custom pricing CTA banner */}
-        <div className="mt-10 rounded-2xl bg-[#1B2A4A] border border-[rgba(245,197,24,0.2)] px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_4px_40px_rgba(0,0,0,0.08)]">
+        <div data-delay="0" className="fade-target mt-10 rounded-2xl bg-[#1B2A4A] border border-[rgba(245,197,24,0.2)] px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_4px_40px_rgba(0,0,0,0.08)]">
           <div className="text-center sm:text-left">
             <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#F5C518] mb-2">
               Custom Plan
